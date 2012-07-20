@@ -9,3 +9,6 @@ RewriteCond %{REQUEST_URI} !^.*\.(css|jpe?g|gif|png|js|ico)$ [NC]
 #RewriteRule abc([0-9]+) directions.php?lid=$1 [QSA,NC,L]
 RewriteRule ^listing/directions/[A-Z0-9_-]+-([0-9]+)\.html/?$ directions.php?lid=$1 [QSA,NC,L]
 RewriteRule ^listing/[A-Z0-9_-]+-([0-9]+)\.html/?$ listing.php?lid=$1 [QSA,NC,L]
+RewriteRule ^[A-Z0-9_-]+-([0-9]+)/?$ category.php?cid=$1 [QSA,NC,L]
+RewriteRule ^[A-Z0-9_-]+-([0-9]+)/[A-Z0-9_-]+-([0-9]+)/?$ subcategory.php?mid=$1&sid=$2 [QSA,NC,L]
+

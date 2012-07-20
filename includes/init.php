@@ -33,6 +33,9 @@ require_once(CLASS_PATH.DS.'banner.php');
 // load pagination classes
 require_once(CLASS_PATH.DS.'ps_pagination.php');
 
+// load category classes
+require_once(CLASS_PATH.DS.'category.php');
+
 // check login status
 require_once(LIB_PATH.DS.'login_status.php');
 

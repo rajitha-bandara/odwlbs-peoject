@@ -1,12 +1,12 @@
 <?php @session_start();?>
-<?php 
-require_once('includes/init.php');
-?>
+<?php require_once('includes/init.php');?>
+<?php require_once('includes/process_view_category.php');?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Listing Categories- <?php echo DOMAIN_NAME;?></title>
+<base href="http://localhost/business_directory/" />
+<title><?php echo $categoryName ." - ".DOMAIN_NAME;?></title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -62,23 +62,23 @@ background:url(public/img/cross.png) no-repeat;
    <div id="main_wrapper" class="grid_17"><!--Begins main wrapper-->
    
   
-  <div id="page_topic"><h1>Listing Categories</h1></div>
+  <div id="page_topic"><h1><?php echo $categoryName;?></h1></div>
   		
    <!--begins directory-->     
    
       
     <div class="grid_17" id="categories">
-    <div id="main_cat">
+    <div id="sub_cat">
   	<ul>
     <?php
-    global $gcatObj;
-	if($gcatObj->fetchAllCategories() != false)
+    global $gbizObj;
+	if($gcatObj->fetchAllSubCategories($cid,$categoryName) != false)
 	{
-		echo $gcatObj->fetchAllCategories();
+		echo $gcatObj->fetchAllSubCategories($cid,$categoryName);
 	}
 	else
 	{
-		echo "Currently the directory is empty";
+		echo "No sub categories under ".$categoryName;
 	}
 	?>
     </ul>

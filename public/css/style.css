@@ -240,6 +240,7 @@ height:auto;
 	border-radius: 5px;
 	margin-left:0px;
 	margin-right:10px;
+	margin-bottom:10px;
 	float:right;
 	
 	padding:10px;
@@ -260,7 +261,7 @@ height:auto;
 	font-size:14px;
 	padding-left:10px;
 	padding-top:5px;
-	
+	margin-bottom:5px;
 }
 
 #find_near{
@@ -486,8 +487,31 @@ background:url(../img/footer_divider.gif) no-repeat center right;
 	margin-bottom:20px;
 }
 
+#popular_listings{
+	height:195px;
+}
 #new_biz{
 	margin-bottom:30px;
+}
+#new_biz ul li{
+	margin-bottom:5px;
+	margin-top:5px;
+	
+	height:auto;
+}
+#new_biz ul{
+	
+	
+}
+#new_biz ul li #title a{
+	color:#000;
+	font-weight:bold;
+	
+}
+#new_biz ul li #info{
+	margin-left:10px;
+	font-size:14px;
+	
 }
 #popup_user_login{
 	padding:15px;
@@ -635,4 +659,36 @@ background:url(../img/footer_divider.gif) no-repeat center right;
 	color:#000;
 	font-weight:bold;
 	font-size:12px;
+}
+
+/* For directory page*/
+#categories{
+	margin-left:20px;
+}
+#categories #main_cat a{
+	
+	text-decoration:none;
+}
+#categories #main_cat ul li{
+	
+	border:1px solid #c0c0c0;
+	width:300px;
+	margin-top:10px;
+	margin-bottom:10px;
+	padding:5px;
+	
+}
+#categories #main_cat a:hover{
+	text-decoration:underline;
+	
+	
+}
+#categories #sub_cat{
+	margin-left:10px;
+}
+#categories #sub_cat ul li{
+	
+	list-style-type:disc;
+	margin-bottom:5px;
+	
 }

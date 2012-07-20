@@ -183,6 +183,53 @@ function formatRelatedSearch($counter,$bizId,$title)
 	
 }
 
+/*
+ *  Format category in HTML
+*
+*/
+function formatCategory($catId,$name)
+{
+	$safeCat = makeURLSafe($name);
+	$category_url = "http://localhost/business_directory/$safeCat-$catId/";
+
+	return 	"
+	<li><a href='$category_url'>".$name."</a></li>";
+
+}
+
+/*
+ *  Format sub category in HTML
+*
+*/
+function formatSubCategory($catId,$mainCat,$subCatId,$subCatName)
+{
+	$safeCat = makeURLSafe($mainCat);
+	$safeSubCat = makeURLSafe($subCatName);
+	$category_url = "http://localhost/business_directory/$safeCat-$catId/$safeSubCat-$subCatId";
+
+	return 	"
+	<li><a href='$category_url'>".$subCatName."</a></li>";
+
+}
+
+/*
+ *  Format recent listing in HTML
+*
+*/
+function formatRecentListing($bizId,$title,$mainCatId,$subCatId,$mainCat,$subCat)
+{
+	$safeTitle = makeURLSafe($title);
+	$safeCat = makeURLSafe($mainCat);
+	$safeSubCat = makeURLSafe($subCat);
+	
+	$listing_url = "http://localhost/business_directory/listing/$safeTitle-$bizId.html";
+	$mainCategory_url = "http://localhost/business_directory/$safeCat-$mainCatId/";
+	$subCategory_url = "http://localhost/business_directory/$safeCat-$mainCatId/$safeSubCat-$subCatId";
+
+	return 	"
+	<li style='border_bottom:1px sold #000'><div><div class='grid_6' id='title'><a href='$listing_url'>".$title."</a></div><div class='grid_6' id='info'><a href='$mainCategory_url'>".$mainCat."</a> ,<a href='$subCategory_url'>".$subCat."</a></div></div></li>";
+
+}
 
 /*
  *  Check the given string is longer than the given length

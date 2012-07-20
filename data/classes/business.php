@@ -31,6 +31,9 @@ class Business
 	protected static $table_contacts="lbs_biz_contacts";
 	protected static $table_location="lbs_biz_location";
 	protected static $table_keywords="lbs_biz_keywords";
+	protected static $table_mainCategories="lbs_biz_main_categories";
+	protected static $table_subCategories="lbs_biz_sub_categories";
+	
 	public function __construct()
 	{
 		
@@ -196,6 +199,36 @@ class Business
 			return $results;
 		}
 	}
+	
+	public function fetchRecentListings()
+	{
+		global $gdbObj;
+		$sql = "SELECT b.biz_id,b.title,b.main_category,b.sub_category,m.name,s.name FROM ".self::$table_biz." b,".self::$table_mainCategories. " m,".self::$table_subCategories. " s 
+		WHERE b.main_category = m.main_category_id AND b.sub_category = s.sub_category_id ORDER BY date_submit DESC LIMIT 10";
+		$resut = $gdbObj->query($sql);
+		
+		$existCount = $gdbObj->num_rows($resut);
+		if ($existCount < 1)
+		{
+			return false;
+		}
+		else
+		{
+			
+			while($row = mysql_fetch_array($resut))
+			{
+				$bizId = $row[0];
+				$title = $row[1];
+				$mainCatId = $row[2];
+				$subCatId = $row[3];
+				$mainCat = $row[4];
+				$subCat = $row[5];
+				$results.= formatRecentListing($bizId,$title,$mainCatId,$subCatId,$mainCat,$subCat);
+				
+			}
+			return $results;
+		}
+	}	
 	
 	public function getPkg($pkg="")
 	{

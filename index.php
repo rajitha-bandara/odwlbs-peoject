@@ -161,7 +161,8 @@
     <div id="new_biz">
     <div id="right_column_topic">Recent Listings</div>
     
-          
+   <?php require_once('templates/recent_listings.php');?>
+        <div class="clear"></div>  
     </div>
     
     
@@ -201,8 +202,8 @@
            <?php require_once('templates/share_this.html'); ?>
     </div> <!--End of newsletter-->
     
-    <div class="advertisement"><img src="public/img/2.jpg"></div>
-    <div class="advertisement"><img src="public/img/1.jpg"></div>
+    <!--<div class="advertisement"><img src="public/img/2.jpg"></div>
+    <div class="advertisement"><img src="public/img/1.jpg"></div>-->
     
   </div>
  

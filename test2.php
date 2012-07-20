@@ -1,79 +1,57 @@
 <?php @session_start();?>
-
+<?php 
+require_once('includes/init.php');
+?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+ <link href="public/css/bootstrap.css" rel="stylesheet">
+    <link href="public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="public/css/960_24_col.css" rel="stylesheet">
+    <link href="public/css/reset.css" rel="stylesheet">
+    <link href="public/css/style.css" rel="stylesheet">
+	<link href="public/css/ad.css" rel="stylesheet">    
 <title>Untitled Document</title>
 <style type="text/css">
-.css3-button {
- 
-
- 
-
- 
-
-
- 
-}
- 
-
- 
-#shiny-blue {
- 
-border-color:#003575;
- 
-background-color:rgba(0,97,216,0.75);
- 
-background-image:-webkit-gradient(linear, 0% 0%, 0% 90%, from(rgba(0,97,216,0.75)), to(rgba(0,53,117,0.9)));
- 
-background-image:-moz-linear-gradient(top,bottom,from(rgba(0,97,216,0.75)), to(rgba(0,53,117,0.9)));
- position:relative;
- 
-display:inline-block;
- 
-width:8em;
- 
-padding:0.25em 0.5em 0.3em 0.5em;
- 
-text-align:center;
- 
-cursor:pointer;
- 
-border:2px solid #999;
- 
-background-color:#666;
- 
-background-color:rgba(128,128,128,0.75);
- 
--moz-border-radius:16px;
- 
--webkit-border-radius:16px;
- 
--opera-border-radius:16px;
- 
--khtml-border-radius:16px;
- 
-border-radius:16px;
- 
-font-size:1.5em;
- 
-
-}
- 
-#shiny-blue a{
-	text-decoration:none;
-	color:#fff;
- 
-font-weight:bold;
-}
-
- 
 
 </style>
 </head>
 
 <body>
-<div id="shiny-blue" class="css3-button"><a href="fgf">No Images</a></div>
+
+ <?php
+    $sql = "SELECT * FROM lbs_biz_main_categories";
+	$result  = mysql_query($sql);
+	$count = 0;///Track total number of images
+	$i = 0;//Track number of images for a column
+	echo "<div  id=''>";
+	while($row=mysql_fetch_array($result))
+	{
+		//Retrive sub categories of the main category 
+		$subcat = "";
+		$sql2 = "SELECT * FROM lbs_biz_sub_categories WHERE main_category_id = ".$row["main_category_id"]." ";
+		$result2  = mysql_query($sql2);
+		while($row2=mysql_fetch_array($result2))
+		{
+			$subcat.= "<li>".$row2["name"]. "</li>";
+		}
+		//Control the number of categories for a column
+		
+		//Display main category image,name and its sub categories
+		echo "<div class='' > <h3>".$row["name"]."</h3></div>
+		
+<div id=''>
+
+<p><ul>".$subcat."</ul></p>
+
+</div>
+</div>";
+
+		
+	}
+	
+	?>
+    
 </body>
 </html>

@@ -61,6 +61,12 @@
 	color: #fff;
     background-image: url(../img/temp/slide_fade.png);
 }
+.pc_item .desc a{
+   
+	color:#C00;
+   font-weight:bold;
+   text-align:right;
+}
 
 .pc_item .desc h1 {
     color: #DE8F26;     
