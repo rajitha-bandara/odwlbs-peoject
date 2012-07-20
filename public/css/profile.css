@@ -1,0 +1,130 @@
+#profile_left_col {
+	margin-left:10px;
+	margin-bottom:10px;
+	margin-top:10px;
+	background-color:#FFF;
+	padding:5px;
+	border:1px solid #D2D2D2;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+#profile_body {
+	margin-left:10px;
+	margin-bottom:10px;
+	margin-top:10px;
+	background-color:#FFF;
+	padding:5px;
+	border:1px solid #D2D2D2;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+#profile_right_col {
+	margin:10px;
+	background-color:#FFF;
+	padding:5px;
+	border:1px solid #D2D2D2;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+#link_area {
+	margin-top:20px;
+	margin-bottom:50px;
+	padding-left:5px;
+}
+#item_list {
+	padding-left:20px;
+	padding-right:10px;
+}
+#item_list li {
+	border-bottom:1px solid #c0c0c0;
+	margin-bottom:5px;
+}
+#item_list a {
+	text-decoration:none;
+}
+#item_list a:hover {
+	text-decoration:none;
+}
+#profile_page_topic {
+	padding-left:5px;
+}
+#profile_details_table {
+	margin-left:30px;
+	margin-top:20px;
+	padding-right:40px;
+	width:400px;
+}
+#resultBox {
+	margin-left:50px;
+	margin-top:20px;
+	margin-bottom:50px;
+}
+#acc_settings {
+	padding-left:30px;
+	padding-top:50px;
+}
+#acc_settings_box {
+	margin-bottom:50px;
+	font-weight:bold;
+}
+#acc_settings_box span {
+	color:#F00;
+}
+#price_list {
+	height: 20px;
+	margin-left: 220px;
+}
+<!--CSS for View Listings--> 
+#listing_container {
+	margin: auto;
+	padding:0;
+	display: table;
+	border: 1px solid black;
+}
+#listing_container #listing_row {
+	display: table-row;
+}
+#listing_container #listing_row:hover {
+	background-color:#FC9;
+}
+#listing_container #listing_row #counter {			
+	display: table-cell;	
+}
+#listing_container #listing_row #title {
+	
+	display: table-cell;
+}
+#listing_container #listing_row #view {
+	
+	display: table-cell;
+}
+#listing_container #listing_row #view a {
+	
+	text-decoration:none;
+}
+#listing_container #listing_row #edit {
+
+	
+	display: table-cell;
+}
+#listing_container #listing_row #edit a {
+	
+	text-decoration:none;
+}
+#listing_container #listing_row #delete {
+	
+	display: table-cell;
+}
+#listing_container #listing_row #delete a {
+	
+	text-decoration:none;
+}
+
+<!--CSS for idefault page-->
+#listing_overview li{
+	list-style:none;
+	color:#0F6;
+}

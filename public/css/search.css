@@ -1,0 +1,91 @@
+#listing{
+	border:1px solid #999;
+}
+#listing #result_id{
+	background-color:#fff;
+	height:auto;
+	padding:10px;
+}
+#listing #result_id #result_counter{
+	background:url(../img/1338510769_Circle_Yellow.png);
+	background-repeat:no-repeat;
+	width:16px;
+	height:16px;
+	text-align:center;
+	font-size:10px;
+}
+#listing #result_info{
+	background-color:#fFF;
+	height:auto;
+	padding:10px;
+}
+#listing #result_info #title{
+	margin-bottom:5px;
+	font-weight:bold;
+}
+#listing #result_info #photo{
+	margin-right:10px;
+	margin-bottom:5px;
+}
+#listing #result_info #photo #image{
+	width:70px;
+	height:70px;
+}
+#listing #location{
+	font-size:12px;
+}
+#listing #contacts{
+	font-weight:bold;
+}
+#listing #rating_info{
+	height:auto;
+	padding:10px;
+	
+}
+#listing #social_info{
+	background-color:#E3EEF9;
+	height:20px;
+	
+}
+#listing #social_info #tags{
+	padding-left:10px;
+}
+#listing #social_info #tags a{
+	margin-right:30px;
+}
+#related_searches{
+	width:230px;
+	height:300px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	margin-bottom:20px;
+	background-color:#FFF;
+}
+#related_searches #heading{
+	background-color:#000;
+	height:40px;
+	padding-left:10px;
+	padding-top:20px;
+	font-weight:bold;
+	color:#FFF;
+	
+}
+#related_searches #content{
+	background-color:#fff;
+}
+#related_searches #content ul{
+	
+}
+#related_searches #content ul li{
+	height:30px;
+	border-bottom:1px solid #CCC;
+	padding-left:10px;
+	padding-top:15px;
+	
+}
+#related_searches #content ul li a{
+	text-decoration:none;
+	color:#000;
+	font-weight:bold;
+}

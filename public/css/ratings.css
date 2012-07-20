@@ -1,0 +1,64 @@
+
+
+.srtgs {
+ position:relative;
+ margin:0;
+ width:170px;
+ border:1px solid #e1e2fe;
+ font-family:"Calibri", Arial, sans-serif;
+ text-align:left;
+ padding:1px 1px 2px 2px;
+ box-shadow:.17em .2em .23em #a0a0e0;
+ -webkit-box-shadow:.17em .2em .23em #a0a0e0;
+ -moz-border-radius:.7em;
+ -webkit-border-radius:.7em;
+ -khtml-border-radius:.7em;
+ border-radius:.7em;
+}
+.srtgs .stars, .srtgs .d_rtg, .srtgs .totalrate { width:110px; }
+.srtgs .stars {
+ position:relative;
+ height:20px;
+ margin:0;
+ background:#e8e8fe url('../img/star0.png') repeat-x top left;
+ padding:1px;
+}
+.srtgs .d_rtg {
+ position:absolute;
+ top:0; left:0;
+ margin:0;
+ height:20px;
+ border:1px solid #ededfe;
+}
+.srtgs .totalrate {
+ position:relative;
+ text-align:center;
+ font-weight:bold;
+ color:#0001ed;
+}
+.totalrate i {
+ padding-right:8px;
+ color:#010101;
+}
+.totalrate span{
+ color:#ed0001;
+}
+ .srtgs .d_rtg span {
+  display:block;
+  width:11px;
+  float:left;
+  cursor:pointer;
+ }
+.srtgs .star_n {
+ position:relative;
+ height:20px;
+ margin:0;
+ background:#e8e8fe url('../img/star1.png') repeat-x top left;
+}
+.srtgs em {
+ position:absolute;
+ bottom:1px;
+ left:125px;
+ font-size:13px;
+ text-align:center;
+}

@@ -1,0 +1,11 @@
+Options +FollowSymLinks
+RewriteEngine On
+RewriteBase /business_directory/
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !^.*\.(css|jpe?g|gif|png|js|ico)$ [NC]
+
+#RewriteRule \.(css|jpe?g|gif|png|js|ico)$ - [L]
+#RewriteRule abc([0-9]+) directions.php?lid=$1 [QSA,NC,L]
+RewriteRule ^listing/directions/[A-Z0-9_-]+-([0-9]+)\.html/?$ directions.php?lid=$1 [QSA,NC,L]
+RewriteRule ^listing/[A-Z0-9_-]+-([0-9]+)\.html/?$ listing.php?lid=$1 [QSA,NC,L]

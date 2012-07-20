@@ -1,0 +1,72 @@
+/*----------------------------------------------------------------*																				
+	WordPress 2.8 Plugin: WP-PageNavi 2.60									
+	Copyright (c) 2009 Lester "GaMerZ" Chan											
+
+	File Written By:																
+	- Lester "GaMerZ" Chan															
+	- http://lesterchan.net
+														
+	File Information:																
+	- Page Navigation CSS Style														
+	- wp-content/plugins/wp-pagenavi/pagenavi-css.css								
+ *----------------------------------------------------------------*/
+
+.wp-pagenavi { float:right; height:20px; }
+.wp-pagenavi a, .wp-pagenavi a:link {
+	padding: 2px 4px 2px 4px;
+	margin: 2px;
+	text-decoration: none;
+	border: 1px solid #c04019;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	color: #c04019;
+	background-color: #FFFFFF;	
+}
+.wp-pagenavi a:visited {
+	padding: 2px 4px 2px 4px;
+	margin: 2px;
+	text-decoration: none;
+	border: 1px solid #c04019;
+	color: #c04019;
+	background-color: #FFFFFF;	
+}
+.wp-pagenavi a:hover {	
+	border: 1px solid #6c6c6c;
+	color: #fff;
+	background-color: #6c6c6c;
+	background:url(http://designinstruct.com/wp-content/themes/designinstruct/images/bg-sprite-png.png) -125px -356px;
+}
+.wp-pagenavi a:active {
+	padding: 2px 4px 2px 4px;
+	margin: 2px;
+	text-decoration: none;
+	border: 1px solid #c04019;
+	color: #c2c2c2;
+	background-color: #c04019;	
+}
+.wp-pagenavi span.pages {
+	padding: 2px 4px 2px 4px;
+	margin: 2px 2px 2px 2px;
+	color: #363636;
+	border: 1px solid #fff;
+	background-color: #fff;
+}
+.wp-pagenavi span.current {
+	padding: 2px 4px 2px 4px;
+	margin: 2px;
+	font-weight: bold;
+	border: 1px solid #c04019;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	color: #fff;
+	background-color: #c04019;
+	background:url(http://designinstruct.com/wp-content/themes/designinstruct/images/bg-sprite-png.png) -5px -356px;
+}
+.wp-pagenavi span.extend {
+	padding: 2px 4px 2px 4px;
+	margin: 2px;
+	border: none;
+	background-color: #FFFFFF;
+}

@@ -1,0 +1,92 @@
+
+<script src='http://www.google.com/jsapi' type='text/javascript'></script>
+
+
+<script type="text/javascript">
+  //
+  // NOTE: This example uses Google AJAX API Loader to load the Google Maps API
+  // To use the Google AJAX API Loader, add a script tag with src=http://www.google.com/jsapi?key=YOUR-GOOGLE-AJAX-API-KEY
+  // All Google Maps API classes, methods and properties are referenced via google.maps.* namespace
+  //
+  google.load( 'maps', '2' );
+  google.setOnLoadCallback(
+    function( ) {
+      google.maps.Event.addDomListener( window, 'unload', google.maps.Unload );
+    }
+  );
+</script>
+<script type="text/javascript">
+  var map;
+  var geocoder;
+  function map_initialize( )
+  {
+    if ( google.maps.BrowserIsCompatible( ) )
+    {
+      //
+      // initialize map
+      //
+	  
+      map = new google.maps.Map2( document.getElementById( 'map-view' ) );
+      map.addControl( new google.maps.LargeMapControl3D( ) );
+      map.addControl( new google.maps.MenuMapTypeControl( ) );
+      map.setCenter( new google.maps.LatLng( 6.9167, 79.8333 ), 8 );
+      //
+      // initialize marker
+      //
+      var marker = new google.maps.Marker( map.getCenter( ), { draggable: true } );
+      google.maps.Event.addListener( marker, 'dragend', function( p )
+        {
+          map.panTo( p );
+        }
+      );
+      map.addOverlay( marker );
+      //
+      // initialize geocoder
+      //
+      geocoder = new google.maps.ClientGeocoder( );
+      //
+      // initialize divs
+      //
+	  pWindow = opener.window;
+	  
+      pWindow.document.getElementById( 'txtLat' ).value = map.getCenter( ).lat( ).toFixed( 6 );
+      pWindow.document.getElementById( 'txtLong' ).value = map.getCenter( ).lng( ).toFixed( 6 );
+      //
+      // hook map movement event(s)
+      //
+      google.maps.Event.addListener( map, 'moveend', function( )
+        {
+			
+          marker.setLatLng( map.getCenter( ) );
+          pWindow.document.getElementById( 'txtLat' ).value = map.getCenter( ).lat( ).toFixed( 6 );
+          pWindow.document.getElementById( 'txtLong' ).value = map.getCenter( ).lng( ).toFixed( 6 );
+        }
+      );
+    }
+  }
+  function map_geocode( address )
+  {
+    if ( map && geocoder )
+    {
+      geocoder.getLatLng(
+        address,
+        function( p )
+        {
+          if ( p )
+          {
+            map.panTo( p );
+          }
+          else
+          {
+            alert( 'Sorry, the geocoder failed to locate the specified address :-(' );
+          }
+        }
+      );
+    }
+  }
+  google.setOnLoadCallback( map_initialize );
+</script>
+
+ <div id="map-view" style="height:500px;width:900px;"></div>
+            
+            

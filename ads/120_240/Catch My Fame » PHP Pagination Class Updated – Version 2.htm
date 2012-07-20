@@ -1,0 +1,1007 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Catch My Fame  » PHP Pagination Class Updated – Version 2</title>
+<meta name="generator" content="WordPress 3.3.2"> <!-- leave this for stats -->
+<meta name="keywords" content="A web designoper's journal">
+<meta name="description" content="A web designoper's journal">
+<link rel="stylesheet" href="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/style.css" type="text/css" media="screen">
+<link rel="alternate" type="application/rss+xml" title="Catch My Fame RSS Feed" href="http://www.catchmyfame.com/feed/">
+<link rel="pingback" href="http://www.catchmyfame.com/xmlrpc.php">
+
+
+<link rel="alternate" type="application/rss+xml" title="Catch My Fame » PHP Pagination Class Updated – Version 2 Comments Feed" href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/feed/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.catchmyfame.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.catchmyfame.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Before/After 1.4 Released" href="http://www.catchmyfame.com/2011/09/20/beforeafter-1-4-released/">
+<link rel="next" title="Things that Google has recently changed that have pissed me off" href="http://www.catchmyfame.com/2011/11/02/things-that-google-has-recently-changed-that-have-pissed-me-off/">
+<meta name="generator" content="WordPress 3.3.2">
+<link rel="canonical" href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/">
+<link rel="shortlink" href="http://wp.me/pz02y-eX">
+	<!-- WP Dynamic Drive Thumbnail Image Viewer Plugin -->
+	<script type="text/javascript" async="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/quant.js"></script><script type="text/javascript">
+/* <![CDATA[ */
+	var loading_url = 'http://www.catchmyfame.com/wp-content/plugins/thumbnail-viewer/images/loadingImage.gif';
+/* ]]> */
+</script>
+	<link rel="stylesheet" href="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/thumbnailviewer.css" type="text/css" media="screen">
+	<script src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/thumbnailviewer.js" type="text/javascript">
+	</script><style type="text/css" id="wrc-middle-css">.wrc_whole_window{	display: none; 	position: fixed; 	z-index: 2147483647;	background-color: rgba(40, 40, 40, 0.9);	word-spacing: normal;	margin: 0px;	padding: 0px;	border: 0px;	line-height: normal;	letter-spacing: normal;}.wrc_middle_main {	font-family: Segoe UI, Arial Unicode MS, Arial, Sans-Serif;	font-size: 14px;	width: 600px;	height: auto;	margin: 0px auto;	margin-top: 15%;    background: url("chrome://wrc/skin/png/background-body.png");	background-color: rgb(39, 53, 62);}.wrc_middle_logo {    background: url("chrome://wrc/skin/logo.jpg") no-repeat left bottom;    width: 140px;    height: 42px;    color: orange;    display: table-cell;    text-align: right;    vertical-align: middle;}.wrc_icon_warning {	margin: 20px 10px 20px 15px;	float: left;	background-color: transparent;}.wrc_middle_title {    color: #b6bec7;	height: auto;    margin: 0px auto;	font-size: 2.2em;	white-space: nowrap;	text-align: center;}.wrc_middle_hline {    height: 2px;	width: 100%;    display: block;}.wrc_middle_description {	text-align: center;	margin: 15px;	font-size: 1.4em;	padding: 20px;	height: auto;	color: white;	min-height: 3.5em;}.wrc_middle_actions_main_div {	text-align: center;	margin-bottom: 15px;}.wrc_middle_actions_blue_button {	-moz-appearance: none;	border-radius: 7px;	-moz-border-radius: 7px/7px;	border-radius: 7px/7px;	background-color: rgb(0, 173, 223) !important;	display: inline-block;	width: auto;	cursor: Pointer;	border: 2px solid #00dddd;	text-decoration: none;}.wrc_middle_actions_blue_button:hover {	background-color: rgb(0, 159, 212) !important;}.wrc_middle_actions_blue_button:active {	background-color: rgb(0, 146, 200) !important;	border: 2px solid #00aaaa;}.wrc_middle_actions_blue_button div {	display: inline-block;	width: auto;	cursor: Pointer;	margin: 3px 10px 3px 10px;	color: white !important;	font-size: 1.2em;	font-weight: bold;}.wrc_middle_action_low {	font-size: 0.9em;	white-space: nowrap;	cursor: Pointer;	color: grey !important;	margin: 10px 10px 0px 10px;	text-decoration: none;}.wrc_middle_action_low:hover {	color: #aa4400 !important;}.wrc_middle_actions_rest_div {	padding-top: 5px;	white-space: nowrap;	text-align: center;}.wrc_middle_action {	white-space: nowrap;	cursor: Pointer;	color: red !important;	font-size: 1.2em;	margin: 10px 10px 0px 10px;	text-decoration: none;}.wrc_middle_action:hover {	color: #aa4400 !important;}</style><script language="JavaScript" type="text/javascript" id="wrc-script-middle_window">var g_inputsCnt = 0;var g_InputThis = new Array(null, null, null, null);var g_alerted = false;/* we test the input if it includes 4 digits   (input is a part of 4 inputs for filling the credit-card number)*/function is4DigitsCardNumber(val){	var regExp = new RegExp('[0-9]{4}');	return (val.length == 4 && val.search(regExp) == 0);}/* testing the whole credit-card number 19 digits devided by three '-' symbols or   exactly 16 digits without any dividers*/function isCreditCardNumber(val){	if(val.length == 19)	{		var regExp = new RegExp('[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}');		return (val.search(regExp) == 0);	}	else if(val.length == 16)	{		var regExp = new RegExp('[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}');		return (val.search(regExp) == 0);	}	return false;}function CheckInputOnCreditNumber(self){	if(g_alerted)		return false;	var value = self.value;	if(self.type == 'text')	{		if(is4DigitsCardNumber(value))		{			var cont = true;			for(i = 0; i < g_inputsCnt; i++)				if(g_InputThis[i] == self)					cont = false;			if(cont && g_inputsCnt < 4)			{				g_InputThis[g_inputsCnt] = self;				g_inputsCnt++;			}		}		g_alerted = (g_inputsCnt == 4);		if(g_alerted)			g_inputsCnt = 0;		else			g_alerted = isCreditCardNumber(value);	}	return g_alerted;}function CheckInputOnPassword(self){	if(g_alerted)		return false;	var value = self.value;	if(self.type == 'password')	{		g_alerted = (value.length > 0);	}	return g_alerted;}function onInputBlur(self, bRatingOk, bFishingSite){	var bCreditNumber = CheckInputOnCreditNumber(self);	var bPassword = CheckInputOnPassword(self);	if((!bRatingOk || bFishingSite == 1) && (bCreditNumber || bPassword) )	{		var warnDiv = document.getElementById("wrcinputdiv");		if(warnDiv)		{			/* show the warning div in the middle of the screen */			warnDiv.style.left = "0px";			warnDiv.style.top = "0px";			warnDiv.style.width = "100%";			warnDiv.style.height = "100%";			document.getElementById("wrc_warn_fs").style.display = 'none';			document.getElementById("wrc_warn_cn").style.display = 'none';			if(bFishingSite)				document.getElementById("wrc_warn_fs").style.display = 'block';			else				document.getElementById("wrc_warn_cn").style.display = 'block';			warnDiv.style.display = 'block';		}	}}</script></head><body id="section-index"><div id="thumbBox" onclick="thumbnailviewer.closeit()"><div id="thumbImage"></div><div class="footerbar">CLOSE X</div></div><div id="thumbLoading"><img src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/loadingImage.gif"> Loading Image...</div>
+<style type="text/css">
+#headerimage {
+	background: url(http://www.catchmyfame.com/wp-content/themes/mistylook/img/misty.jpg) no-repeat;
+}
+</style>
+	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+
+
+
+
+<div id="navigation">
+<ul>
+	<li><a href="http://www.catchmyfame.com/" title="Home">Home</a></li>
+		<li class="page_item page-item-2"><a href="http://www.catchmyfame.com/about/">About</a></li>
+<li class="page_item page-item-381"><a href="http://www.catchmyfame.com/catchmyfame-jquery-plugins/">CatchMyFame jQuery Plugins</a></li>
+<li class="page_item page-item-148"><a href="http://www.catchmyfame.com/contact/">Contact</a></li>
+<li class="page_item page-item-18"><a href="http://www.catchmyfame.com/winnebago-man-shrine/">Winnebago Man Shrine</a></li>
+	<li class="search"><form method="get" id="searchform" action="http://www.catchmyfame.com"><input class="textbox" name="s" id="s" type="text"><input id="searchsubmit" value="Search" type="submit"></form></li>
+</ul>
+</div><!-- end id:navigation -->
+
+
+<div id="container">
+
+
+<div id="header">
+<!--<h1><a href="http://www.catchmyfame.com/" title="Catch My Fame">Catch My Fame</a></h1>
+<p id="desc">A web designoper&#039;s journal</p>-->
+</div><!-- end id:header -->
+
+
+<div id="feedarea">
+<dl>
+	<dt><strong>Feed on</strong></dt>
+	<dd><a href="http://www.catchmyfame.com/feed/">Posts</a></dd>
+	<dd><a href="http://www.catchmyfame.com/comments/feed/">Comments</a></dd>
+</dl>
+</div><!-- end id:feedarea -->
+
+
+  <div id="headerimage">
+</div><!-- end id:headerimage --><div id="content">
+<div id="content-main">
+		<div class="postnav">
+			<div class="alignleft">« <a href="http://www.catchmyfame.com/2011/09/20/beforeafter-1-4-released/" rel="prev">Before/After 1.4 Released</a></div>
+			<div class="alignright"><a href="http://www.catchmyfame.com/2011/11/02/things-that-google-has-recently-changed-that-have-pissed-me-off/" rel="next">Things that Google has recently changed that have pissed me off</a> »</div>
+		</div>
+					<div id="post-927" class="post-927 post type-post status-publish format-standard hentry category-php">
+				<div class="posttitle">
+					<h2><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/" rel="bookmark" title="Permanent Link to PHP Pagination Class Updated – Version 2">PHP Pagination Class Updated – Version 2</a></h2>
+					<p class="post-info">Oct 23rd, 2011 by <a href="http://www.catchmyfame.com/author/admin/" title="Posts by admin" rel="author">admin</a>  | <a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/#comments" title="Comment on PHP Pagination Class Updated – Version 2">36 Comments »</a></p>
+				</div>
+				<div class="entry">
+					<p>Based on feedback (and the long time between updates), I’m releasing an updated version of the PHP pagination class.</p>
+<h3>Changes</h3>
+<ul>
+<li>No more SQL errors if using the class on a query with no results 
+(although I fail to see the point of using it on an empty query anyway, 
+but the bug is fixed)</li>
+<li>When selecting ‘ALL’ only one page is displayed, and if you are 
+using the display_items_per_page drop-down menu, ‘ALL’ is now selected 
+as well.</li>
+<li>If a page less than page one, or greater than the total number of 
+pages is requested, no results are displayed and the appropriate 
+prevous/next links are disabled</li>
+<li>The items per page array that populates the display_items_per_page 
+drop-down menu is now an option that can be configured when 
+instantiating the class. Previously this was hard-coded to the class.</li>
+<li>The $high option has been removed from the class (it was never used).</li>
+</ul>
+<p>Note that if you receive a PHP notice about undefined indexes that 
+you should turn down your error reporting. This notice may be displayed 
+when loading the page for the first time when no $_GET variables are 
+present. The class accounts for this, however PHP throws a notice about 
+it.</p>
+<h3>Examples</h3>
+<ul>
+<li><a href="http://www.catchmyfame.com/paginator/example.2.php" target="_blank">Basic example</a></li>
+<li><a href="http://www.catchmyfame.com/paginator/example-form.2.php" target="_blank">Form variables carry over example</a></li>
+</ul>
+<p>I’ve also added license info at the head of the class (CC Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)).</p>
+<h3>Download</h3>
+<ul>
+<li><a href="http://www.catchmyfame.com/downloads/download.php?48">PHP Pagination Class v2</a></li>
+</ul>
+										<p class="postmetadata">
+						 </p>
+				</div>
+				<p class="postmetadata">Posted in <a href="http://www.catchmyfame.com/category/php/" title="View all posts in PHP" rel="category tag">PHP</a></p>
+			</div>
+			
+<!-- You can start editing here. -->
+
+
+	<!-- Ping/trackback mod from http://themocracy.com/2010/02/separate-pingbacks-user-comments/ -->
+	
+	<h3 id="comments">36 Responses to “PHP Pagination Class Updated – Version 2”</h3>
+
+	<ol class="commentlist">
+			<li class="comment even thread-even depth-1 parent" id="comment-13059">
+				<div id="div-comment-13059" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/ec722cc96c78344fa796c304eba9c4ed.png" class="avatar avatar-32 photo" height="32" width="32">		<cite class="fn">Nathan</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-13059">
+			October 26, 2011 at 5:05 pm</a>		</div>
+
+		<p>Hi,</p>
+<p>I tried using v.1 and then v.2 of this pagination class and for some reason I can’t get the $pages-&gt;limit to work.</p>
+<p>I used<br>
+$pages = new Paginator;<br>
+$pages-&gt;items_per_page = 21;<br>
+$pages-&gt;mid_range = 5;<br>
+run query “select * from table $pages-&gt;limit”<br>
+run query “select count(*) from table” for total items<br>
+$pages-&gt;items_total = $totalitems;<br>
+$pages-&gt;paginate();</p>
+<p>For some reason the $pages-&gt;limit never get initialized. I even 
+tried echo out $pages-&gt;limit without the query and it stills show 
+nothing. Do you have any idea what could be happening? Thanks.</p>
+
+		<div class="reply">
+		<a class="comment-reply-link" href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/?replytocom=13059#respond" onclick='return addComment.moveForm("div-comment-13059", "13059", "respond", "927")'>Reply</a>		</div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2 parent" id="comment-13061">
+				<div id="div-comment-13061" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/f14c705bb435271f288abfc533e4295a.png" class="avatar avatar-32 photo" height="32" width="32">		<cite class="fn"><a href="http://www.catchmyfame.com/" rel="external nofollow" class="url">admin</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-13061">
+			October 26, 2011 at 8:46 pm</a>		</div>
+
+		<p>I’d need to have access to your code. I dropped the new versions in the same old examples here and there were no issues.</p>
+
+		<div class="reply">
+		<a class="comment-reply-link" href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/?replytocom=13061#respond" onclick='return addComment.moveForm("div-comment-13061", "13061", "respond", "927")'>Reply</a>		</div>
+				</div>
+		<ul class="children">
+		<li class="comment even depth-3" id="comment-13091">
+				<div id="div-comment-13091" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/ec722cc96c78344fa796c304eba9c4ed.png" class="avatar avatar-32 photo" height="32" width="32">		<cite class="fn">Nathan</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-13091">
+			October 28, 2011 at 2:47 pm</a>		</div>
+
+		<p>Thanks for the reply. I figured out the problem.<br>
+$pages-&gt;paginate() has to be called before I can use $pages-&gt;limit, unlike the other properties that were set.</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment odd alt depth-3" id="comment-13880">
+				<div id="div-comment-13880" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/cd2e4cbbe6bb3d2b7dd21cb969b39e5e.jpg" class="avatar avatar-32 photo" height="32" width="32">		<cite class="fn"><a href="http://dancunningham.co.uk/" rel="external nofollow" class="url">Dan Cunningham</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-13880">
+			December 22, 2011 at 5:35 am</a>		</div>
+
+		<p>I too am having this problem with the 	$pages-&gt;paginate();	
+having to be called first, Doing what Nathan said worked but It means 
+that the word “All” is output twice, onces prior to the database call 
+and one after including the pagination items.</p>
+<p>Im not sure if this is a bug or not.</p>
+<p>Cheers<br>
+Dan.</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+</ul>
+</li>
+</ul>
+</li>
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-13541">
+				<div id="div-comment-13541" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/eb3fbc788f1c52fec3e8fe7f54598abe.png" class="avatar avatar-32 photo" height="32" width="32">		<cite class="fn">David</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-13541">
+			November 17, 2011 at 4:56 am</a>		</div>
+
+		<p>Hi, Any reasons why the the pagination only shows a link to page 1 
+and a link showing all the pages? I have 20 items and limited the 
+results to 2 items per page.</p>
+
+		<div class="reply">
+		<a class="comment-reply-link" href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/?replytocom=13541#respond" onclick='return addComment.moveForm("div-comment-13541", "13541", "respond", "927")'>Reply</a>		</div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2 parent" id="comment-13546">
+				<div id="div-comment-13546" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/f14c705bb435271f288abfc533e4295a.png" class="avatar avatar-32 photo" height="32" width="32">		<cite class="fn"><a href="http://www.catchmyfame.com/" rel="external nofollow" class="url">admin</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-13546">
+			November 17, 2011 at 8:38 am</a>		</div>
+
+		<p>Is it doing that for you here on the demo?</p>
+
+		<div class="reply">
+		<a class="comment-reply-link" href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/?replytocom=13546#respond" onclick='return addComment.moveForm("div-comment-13546", "13546", "respond", "927")'>Reply</a>		</div>
+				</div>
+		<ul class="children">
+		<li class="comment even depth-3" id="comment-15400">
+				<div id="div-comment-15400" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/b5ae4ee0e2d85adee76282c353e10a5a.png" class="avatar avatar-32 photo" height="32" width="32">		<cite class="fn">SumJar</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-15400">
+			April 26, 2012 at 9:43 pm</a>		</div>
+
+		<p>I believe I’m seeing something similar to what Michael cited 
+(referring to our own machines, not the online demo): I see ’1′ and 
+‘All’ (followed by the default 25 City records). Clicking ‘All’ does 
+display all records, but I don’t see any pagination.</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment odd alt depth-3" id="comment-15401">
+				<div id="div-comment-15401" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/b5ae4ee0e2d85adee76282c353e10a5a.png" class="avatar avatar-32 photo" height="32" width="32">		<cite class="fn">SumJar</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-15401">
+			April 26, 2012 at 9:45 pm</a>		</div>
+
+		<p>(David, not Michael!)</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+</ul>
+</li>
+</ul>
+</li>
+		<li class="comment even thread-even depth-1" id="comment-13724">
+				<div id="div-comment-13724" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/57b4f019d1ce60efa62ae1c69be96c94.png" class="avatar avatar-32 photo" height="32" width="32">		<cite class="fn">Rajesh Shrestha</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-13724">
+			December 2, 2011 at 11:47 am</a>		</div>
+
+		<p>How to make multiple pagination in single page? if have any idea please share with me… :)</p>
+
+		<div class="reply">
+		<a class="comment-reply-link" href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/?replytocom=13724#respond" onclick='return addComment.moveForm("div-comment-13724", "13724", "respond", "927")'>Reply</a>		</div>
+				</div>
+		</li>
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-13803">
+				<div id="div-comment-13803" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/fed29a00b9b2868b635f95c2bd6ae9ab.png" class="avatar avatar-32 photo" height="32" width="32">		<cite class="fn">Adrian Somesan</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-13803">
+			December 12, 2011 at 9:38 am</a>		</div>
+
+		<p>Hi, great example, one little change<br>
+<code><br>
+function display_jump_menu() {<br>
+	for ($i = 1; $i num_pages; $i++) {<br>
+	    $option .= ($i == $this-&gt;current_page) ? "$i\n" : "$i\n";<br>
+	}<br>
+	return "Page:items_per_page$this-&gt;querystring';return false\"&gt;$option\n";<br>
+    }<br>
+</code><br>
+would produce a warning so just change the function like this:<br>
+<code><br>
+function display_jump_menu() {<br>
+$option = '';<br>
+	for ($i = 1; $i num_pages; $i++) {<br>
+	    $option .= ($i == $this-&gt;current_page) ? "$i\n" : "$i\n";<br>
+	}<br>
+	return "Page:items_per_page$this-&gt;querystring';return false\"&gt;$option\n";<br>
+    }<br>
+</code></p>
+
+		<div class="reply">
+		<a class="comment-reply-link" href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/?replytocom=13803#respond" onclick='return addComment.moveForm("div-comment-13803", "13803", "respond", "927")'>Reply</a>		</div>
+				</div>
+		</li>
+		<li class="comment even thread-even depth-1 parent" id="comment-13867">
+				<div id="div-comment-13867" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/f3e1537f9ad88f2bd36f2ca40b78f247.png" class="avatar avatar-32 photo" height="32" width="32">		<cite class="fn"><a href="http://wadefade.com/" rel="external nofollow" class="url">Wade</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-13867">
+			December 21, 2011 at 12:38 am</a>		</div>
+
+		<p>so my problem is this:<br>
+<code><br>
+$pages-&gt;items_total = XXXXXXXXXXXX;<br>
+$pages-&gt;mid_range = 25;<br>
+$pages-&gt;items_per_page = 50;<br>
+$pages-&gt;paginate();<br>
+$search = new search($_GET, $pages-&gt;limit);<br>
+</code><br>
+I won’t know the total number until my search obj is instantiated. I 
+can’t do the search till I got a limit. I’m stuck in a catch 22. </p>
+<p>Any ideas?</p>
+
+		<div class="reply">
+		<a class="comment-reply-link" href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/?replytocom=13867#respond" onclick='return addComment.moveForm("div-comment-13867", "13867", "respond", "927")'>Reply</a>		</div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2 parent" id="comment-13871">
+				<div id="div-comment-13871" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/f14c705bb435271f288abfc533e4295a.png" class="avatar avatar-32 photo" height="32" width="32">		<cite class="fn"><a href="http://www.catchmyfame.com/" rel="external nofollow" class="url">admin</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-13871">
+			December 21, 2011 at 8:11 am</a>		</div>
+
+		<p>Try reading the instructions carefully.</p>
+
+		<div class="reply">
+		<a class="comment-reply-link" href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/?replytocom=13871#respond" onclick='return addComment.moveForm("div-comment-13871", "13871", "respond", "927")'>Reply</a>		</div>
+				</div>
+		<ul class="children">
+		<li class="comment even depth-3" id="comment-13876">
+				<div id="div-comment-13876" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/f3e1537f9ad88f2bd36f2ca40b78f247.png" class="avatar avatar-32 photo" height="32" width="32">		<cite class="fn"><a href="http://wadefade.com/" rel="external nofollow" class="url">Wade</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-13876">
+			December 21, 2011 at 3:10 pm</a>		</div>
+
+		<p>I thought I had. My full code, with nothing left to assumptions (using version 2 of the class):<br>
+<code><br>
+//Step 1<br>
+require( $_SERVER['DOCUMENT_ROOT'] . "/classes/paginator.class.php");<br>
+//Step 3<br>
+$pages = new Paginator();<br>
+//Step 4<br>
+$pages-&gt;items_total = XXXXXXXXXXXX;<br>
+//Step 5<br>
+$pages-&gt;mid_range = 25;<br>
+$pages-&gt;items_per_page = 50;<br>
+//Step 6<br>
+$pages-&gt;paginate();<br>
+//Step 8<br>
+$search = new search($_GET, $pages-&gt;limit);<br>
+</code></p>
+<p>The problem is, my query has WHERE clauses in it… and is dynamic. 
+When I instantiate my search object, I have it doing two queries inside,
+ one with the limit and one without to populate $this-&gt;numrows and 
+$this-&gt;results. Should I consider reworking it slightly to perhaps 
+instantiate two searches, one with and one without the limit and forget 
+about the $this-&gt;numrows property?</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+</ul>
+</li>
+</ul>
+</li>
+		<li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-14152">
+				<div id="div-comment-14152" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/32be7a61063972f01a7c6d6fce06fe14.png" class="avatar avatar-32 photo" height="32" width="32">		<cite class="fn"><a href="http://photostocklink.com/" rel="external nofollow" class="url">Michael</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-14152">
+			January 19, 2012 at 9:00 am</a>		</div>
+
+		<p>Whenever I do a search, then click on the next page, it always goes back to the original listing.<br>
+Example … I have 524 images I’m showing. Then, I do a search on say, 
+photographer, which comes up with 175 images. It shows the right amount 
+the first time (175), but when I click on the NEXT page, it always goes 
+back to 524 images, instead of keeping the 175 I searched on?</p>
+<p>Search on “Barry” under photographer for an example.</p>
+
+		<div class="reply">
+		<a class="comment-reply-link" href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/?replytocom=14152#respond" onclick='return addComment.moveForm("div-comment-14152", "14152", "respond", "927")'>Reply</a>		</div>
+				</div>
+		<ul class="children">
+		<li class="comment even depth-2" id="comment-14200">
+				<div id="div-comment-14200" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/fb6f056ca7101fa8eec4e24276101220.png" class="avatar avatar-32 photo" height="32" width="32">		<cite class="fn">Michael</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-14200">
+			January 26, 2012 at 7:01 am</a>		</div>
+
+		<p>I just wanted to mention ‘admin’ set me straight on what I was doing wrong. Works perfect now!<br>
+Thanks</p>
+
+		<div class="reply">
+		<a class="comment-reply-link" href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/?replytocom=14200#respond" onclick='return addComment.moveForm("div-comment-14200", "14200", "respond", "927")'>Reply</a>		</div>
+				</div>
+		</li>
+</ul>
+</li>
+		<li class="comment odd alt thread-even depth-1 parent" id="comment-14194">
+				<div id="div-comment-14194" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/8660db01f346ab709d5e765484da64b8.png" class="avatar avatar-32 photo" height="32" width="32">		<cite class="fn"><a href="http://localhost/" rel="external nofollow" class="url">Shane</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-14194">
+			January 25, 2012 at 9:59 pm</a>		</div>
+
+		<p>Hi Great pagination class.<br>
+I have 1 problem My site works through a template so my page links are 
+in the format of /?index.php?page=gallery your pagination class works 
+perfect as a standalone page but when I load it through my template in 
+an include (“includes/gallery.php”); the page loads fine and the 
+pagination links are all there but when I click a link on the pagination
+ I get a not found 404 error.</p>
+<p>Example</p>
+<p>my gallery link = <a href="http://domain/index.php?page=gallery" rel="nofollow">http://domain/index.php?page=gallery</a></p>
+<p>on the pagination links they are ilke this <a href="http://domain/index.php?page=2&amp;ipp=15" rel="nofollow">http://domain/index.php?page=2&amp;ipp=15</a></p>
+<p>any help would be great thanks</p>
+
+		<div class="reply">
+		<a class="comment-reply-link" href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/?replytocom=14194#respond" onclick='return addComment.moveForm("div-comment-14194", "14194", "respond", "927")'>Reply</a>		</div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor even depth-2 parent" id="comment-14195">
+				<div id="div-comment-14195" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/f14c705bb435271f288abfc533e4295a.png" class="avatar avatar-32 photo" height="32" width="32">		<cite class="fn"><a href="http://www.catchmyfame.com/" rel="external nofollow" class="url">admin</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-14195">
+			January 25, 2012 at 10:32 pm</a>		</div>
+
+		<p>I’d need to see your actual site/code to help.</p>
+
+		<div class="reply">
+		<a class="comment-reply-link" href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/?replytocom=14195#respond" onclick='return addComment.moveForm("div-comment-14195", "14195", "respond", "927")'>Reply</a>		</div>
+				</div>
+		<ul class="children">
+		<li class="comment odd alt depth-3" id="comment-14197">
+				<div id="div-comment-14197" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/8660db01f346ab709d5e765484da64b8.png" class="avatar avatar-32 photo" height="32" width="32">		<cite class="fn"><a href="http://localhost/" rel="external nofollow" class="url">Shane</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-14197">
+			January 26, 2012 at 6:09 am</a>		</div>
+
+		<p>Hi below is the code of my index page which loads the other pages 
+as includes and below that is the gallery page include. All works fine 
+when access the gallery when it is not an include but when you use the 
+gallery as the include it loads the page fine and displays all the links
+ but the links do not work any help to solve this problem would be 
+great.<br>
+index page:</p>
+<p>Gallery include page:</p>
+<p><!-- Gallery Start --></p>
+<p>items_total = $num_rows[0];<br>
+$pages-&gt;mid_range = 9;<br>
+$pages-&gt;paginate();</p>
+<p>echo “”;<br>
+echo “”.$pages-&gt;display_jump_menu().$pages-&gt;display_items_per_page().”";<br>
+echo “”;<br>
+echo “”;<br>
+echo $pages-&gt;display_pages();<br>
+echo “”;</p>
+<p>$query = “SELECT photoName, photoID FROM photos WHERE active = 1  order by photoID desc $pages-&gt;limit”;<br>
+$result = mysql_query($query);</p>
+<p>echo “”;<br>
+echo “”;<br>
+while($row = mysql_fetch_array($result))</p>
+<p>{<br>
+echo “”;<br>
+echo “<a></a>“;</p>
+<p>}<br>
+echo “”;<br>
+echo “”;</p>
+<p>echo “”;<br>
+echo $pages-&gt;display_pages();<br>
+echo “”;<br>
+echo “Page $pages-&gt;current_page of $pages-&gt;num_pages”;<br>
+echo “”;<br>
+?&gt;</p>
+<p><!-- Gallery End --></p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+</ul>
+</li>
+</ul>
+</li>
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-14198">
+				<div id="div-comment-14198" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/8660db01f346ab709d5e765484da64b8.png" class="avatar avatar-32 photo" height="32" width="32">		<cite class="fn"><a href="http://localhost/" rel="external nofollow" class="url">Shane</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-14198">
+			January 26, 2012 at 6:11 am</a>		</div>
+
+		<p>This is the index page it did not get posted before i guess it was because i had the body tags in it.</p>
+
+		<div class="reply">
+		<a class="comment-reply-link" href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/?replytocom=14198#respond" onclick='return addComment.moveForm("div-comment-14198", "14198", "respond", "927")'>Reply</a>		</div>
+				</div>
+		</li>
+		<li class="comment odd alt thread-even depth-1" id="comment-14199">
+				<div id="div-comment-14199" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/8660db01f346ab709d5e765484da64b8.png" class="avatar avatar-32 photo" height="32" width="32">		<cite class="fn"><a href="http://localhost/" rel="external nofollow" class="url">Shane</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-14199">
+			January 26, 2012 at 6:13 am</a>		</div>
+
+		<p>I’ll try again. index page</p>
+<p>	include (“includes/header.php”);</p>
+<p>	$page=(isset($_GET['page']))?$_GET['page']:’home’;<br>
+	switch($page){<br>
+	    case “home”:<br>
+	        include (“includes/home.php”);<br>
+	        break;<br>
+	    case “contact”:<br>
+	        include (“includes/contact.php”);<br>
+	        break;<br>
+	    case “gallery”:<br>
+	        include (“includes/gallery.php”);<br>
+	        break;<br>
+	    default:<br>
+	        include (“includes/404.html”);<br>
+	        break;<br>
+	}</p>
+<p>	include (“includes/footer.php”);</p>
+
+		<div class="reply">
+		<a class="comment-reply-link" href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/?replytocom=14199#respond" onclick='return addComment.moveForm("div-comment-14199", "14199", "respond", "927")'>Reply</a>		</div>
+				</div>
+		</li>
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-14315">
+				<div id="div-comment-14315" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/8f89714c6cbd3f981317cf94cec3fc0c.jpg" class="avatar avatar-32 photo" height="32" width="32">		<cite class="fn"><a href="http://www.zodiite.net/" rel="external nofollow" class="url">Emil</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-14315">
+			February 6, 2012 at 4:08 pm</a>		</div>
+
+		<p>Can you provide some Demos of usage?</p>
+
+		<div class="reply">
+		<a class="comment-reply-link" href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/?replytocom=14315#respond" onclick='return addComment.moveForm("div-comment-14315", "14315", "respond", "927")'>Reply</a>		</div>
+				</div>
+		</li>
+		<li class="comment odd alt thread-even depth-1 parent" id="comment-14316">
+				<div id="div-comment-14316" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/8f89714c6cbd3f981317cf94cec3fc0c.jpg" class="avatar avatar-32 photo" height="32" width="32">		<cite class="fn"><a href="http://www.zodiite.net/" rel="external nofollow" class="url">Emil</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-14316">
+			February 6, 2012 at 4:09 pm</a>		</div>
+
+		<p>Can you provide some demos?</p>
+
+		<div class="reply">
+		<a class="comment-reply-link" href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/?replytocom=14316#respond" onclick='return addComment.moveForm("div-comment-14316", "14316", "respond", "927")'>Reply</a>		</div>
+				</div>
+		<ul class="children">
+		<li class="comment even depth-2" id="comment-14317">
+				<div id="div-comment-14317" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/f14c705bb435271f288abfc533e4295a.png" class="avatar avatar-32 photo" height="32" width="32">		<cite class="fn">admin</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-14317">
+			February 6, 2012 at 4:46 pm</a>		</div>
+
+		<p>Do you see where it says “examples”…</p>
+
+		<div class="reply">
+		<a class="comment-reply-link" href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/?replytocom=14317#respond" onclick='return addComment.moveForm("div-comment-14317", "14317", "respond", "927")'>Reply</a>		</div>
+				</div>
+		</li>
+</ul>
+</li>
+		<li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-14318">
+				<div id="div-comment-14318" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/8f89714c6cbd3f981317cf94cec3fc0c.jpg" class="avatar avatar-32 photo" height="32" width="32">		<cite class="fn"><a href="http://www.zodiite.net/" rel="external nofollow" class="url">Emil</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-14318">
+			February 6, 2012 at 4:56 pm</a>		</div>
+
+		<p>I mean in zip file to check how to use this php class. In examples section of site the script is running. I need It’s code.</p>
+
+		<div class="reply">
+		<a class="comment-reply-link" href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/?replytocom=14318#respond" onclick='return addComment.moveForm("div-comment-14318", "14318", "respond", "927")'>Reply</a>		</div>
+				</div>
+		<ul class="children">
+		<li class="comment even depth-2" id="comment-14319">
+				<div id="div-comment-14319" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/8f89714c6cbd3f981317cf94cec3fc0c.jpg" class="avatar avatar-32 photo" height="32" width="32">		<cite class="fn"><a href="http://www.zodiite.net/" rel="external nofollow" class="url">Emil</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-14319">
+			February 6, 2012 at 5:04 pm</a>		</div>
+
+		<p>Sorry I found your post for usage:</p>
+<p><a href="http://www.catchmyfame.com/2007/07/28/finally-the-simple-pagination-class/" rel="nofollow">http://www.catchmyfame.com/2007/07/28/finally-the-simple-pagination-class/</a></p>
+
+		<div class="reply">
+		<a class="comment-reply-link" href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/?replytocom=14319#respond" onclick='return addComment.moveForm("div-comment-14319", "14319", "respond", "927")'>Reply</a>		</div>
+				</div>
+		</li>
+</ul>
+</li>
+		<li class="comment odd alt thread-even depth-1 parent" id="comment-14482">
+				<div id="div-comment-14482" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/6bd753acdb985732870050e65b1cfb59.png" class="avatar avatar-32 photo" height="32" width="32">		<cite class="fn"><a href="http://www.concept211.com/" rel="external nofollow" class="url">Pablo Carrau</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-14482">
+			February 22, 2012 at 9:51 am</a>		</div>
+
+		<p>I can’t seem to get the paging working correctly when dealing with 
+random recordsets ( ORDER BY RAND() ).  When you go to the second page, 
+the query gets resorted and you end up seeing records that originally 
+appeared on page 1 also appear on page 2 and so on.  It works perfectly 
+for queries by any other sort order, but random does not.  </p>
+<p>Any advice on how to correct this would be greatly appreciated!</p>
+
+		<div class="reply">
+		<a class="comment-reply-link" href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/?replytocom=14482#respond" onclick='return addComment.moveForm("div-comment-14482", "14482", "respond", "927")'>Reply</a>		</div>
+				</div>
+		<ul class="children">
+		<li class="comment even depth-2 parent" id="comment-14483">
+				<div id="div-comment-14483" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/f14c705bb435271f288abfc533e4295a.png" class="avatar avatar-32 photo" height="32" width="32">		<cite class="fn">admin</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-14483">
+			February 22, 2012 at 10:07 am</a>		</div>
+
+		<p>Random ordering won’t work because every time you change pages, the query gets executed and re-randomizes the results.</p>
+
+		<div class="reply">
+		<a class="comment-reply-link" href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/?replytocom=14483#respond" onclick='return addComment.moveForm("div-comment-14483", "14483", "respond", "927")'>Reply</a>		</div>
+				</div>
+		<ul class="children">
+		<li class="comment odd alt depth-3" id="comment-14484">
+				<div id="div-comment-14484" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/6bd753acdb985732870050e65b1cfb59.png" class="avatar avatar-32 photo" height="32" width="32">		<cite class="fn"><a href="http://www.concept211.com/" rel="external nofollow" class="url">Pablo Carrau</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-14484">
+			February 22, 2012 at 10:24 am</a>		</div>
+
+		<p>Thanks for the quick response.</p>
+<p>There’s no way to store the query in memory to continue traversing through it in page chunks?</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment even depth-3" id="comment-14485">
+				<div id="div-comment-14485" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/f14c705bb435271f288abfc533e4295a.png" class="avatar avatar-32 photo" height="32" width="32">		<cite class="fn">admin</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-14485">
+			February 22, 2012 at 10:58 am</a>		</div>
+
+		<p>No, that would be more of a JavaScript solution where you randomize
+ your entire recordset, pass it to the user, and then paginate it on the
+ client side. One of the advantages of this class is its speed, which it
+ gets by limiting the size of the data requested. Randomizing it would 
+effectively kill that, unless you randomized your recordset once and 
+then stored it in another table to query from.</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment odd alt depth-3" id="comment-14486">
+				<div id="div-comment-14486" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/6bd753acdb985732870050e65b1cfb59.png" class="avatar avatar-32 photo" height="32" width="32">		<cite class="fn"><a href="http://www.concept211.com/" rel="external nofollow" class="url">Pablo Carrau</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-14486">
+			February 22, 2012 at 11:10 am</a>		</div>
+
+		<p>Nevermind…ended up using a seeded RAND(#) call instead and holding 
+the value in a session variable.  That way I can hold the random 
+recordset during that session and renew on next.  All works great that 
+way :)</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+</ul>
+</li>
+</ul>
+</li>
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-14515">
+				<div id="div-comment-14515" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/857189523f4836435f02d4961babbdaa.png" class="avatar avatar-32 photo" height="32" width="32">		<cite class="fn">Sandro</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-14515">
+			February 26, 2012 at 6:38 am</a>		</div>
+
+		<p>Great! thanks. that’s what i was looking for since some time.<br>
+It works so far but if i go through the pages one by one the url will add many of the same requests into it.<br>
+/index.php?page=16&amp;ipp=25&amp;ipp=25&amp;ipp=25&amp;ipp=25&amp;ipp=25&amp;ipp=25&amp;ipp=25<br>
+thats the outcome. Not sure why this will happen.<br>
+Any hint please ? Thanks</p>
+
+		<div class="reply">
+		<a class="comment-reply-link" href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/?replytocom=14515#respond" onclick='return addComment.moveForm("div-comment-14515", "14515", "respond", "927")'>Reply</a>		</div>
+				</div>
+		<ul class="children">
+		<li class="comment odd alt depth-2" id="comment-14531">
+				<div id="div-comment-14531" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/fb6f056ca7101fa8eec4e24276101220.png" class="avatar avatar-32 photo" height="32" width="32">		<cite class="fn"><a href="http://photostocklink.com/" rel="external nofollow" class="url">Michael</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-14531">
+			February 27, 2012 at 2:25 pm</a>		</div>
+
+		<p>Has to be your code. I have some pages up to 60 something, and it doesn’t do that on my site.</p>
+
+		<div class="reply">
+		<a class="comment-reply-link" href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/?replytocom=14531#respond" onclick='return addComment.moveForm("div-comment-14531", "14531", "respond", "927")'>Reply</a>		</div>
+				</div>
+		</li>
+</ul>
+</li>
+		<li class="comment even thread-even depth-1" id="comment-14530">
+				<div id="div-comment-14530" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/fb6f056ca7101fa8eec4e24276101220.png" class="avatar avatar-32 photo" height="32" width="32">		<cite class="fn"><a href="http://photostocklink.com/" rel="external nofollow" class="url">Michael</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-14530">
+			February 27, 2012 at 2:21 pm</a>		</div>
+
+		<p>Wish list …<br>
+Images for next-previous-All.<br>
+Option to remove ‘ALL’ if list hits certain amount –  500,1,000.  (:</p>
+
+		<div class="reply">
+		<a class="comment-reply-link" href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/?replytocom=14530#respond" onclick='return addComment.moveForm("div-comment-14530", "14530", "respond", "927")'>Reply</a>		</div>
+				</div>
+		</li>
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-15519">
+				<div id="div-comment-15519" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/83ced6ac563c4f67541a4ebbbbcdc71e.png" class="avatar avatar-32 photo" height="32" width="32">		<cite class="fn">Newb</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-15519">
+			May 10, 2012 at 9:26 pm</a>		</div>
+
+		<p>good stuff!<br>
+can ask something?<br>
+how can i implement this one in search..paginating the search result, thanks.</p>
+
+		<div class="reply">
+		<a class="comment-reply-link" href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/?replytocom=15519#respond" onclick='return addComment.moveForm("div-comment-15519", "15519", "respond", "927")'>Reply</a>		</div>
+				</div>
+		</li>
+	</ol>
+
+	
+	
+	<h3 id="pings">Trackbacks/Pingbacks</h3>
+	<ol class="commentlist">
+			<li class="pingback even thread-even depth-1" id="comment-13038">
+				<div id="div-comment-13038" class="comment-body">
+				<div class="comment-author vcard">
+				<cite class="fn"><a href="http://www.catchmyfame.com/2007/07/28/finally-the-simple-pagination-class/" rel="external nofollow" class="url">Catch My Fame » Finally, the simple pagination class</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-13038">
+			October 25, 2011 at 10:37 am</a>		</div>
+
+		<p>[...] (Oct 25, 2011): Version 2 now available for download. See 
+here for more info. Note that the examples on this page still use an 
+older version of the [...]</p>
+
+		<div class="reply">
+		<a class="comment-reply-link" href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/?replytocom=13038#respond" onclick='return addComment.moveForm("div-comment-13038", "13038", "respond", "927")'>Reply</a>		</div>
+				</div>
+		</li>
+		<li class="pingback odd alt thread-odd thread-alt depth-1" id="comment-14240">
+				<div id="div-comment-14240" class="comment-body">
+				<div class="comment-author vcard">
+				<cite class="fn"><a href="http://www.masquewordpress.com/paginacion-php-con-clase/" rel="external nofollow" class="url">Paginación PHP con clase</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/comment-page-1/#comment-14240">
+			January 31, 2012 at 1:48 pm</a>		</div>
+
+		<p>[...] PHPÚltimamente ando revisando mis posts antiguos y en esta 
+ocasión quería mostrarles una clase de paginación echa en PHP que es más
+ fácil y prolija de usar que el código de Paginación PHP&nbsp;que 
+publique hace tiempo. [...]</p>
+
+		<div class="reply">
+		<a class="comment-reply-link" href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/?replytocom=14240#respond" onclick='return addComment.moveForm("div-comment-14240", "14240", "respond", "927")'>Reply</a>		</div>
+				</div>
+		</li>
+	</ol>
+	<div class="navigation">
+		<div class="alignleft"></div>
+		<div class="alignright"></div>
+	</div>
+
+
+
+ 
+
+
+<div id="respond">
+
+<h3>Leave a Reply</h3>
+<!-- <h4>The no jerk rule is in effect (i.e. if you don't have something constructive to add, don't bother)</h4> -->
+<div class="cancel-comment-reply">
+	<small><a rel="nofollow" id="cancel-comment-reply-link" href="http://www.catchmyfame.com/2011/10/23/php-pagination-class-updated-version-2/#respond" style="display: none;">Click here to cancel reply.</a></small>
+</div>
+
+
+<form action="http://www.catchmyfame.com/wp-comments-post.php" method="post" id="commentform">
+
+
+<p><input name="author" id="author" size="22" tabindex="1" aria-required="true" type="text">
+<label for="author"><small>Name (required)</small></label></p>
+
+<p><input name="email" id="email" size="22" tabindex="2" aria-required="true" type="text">
+<label for="email"><small>Mail (will not be published) (required)</small></label></p>
+
+<p><input name="url" id="url" size="22" tabindex="3" type="text">
+<label for="url"><small>Website</small></label></p>
+
+
+<p><textarea name="comment" id="comment" cols="100%" rows="6" tabindex="4"></textarea></p>
+
+<p><small>You can use these tags: <code>&lt;a href="" title=""&gt; 
+&lt;abbr title=""&gt; &lt;acronym title=""&gt; &lt;b&gt; &lt;blockquote 
+cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=""&gt; &lt;em&gt;
+ &lt;i&gt; &lt;q cite=""&gt; &lt;strike&gt; &lt;strong&gt; </code></small></p>
+
+<p><input name="submit" id="submit" tabindex="5" value="Submit" comment="" type="submit">
+<input name="comment_post_ID" value="927" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+</p>
+<p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="9a95b71d56" type="hidden"></p>
+</form>
+</div>
+
+
+			</div><!-- end id:content-main -->
+<div id="sidebar">
+<ul>
+<li class="sidebox">
+	<h3>About</h3>
+	<p>
+	<strong>Catch My Fame</strong><br>A web designoper's journal<br>
+	There are 107 Posts and 1,905 Comments so far.	</p>
+</li>
+<li class="sidebox"><h3>Archives</h3>		<select name="archive-dropdown" onchange="document.location.href=this.options[this.selectedIndex].value;"> <option selected="selected" value="">Select Month</option> 	<option value="http://www.catchmyfame.com/2012/05/"> May 2012 &nbsp;(1)</option>
+	<option value="http://www.catchmyfame.com/2012/03/"> March 2012 &nbsp;(1)</option>
+	<option value="http://www.catchmyfame.com/2012/02/"> February 2012 &nbsp;(1)</option>
+	<option value="http://www.catchmyfame.com/2011/12/"> December 2011 &nbsp;(4)</option>
+	<option value="http://www.catchmyfame.com/2011/11/"> November 2011 &nbsp;(1)</option>
+	<option value="http://www.catchmyfame.com/2011/10/"> October 2011 &nbsp;(1)</option>
+	<option value="http://www.catchmyfame.com/2011/09/"> September 2011 &nbsp;(3)</option>
+	<option value="http://www.catchmyfame.com/2011/08/"> August 2011 &nbsp;(3)</option>
+	<option value="http://www.catchmyfame.com/2011/07/"> July 2011 &nbsp;(1)</option>
+	<option value="http://www.catchmyfame.com/2011/06/"> June 2011 &nbsp;(1)</option>
+	<option value="http://www.catchmyfame.com/2011/05/"> May 2011 &nbsp;(5)</option>
+	<option value="http://www.catchmyfame.com/2011/04/"> April 2011 &nbsp;(1)</option>
+	<option value="http://www.catchmyfame.com/2011/03/"> March 2011 &nbsp;(1)</option>
+	<option value="http://www.catchmyfame.com/2011/02/"> February 2011 &nbsp;(1)</option>
+	<option value="http://www.catchmyfame.com/2011/01/"> January 2011 &nbsp;(4)</option>
+	<option value="http://www.catchmyfame.com/2010/12/"> December 2010 &nbsp;(1)</option>
+	<option value="http://www.catchmyfame.com/2010/11/"> November 2010 &nbsp;(2)</option>
+	<option value="http://www.catchmyfame.com/2010/10/"> October 2010 &nbsp;(2)</option>
+	<option value="http://www.catchmyfame.com/2010/09/"> September 2010 &nbsp;(4)</option>
+	<option value="http://www.catchmyfame.com/2010/08/"> August 2010 &nbsp;(2)</option>
+	<option value="http://www.catchmyfame.com/2010/07/"> July 2010 &nbsp;(1)</option>
+	<option value="http://www.catchmyfame.com/2010/06/"> June 2010 &nbsp;(2)</option>
+	<option value="http://www.catchmyfame.com/2010/05/"> May 2010 &nbsp;(5)</option>
+	<option value="http://www.catchmyfame.com/2010/04/"> April 2010 &nbsp;(3)</option>
+	<option value="http://www.catchmyfame.com/2010/03/"> March 2010 &nbsp;(3)</option>
+	<option value="http://www.catchmyfame.com/2010/02/"> February 2010 &nbsp;(2)</option>
+	<option value="http://www.catchmyfame.com/2010/01/"> January 2010 &nbsp;(3)</option>
+	<option value="http://www.catchmyfame.com/2009/12/"> December 2009 &nbsp;(2)</option>
+	<option value="http://www.catchmyfame.com/2009/11/"> November 2009 &nbsp;(3)</option>
+	<option value="http://www.catchmyfame.com/2009/10/"> October 2009 &nbsp;(2)</option>
+	<option value="http://www.catchmyfame.com/2009/09/"> September 2009 &nbsp;(7)</option>
+	<option value="http://www.catchmyfame.com/2009/08/"> August 2009 &nbsp;(5)</option>
+	<option value="http://www.catchmyfame.com/2009/07/"> July 2009 &nbsp;(2)</option>
+	<option value="http://www.catchmyfame.com/2009/06/"> June 2009 &nbsp;(2)</option>
+	<option value="http://www.catchmyfame.com/2009/05/"> May 2009 &nbsp;(1)</option>
+	<option value="http://www.catchmyfame.com/2009/04/"> April 2009 &nbsp;(3)</option>
+	<option value="http://www.catchmyfame.com/2008/12/"> December 2008 &nbsp;(2)</option>
+	<option value="http://www.catchmyfame.com/2008/10/"> October 2008 &nbsp;(1)</option>
+	<option value="http://www.catchmyfame.com/2008/09/"> September 2008 &nbsp;(1)</option>
+	<option value="http://www.catchmyfame.com/2008/07/"> July 2008 &nbsp;(2)</option>
+	<option value="http://www.catchmyfame.com/2008/02/"> February 2008 &nbsp;(1)</option>
+	<option value="http://www.catchmyfame.com/2007/12/"> December 2007 &nbsp;(1)</option>
+	<option value="http://www.catchmyfame.com/2007/10/"> October 2007 &nbsp;(1)</option>
+	<option value="http://www.catchmyfame.com/2007/09/"> September 2007 &nbsp;(1)</option>
+	<option value="http://www.catchmyfame.com/2007/08/"> August 2007 &nbsp;(2)</option>
+	<option value="http://www.catchmyfame.com/2007/07/"> July 2007 &nbsp;(1)</option>
+	<option value="http://www.catchmyfame.com/2007/06/"> June 2007 &nbsp;(6)</option>
+	<option value="http://www.catchmyfame.com/2007/05/"> May 2007 &nbsp;(2)</option>
+ </select>
+</li><li class="sidebox"><h3>Categories</h3>		<ul>
+	<li class="cat-item cat-item-7"><a href="http://www.catchmyfame.com/category/css/" title="View all posts filed under CSS">CSS</a> (8)
+</li>
+	<li class="cat-item cat-item-12"><a href="http://www.catchmyfame.com/category/html5/" title="View all posts filed under HTML5">HTML5</a> (1)
+</li>
+	<li class="cat-item cat-item-3"><a href="http://www.catchmyfame.com/category/js/" title="View all posts filed under JavaScript/jQuery">JavaScript/jQuery</a> (46)
+</li>
+	<li class="cat-item cat-item-4"><a href="http://www.catchmyfame.com/category/php/" title="View all posts filed under PHP">PHP</a> (9)
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.catchmyfame.com/category/rants/" title="Sometimes you just gotta go off...">Rants</a> (21)
+</li>
+	<li class="cat-item cat-item-1"><a href="http://www.catchmyfame.com/category/uncategorized/" title="View all posts filed under Uncategorized">Uncategorized</a> (19)
+</li>
+	<li class="cat-item cat-item-11"><a href="http://www.catchmyfame.com/category/usability/" title="View all posts filed under Usability">Usability</a> (16)
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.catchmyfame.com/category/video/" title="View all posts filed under Watch Me">Watch Me</a> (10)
+</li>
+		</ul>
+</li><li class="sidebox"><h3>Recent Comments</h3><ul id="recentcomments"><li class="recentcomments"><a href="http://www.easyjquery.com/chrome-web-store-like-image-gallery/" rel="external nofollow" class="url">Chrome web store like image gallery | Easy jQuery | Free Popular Tips Tricks Plugins API Javascript and Themes</a> on <a href="http://www.catchmyfame.com/2009/12/30/huge-updates-to-jquery-infinite-carousel-version-2-released/comment-page-6/#comment-15624">Huge Updates to jQuery Infinite Carousel – Version 2 Released</a></li><li class="recentcomments">Mark on <a href="http://www.catchmyfame.com/catchmyfame-jquery-plugins/jquery-infinite-carousel-plugin/comment-page-3/#comment-15590">jQuery Infinite Carousel Plugin</a></li><li class="recentcomments">Uwe on <a href="http://www.catchmyfame.com/catchmyfame-jquery-plugins/jquery-infinite-carousel-plugin/comment-page-2/#comment-15563">jQuery Infinite Carousel Plugin</a></li><li class="recentcomments"><a href="http://www.viewsoftheworld.net/" rel="external nofollow" class="url">Ben</a> on <a href="http://www.catchmyfame.com/catchmyfame-jquery-plugins/jquery-beforeafter-plugin/comment-page-2/#comment-15561">jQuery Before/After Plugin</a></li><li class="recentcomments">admin on <a href="http://www.catchmyfame.com/catchmyfame-jquery-plugins/jquery-infinite-carousel-plugin/comment-page-2/#comment-15556">jQuery Infinite Carousel Plugin</a></li><li class="recentcomments">Mark on <a href="http://www.catchmyfame.com/catchmyfame-jquery-plugins/jquery-infinite-carousel-plugin/comment-page-2/#comment-15555">jQuery Infinite Carousel Plugin</a></li><li class="recentcomments">Rocks on <a href="http://www.catchmyfame.com/2007/07/28/finally-the-simple-pagination-class/comment-page-9/#comment-15554">Finally, the simple pagination class</a></li><li class="recentcomments">Rocks on <a href="http://www.catchmyfame.com/2007/07/28/finally-the-simple-pagination-class/comment-page-9/#comment-15553">Finally, the simple pagination class</a></li></ul></li><li class="sidebox"><h3> </h3>			<div class="textwidget"><script type="text/javascript"><!--
+google_ad_client = "pub-3380392196278141";
+/* catchmyfame sidebar 160x600, created 8/16/09 */
+google_ad_slot = "7139814298";
+google_ad_width = 160;
+google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/show_ads.js">
+</script><ins style="display:inline-table;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:160px"><ins id="aswift_0_anchor" style="display:block;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:160px"><iframe allowtransparency="true" hspace="0" marginwidth="0" marginheight="0" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){i+='.call';setTimeout(h,0)}else if(h.match){i+='.nav';w.location.replace(h)}s.log&amp;&amp;s.log.push(i)}" vspace="0" id="aswift_0" name="aswift_0" style="left: 0pt; position: absolute; top: 0pt;" frameborder="0" height="600" scrolling="no" width="160"></iframe></ins></ins></div>
+		</li></ul>
+</div><!-- end id:sidebar -->
+</div><!-- end id:content -->
+</div><!-- end id:container --><div id="footer">
+<p><strong>Catch My Fame</strong> © 2012 All Rights Reserved.</p>
+<p class="right">
+</p>
+<br class="clear">
+</div><!-- end id:footer -->
+<!--stats_footer_test--><script src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/e-201221.js" type="text/javascript"></script>
+<script type="text/javascript">
+st_go({blog:'8341638',v:'ext',post:'927'});
+var load_cmc = function(){linktracker_init(8341638,927,2);};
+if ( typeof addLoadEvent != 'undefined' ) addLoadEvent(load_cmc);
+else load_cmc();
+</script><img id="wpstats" src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/g.gif" alt="">
+
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="Catch%20My%20Fame%20%C2%BB%20PHP%20Pagination%20Class%20Updated%20%E2%80%93%20Version%202_files/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-76028-4");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+
+
+
+
+</body></html>
+<!-- Dynamic page generated in 0.727 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2012-05-22 07:22:18 -->
+<!-- Compression = gzip -->

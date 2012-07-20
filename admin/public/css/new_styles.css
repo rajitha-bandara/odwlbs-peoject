@@ -1,0 +1,14 @@
+#response{
+	margin-top:30px;
+	padding-left:200px;
+}
+
+#error_box,#sign_in_response{
+	color:#F00;
+	font-weight:bold;
+}
+
+#success_box{
+	color:#00F;
+	font-weight:bold;
+}

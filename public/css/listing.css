@@ -1,0 +1,120 @@
+#listing_wrapper{
+	padding-right:10px;
+}
+
+#listing_wrapper #subheading{
+	font-size:20px;
+	margin-bottom:10px;
+}
+#listing_wrapper #listing_share_bar{
+	background-color:#FFF;
+	
+}
+#listing_wrapper #listing_share_bar a, #listing_wrapper #listing_share_bar g:plusone{
+	margin-right:10px;
+}
+#listing_wrapper #listing_share_bar #share_out{
+	margin-left:40px;
+}
+#listing_wrapper #listing_general {
+	margin-left:10px;
+	margin-top:30px;
+	margin-bottom:30px;
+}
+#listing_wrapper #listing_general #title {
+	font-weight:bold;
+	font-size:24px;
+}
+#listing_wrapper #listing_general #category {
+	margin-left:20px;
+	margin-bottom:10px;
+	font-style:italic;
+}
+#listing_wrapper #listing_general #category ul {
+	list-style-type:none;
+}
+#listing_wrapper #listing_general #rating {
+	height:50px;
+	
+}
+#listing_wrapper #listing_general #likeBox,#listing_wrapper #listing_general #google_plus{
+	height:30px;
+}
+#listing_wrapper #listing_general #web {
+	height:20px;
+	color:#6CF;
+}
+#listing_wrapper #listing_general #web a{
+	color:#6CF;
+	text-decoration:none;
+	
+}
+#listing_wrapper hr{
+	
+	border: 1px dashed #666;
+}
+
+#listing_wrapper #contacts,#listing_wrapper #description,#listing_wrapper #media,#listing_wrapper #location,#listing_wrapper #reviews {
+	margin-left:10px;
+	margin-top:20px;
+	margin-bottom:30px;
+	
+}
+#listing_wrapper #contacts ul #follow{
+	margin-top:10px;
+}
+
+
+#listing_sec_col {
+	margin-left:0px;
+	margin-right:10px;
+	margin-top:10px;
+	margin-bottom:10px;
+	float:right;
+	
+	padding:10px;
+}
+#get_dir{
+	float:right;
+	font-weight:bold;
+	margin-bottom:5px;
+}
+#large_map_link{
+	float:right;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+#map{
+	width:230px;
+	height:300px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	margin-bottom:20px;
+}
+#tweets{
+	width:230px;
+	height:240px;
+	margin-bottom:110px;
+}
+
+
+#map_canvas{
+	margin-top:55px;
+	height:500px;
+	padding:10px;
+	border:1px solid #000;
+}
+#main_wrapper #page_content #dir_general ul #title a{
+	font-weight:bold;
+	font-size:24px;
+	text-decoration:none;
+	color:#000;
+}
+#main_wrapper #page_content #dir_general ul #title a:hover{
+	text-decoration:underline;
+}
+#directions{
+	overflow-y:scroll;
+	height:500px;
+}
