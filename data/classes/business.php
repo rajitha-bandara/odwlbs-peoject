@@ -175,10 +175,17 @@ class Business
 		}
 	}
 	
-	public function fetchListingsByLocation($location)
+	public function fetchListingsByLocation($lat,$lon,$radius)
 	{
+		$coords =  getNearLatLong($lat,$lon,$radius);
+		
+		$minLat = $coords[0];
+		$maxLat = $coords[1];
+		$minLon = $coords[2];
+		$maxLon = $coords[3];
+		
 		global $gdbObj;
-		$sql = "SELECT b.biz_id,b.title FROM ".self::$table_biz." b, ".self::$table_location." l WHERE l.city like '%$location%' AND b.biz_id = l.biz_id ";
+		$sql = "SELECT b.biz_id,b.title FROM ".self::$table_biz." b, ".self::$table_location." l WHERE l.latitude >= ".$minLat ." AND l.latitude <= ".$maxLat ." AND l.longitude >= ".$minLon ." AND l.longitude <= ".$maxLon ." AND b.biz_id = l.biz_id limit 5";
 		$resut = $gdbObj->query($sql);
 	
 		$existCount = $gdbObj->num_rows($resut);

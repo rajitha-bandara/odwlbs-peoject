@@ -92,7 +92,7 @@ background:url(public/img/cross.png) no-repeat;
   function onGDirectionsLoad(){ 
    var poly = gdir.getPolyline();
    if (poly.getVertexCount() > 100) {
-     alert("This route has too many vertices");
+     //alert("This route has too many vertices");
      return;
    }
    var baseUrl = "http://maps.google.com/staticmap?";

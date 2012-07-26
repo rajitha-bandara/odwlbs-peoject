@@ -1,5 +1,8 @@
-
 <script type="text/javascript">
+var today = new Date();
+var expire = new Date();
+expire.setTime(today.getTime() + 3600000*24*10);
+
 function setGeoLocInDIvs(lat,lon,city,region,country)
 {
 	$("#user_lat").html(lat);
@@ -7,6 +10,16 @@ function setGeoLocInDIvs(lat,lon,city,region,country)
 	$("#user_town").html(city);
 	$("#user_county").html(region);
 	$("#user_country").html(country);
+}
+
+function setGeoCookie(visitor_lat,visitor_lon,visitor_city,visitor_region,visitor_country,visitor_address)
+{
+	document.cookie = 'lat' + "=" + escape(visitor_lat) + ";expires=" + expire.toGMTString();
+	document.cookie = 'long' + "=" + escape(visitor_lon) + ";expires=" + expire.toGMTString();
+	document.cookie = 'city' + "=" + escape(visitor_city) + ";expires=" + expire.toGMTString();
+	document.cookie = 'region' + "=" + escape(visitor_region) + ";expires=" + expire.toGMTString();
+	document.cookie = 'country' + "=" + escape(visitor_country) + ";expires=" + expire.toGMTString();
+	document.cookie = 'address' + "=" + escape(visitor_address) + ";expires=" + expire.toGMTString();
 }
 
 function onSuccess(position)
@@ -58,21 +71,17 @@ geocoder.geocode({'latLng': latlng}, function(results, status) {
             }
 
             
-        alert(visitor_city.long_name + " || " + visitor_region.long_name + " || " + visitor_country.long_name)
+        //alert(visitor_city.long_name + " || " + visitor_region.long_name + " || " + visitor_country.long_name)
 		var visitor_address = visitor_city.long_name + ", " + visitor_region.long_name + ", " + visitor_country.long_name;
-		document.cookie = 'lat' + "=" + visitor_lat;
-		document.cookie = 'long' + "=" + visitor_lon;
-		document.cookie = 'city' + "=" + visitor_city.long_name;
-		document.cookie = 'region' + "=" + visitor_region.long_name;
-		document.cookie = 'country' + "=" + visitor_country.long_name;
-		document.cookie = 'address' + "=" + visitor_address;
+		setGeoCookie(visitor_lat,visitor_lon,visitor_city.long_name,visitor_region.long_name,visitor_country.long_name,visitor_address);
+		
 		$.ajax({
             url: 'includes/ajax.php',
             type: 'POST',
              data: 'action=geolocation&lat='+ visitor_lat +'&long='+ visitor_lon +'&city='+ visitor_city +'&region='+ visitor_region +'&country='+ visitor_country +'&address='+ visitor_address,
             success: function(ret) {
                  
-               alert("aaa");
+               //alert("aaa");
 			   
                  
             }
@@ -97,12 +106,7 @@ function DoFallback()
 			visitor_countrycode = google.loader.ClientLocation.address.country_code;
 			
 			var visitor_address = visitor_city + ", " + visitor_region + ", " + visitor_country;
-			document.cookie = 'lat' + "=" + visitor_lat;
-			document.cookie = 'long' + "=" + visitor_lon;
-			document.cookie = 'city' + "=" + visitor_city;
-			document.cookie = 'region' + "=" + visitor_region;
-			document.cookie = 'country' + "=" + visitor_country;
-			document.cookie = 'address' + "=" + visitor_address;
+			setGeoCookie(visitor_lat,visitor_lon,visitor_city,visitor_region,visitor_country,visitor_address);
 			
 			$.ajax({
             url: 'includes/ajax.php',
@@ -110,12 +114,12 @@ function DoFallback()
              data: 'action=geolocation&lat='+ visitor_lat +'&long='+ visitor_lon +'&city='+ visitor_city +'&region='+ visitor_region +'&country='+ visitor_country +'&address='+ visitor_address,
             success: function(ret) {
                  
-               alert("aaa");
+               //alert("aaa");
 			  
                  
             }
         });
-			//setGeoLocInDIvs(visitor_lat,visitor_lon,visitor_city,visitor_region,visitor_country);
+			
 			
 		}
 		else {
@@ -130,12 +134,7 @@ function DoFallback()
 			visitor_postcode = geoip_postal_code();
 			
 			var visitor_address = visitor_city + ", " + visitor_region + ", " + visitor_country;
-			document.cookie = 'lat' + "=" + visitor_lat;
-			document.cookie = 'long' + "=" + visitor_lon;
-			document.cookie = 'city' + "=" + visitor_city;
-			document.cookie = 'region' + "=" + visitor_region;
-			document.cookie = 'country' + "=" + visitor_country;
-			document.cookie = 'address' + "=" + visitor_address;
+			setGeoCookie(visitor_lat,visitor_lon,visitor_city,visitor_region,visitor_country,visitor_address);
 			
 			
 	
@@ -145,14 +144,14 @@ function DoFallback()
             data: 'action=geolocation&lat='+ visitor_lat +'&long='+ visitor_lon +'&city='+ visitor_city +'&region='+ visitor_region +'&country='+ visitor_country +'&address='+ visitor_address,
             success: function(ret) {
                  
-               alert("aaa");
+               //alert("aaa");
 			  
                  
             }
         });
 
 
-			//setGeoLocInDIvs(visitor_lat,visitor_lon,visitor_city,visitor_region,visitor_country);
+			
 			
 		}
 		

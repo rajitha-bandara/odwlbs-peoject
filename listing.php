@@ -214,7 +214,7 @@ onclick="javascript:window.open('http://zms.zhiing.com/webclient/zhiingchat/zmsc
   
   <div id="get_dir" <?php if($package == 'b'){?> style="display:none" <?php }?>><a href="http://localhost/business_directory/listing/directions/<?php echo $safeTitle;?>-<?php echo $lid;?>.html">Maps & Directions >></a></div>
   
-  <div id="large_map_link" <?php if($package == 'b'){?> style="display:none" <?php }?>><a href="map_large.php?lat=<?php echo $latitude;?>lon=<?php echo $latitude;?>"title=<?php echo $title;?>>View Large Map</a></div>
+  <div id="large_map_link" <?php if($package == 'b'){?> style="display:none" <?php }?>><a href="map_large.php?lat=<?php echo $latitude;?>&lon=<?php echo $longitude;?>"title=<?php echo $title;?>>View Large Map</a></div>
   <div id="map" <?php if($package == 'b'){?> style="display:none" <?php }?>></div>
   
   

@@ -105,11 +105,11 @@ background:url(public/img/cross.png) no-repeat;
  
    <div class="grid_6" id="sec_col">
    <div id="related_searches">
-   <div id="heading">Found near <?php echo $user_city;?></div>
+   <div id="heading">Found near <?php echo $user_address;?></div>
    <div id="content">
    <ul>
    <?php
-   echo $gbizObj->fetchListingsByLocation($user_city);
+   echo $gbizObj->fetchListingsByLocation($user_lat,$user_long,20);
    ?>
    </ul>
    </div>

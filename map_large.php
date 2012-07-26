@@ -105,10 +105,10 @@ background:url(public/img/cross.png) no-repeat;
 
    <div class="grid_17">
    <div class="grid_17" id="main_wrapper"><!--Begins main wrapper-->
-  <div id="page_topic"><h1>Privacy Policy</h1></div>
+  <div id="page_topic"><h1></h1></div>
   
   <div class="grid_17" id="page_content">
-  <div id="" style="width:500px;height:600px;"></div>
+  <div id="map" style="width:500px;height:600px;"></div>
   </div>
   
 	

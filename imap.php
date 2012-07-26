@@ -1,5 +1,6 @@
 <?php @session_start();?>
 <?php require_once('includes/geo_location_all.php');?>
+<?php require_once('includes/config.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,8 +10,7 @@
 <link href="public/css/960_24_col.css" rel="stylesheet">
 <link href="public/css/reset.css" rel="stylesheet">
 
-<script src="https://maps.google.com/maps?file=api&sensor=false" type="text/javascript"></script>
-
+<script src="https://maps.google.com/maps?file=api&v=3&sensor=false&key=<?php echo GOOGLE_MAP_API_KEY;?>" type="text/javascript"></script>
 <script src="public/js/jquery.js"></script>
 
 
@@ -163,28 +163,30 @@
 	
 		function doSubmit()
 		{
+			var today = new Date();
+			var expire = new Date();
+			expire.setTime(today.getTime() + 3600000*24*10);
 				
 			newLatitude = document.latLonPicker.latitude.value;
 			newLongitude = document.latLonPicker.longitude.value;
 			newAddress = document.getElementById('address').innerHTML;
 			
 			//write new location details to cookie
-			document.cookie = 'lat' + "=" + newLatitude;
-			document.cookie = 'long' + "=" + newLongitude;
-			document.cookie = 'address' + "=" + newAddress;
+			document.cookie = 'lat' + "=" + escape(newLatitude) + ";expires=" + expire.toGMTString();
+			document.cookie = 'long' + "=" + escape(newLongitude) + ";expires=" + expire.toGMTString();
+			document.cookie = 'address' + "=" + escape(newAddress) + ";expires=" + expire.toGMTString();
 			document.getElementById('msg').innerHTML = "<font color='red'>Please refresh the page to reflect your changes </font>";
 			$.ajax({
             url: 'includes/ajax.php',
             type: 'POST',
             data: 'action=updateUserAddress&lat='+newLatitude+'&long='+newLongitude+'&address='+ newAddress,
             success: function(ret) {
-             alert('Please refresh the page to reflect your changes');
-                 
+               
             }
         });
 			
 			javascript:parent.jQuery.fancybox.close();
-			
+			self.parent.location.href='index.php';
 		}
 		 
    </script>

@@ -97,7 +97,7 @@ function getResultHTML($where,$counter,$id,$title,$url,$phone,$street,$city)
 $safeTitle = 	makeURLSafe($title);
 $domain_name = DOMAIN_NAME;
 //$listing_url = SITE_URL."/listing.php?lid=$id";
-//$listing_url = SITE_URL."/listing/$where/$what-$id.html";
+//$listing_url = SITE_URL."/listing/$safeTitle-$id.html";
 $listing_url = "http://localhost/business_directory/listing/$safeTitle-$id.html";
 
 $summary 	 = "I just checked out ".$title." on ".DOMAIN_NAME." and thought you would like it too. Read reviews, post your own, get coupons, maps and more. Have a look!";
@@ -161,7 +161,7 @@ function formatListing($counter,$bizId,$title,$userId)
       <div id='listing_row'>
   		<div id='counter' class='grid_1'>".$counter."</div>
   		<div id='title' class='grid_6'>".$title."</div>
-  		<div id='view' class='grid_2'><a href='http://localhost/business_directory/listing/$safeTitle-$bizId.html' target='_blank'><img src='public/img/lview.png'></a></div>
+  		<div id='view' class='grid_2'><a href='listing/$safeTitle-$bizId.html' target='_blank'><img src='public/img/lview.png'></a></div>
     	<div id='edit' class='grid_2'><a href='edit_listing.php?id=$userId&lid=$bizId' target='_blank'><img src='public/img/ledit.png'></a></div>
     	<div id='delete' class='grid_2'><a href='delete_listing.php?lid=$bizId' target='_blank'><img src='public/img/ldelete.png'></a></div>
   	  </div>
@@ -177,7 +177,7 @@ function formatRelatedSearch($counter,$bizId,$title)
 {
 	$safeTitle = makeURLSafe($title);
 	$listing_url = "http://localhost/business_directory/listing/$safeTitle-$bizId.html";
-	
+	//$listing_url = SITE_URL."/listing/$safeTitle-$bizId.html";
 	return 	"
 	<li><a href='$listing_url'>".$title."</a></li>";
 	
@@ -191,7 +191,7 @@ function formatCategory($catId,$name)
 {
 	$safeCat = makeURLSafe($name);
 	$category_url = "http://localhost/business_directory/$safeCat-$catId/";
-
+	//$category_url = SITE_URL."/$safeCat-$catId/";
 	return 	"
 	<li><a href='$category_url'>".$name."</a></li>";
 
@@ -206,7 +206,7 @@ function formatSubCategory($catId,$mainCat,$subCatId,$subCatName)
 	$safeCat = makeURLSafe($mainCat);
 	$safeSubCat = makeURLSafe($subCatName);
 	$category_url = "http://localhost/business_directory/$safeCat-$catId/$safeSubCat-$subCatId";
-
+	//$category_url = SITE_URL."/$safeCat-$catId/$safeSubCat-$subCatId";
 	return 	"
 	<li><a href='$category_url'>".$subCatName."</a></li>";
 
@@ -222,9 +222,13 @@ function formatRecentListing($bizId,$title,$mainCatId,$subCatId,$mainCat,$subCat
 	$safeCat = makeURLSafe($mainCat);
 	$safeSubCat = makeURLSafe($subCat);
 	
-	$listing_url = "http://localhost/business_directory/listing/$safeTitle-$bizId.html";
-	$mainCategory_url = "http://localhost/business_directory/$safeCat-$mainCatId/";
-	$subCategory_url = "http://localhost/business_directory/$safeCat-$mainCatId/$safeSubCat-$subCatId";
+	 $listing_url = "http://localhost/business_directory/listing/$safeTitle-$bizId.html";
+     $mainCategory_url = "http://localhost/business_directory/$safeCat-$mainCatId/";
+	 $subCategory_url = "http://localhost/business_directory/$safeCat-$mainCatId/$safeSubCat-$subCatId";
+	
+	//$listing_url = SITE_URL."/listing/$safeTitle-$bizId.html";
+	//	$mainCategory_url = SITE_URL."/$safeCat-$mainCatId/";
+	//	$subCategory_url = SITE_URL."/$safeCat-$mainCatId/$safeSubCat-$subCatId";
 
 	return 	"
 	<li style='border_bottom:1px sold #000'><div><div class='grid_6' id='title'><a href='$listing_url'>".$title."</a></div><div class='grid_6' id='info'><a href='$mainCategory_url'>".$mainCat."</a> ,<a href='$subCategory_url'>".$subCat."</a></div></div></li>";
@@ -281,6 +285,24 @@ function convertMilesToMeters($dist)
 
 }
 
+/*
+ *  Calculate Latitude, Longitude range based on the given radius using Haversine formula
+ *   
+*/
+function getNearLatLong($lat,$lon,$radius)
+{
+	$latitude = (float) $lat;
+	$longitude = (float) $lon;
+	$radius = $radius; // in miles
+	
+	$lat_min = $latitude - ($radius / 69);
+	$lat_max = $latitude + ($radius / 69);
+	$lng_min = $longitude - $radius / abs(cos(deg2rad($latitude)) * 69);
+	$lng_max = $longitude + $radius / abs(cos(deg2rad($latitude)) * 69);
+	
+	$coords = array($lat_min,$lat_max,$lng_min,$lng_max);
+	return $coords;
+}
 function resolvePlaceType($place_type)
 {
 	
