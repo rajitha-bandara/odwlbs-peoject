@@ -22,6 +22,8 @@
 <link href="public/css/listing.css" rel="stylesheet">
 <link href="public/css/ad.css" rel="stylesheet">
 <link href="ratingfiles/ratings.css" rel="stylesheet">
+<link href="public/css/jquery.fancybox.css?v=2.0.6" rel="stylesheet">
+<link href="public/css/jquery.fancybox-thumbs.css?v=1.0.2" rel="stylesheet">
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
       <script src="public/js/html5.js"></script>
@@ -92,6 +94,46 @@ function loadMap()
 	infowindow.open(map,marker);
 	});
 }
+
+$(document).ready(function() {
+				 $("#fancybox-manual-c").click(function() {
+												   
+				$.fancybox.open([
+								 
+					<?php echo $loopImg;?>
+				], {
+					helpers : {
+						overlay: {
+						opacity: 0.7, 
+						css: {'background-color': '#000'} 
+					    }, 
+						thumbs : {
+							width: 75,
+							height: 50
+						}
+					}
+				});
+			});
+			
+			/*
+			 *  Media helper. Group items, disable animations, hide arrows, enable media and button helpers.
+			*/
+			$('.fancybox-media')
+				.attr('rel', 'media-gallery')
+				.fancybox({
+					openEffect : 'none',
+					closeEffect : 'none',
+					prevEffect : 'none',
+					nextEffect : 'none',
+
+					arrows : false,
+					helpers : {
+						media : {},
+						buttons : {}
+					}
+				});
+
+		});
 </script>
 
 </head>
@@ -129,8 +171,8 @@ function loadMap()
       <div id="title"><h1><?php echo $title;?></h1></div>
       <div id="category">
       <ul>
-      <li><?php echo $mainCategory;?></li>
-      <li><?php echo $subCategory;?></li>
+      <?php echo formatSubCategory($mainCatId,$mainCategory,$subCatId,$subCategory);?>
+      <?php echo formatCategory($mainCatId,$mainCategory);?>
       </ul>
       </div>
       <div id="rating" >
@@ -165,13 +207,13 @@ function loadMap()
       <div id="contacts" class="grid_17">
       <div id="subheading">Contact information</div>
       <ul>
-      <li class="grid_17">Email : <?php echo $email;?></li>
+      <li class="grid_17">Email : <a href="mailto:<?php echo $email;?>"><?php echo $email;?></a></li>
       <li class="grid_4">Phone : <?php echo $phone;?></li>
       <li class="grid_4">Fax : <?php echo $fax;?></li>
       <li class="grid_4">Mobile : <?php echo $mobile;?></li>
       <li class="grid_17">Contact Person : <?php echo $contactP;?></li>
-      <li class="grid_3"><div id="follow" <?php if($package == 'b'){?> style="display:none" <?php }?>><a href=""><img src="public/img/social/facebook.png" width="32" height="32" alt="Find us on Facebook"></a></div></li>
-      <li class="grid_3"><div id="follow" <?php if($package == 'b'){?> style="display:none" <?php }?>><a href=""><img src="public/img/social/twitter.png" width="32" height="32" alt="Find us on Facebook"></a></div> </li>
+      <li class="grid_2"><div id="follow" <?php if($package == 'b'){?> style="display:none" <?php }?>><a href=""><img src="public/img/social/facebook.png" width="32" height="32" alt="Find us on Facebook"></a></div></li>
+      <li class="grid_2"><div id="follow" <?php if($package == 'b'){?> style="display:none" <?php }?>><a href=""><img src="public/img/social/twitter.png" width="32" height="32" alt="Find us on Facebook"></a></div> </li>
       </ul>
       </div>
       
@@ -183,10 +225,16 @@ function loadMap()
       
        <hr class="grid_17">
       <div id="media" class="grid_17">
-      <div id="subheading" <?php if($package == 'b'){?> style="display:none" <?php }?>>Videos & Photos</div>
-      <div class="grid_4"><img src="public/img/450845415_1328492_70x70.jpg" width="70" height="70"></div>
-      <div class="grid_4"><img src="public/img/450845415_1328492_70x70.jpg" width="70" height="70"></div>
-      <div class="grid_17">See more >></div>
+      <div id="subheading" <?php if($package == 'b'){?> style="display:none" <?php }?>>Photos & Videos</div>
+      <?php echo $thumb;?>
+      <div class="grid_17">
+      <div id="see_more" <?php if($images==null){?> style="display:none" <?php }?>>
+      <a id="fancybox-manual-c" href="javascript:;">See more >></a>
+      </div>
+      <div id="see_more" <?php if($images==null){?> style="display:none" <?php }?>>
+      <a class="fancybox-media" href="http://www.youtube.com/watch?v=opj24KnzrWo">Watch Video</a>
+      </div>
+      </div>
       </div>
       
        <hr class="grid_17">
@@ -260,5 +308,8 @@ new TWTR.Widget({
 <!-- Le javascript
     ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" src="public/js/jquery.fancybox.js?v=2.0.6"></script>
+<script type="text/javascript" src="public/js/jquery.fancybox-thumbs.js?v=1.0.2"></script>
+<script type="text/javascript" src="public/js/jquery.fancybox-media.js?v=1.0.0"></script>
 </body>
 </html>

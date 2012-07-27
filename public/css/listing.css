@@ -64,6 +64,13 @@
 	margin-top:10px;
 }
 
+#listing_wrapper #media #see_more{
+	margin-top:10px;
+	margin-bottom:10px;
+}
+#listing_wrapper #media #see_more a{
+	font-weight:bold;
+}
 
 #listing_sec_col {
 	margin-left:0px;

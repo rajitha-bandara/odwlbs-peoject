@@ -40,7 +40,7 @@ function include_layout_template($template="") {
 }
 
 /*
- *  Make URL safe by replacing special characters 
+ *  check File exists
 */
 function isFileExists($path)
 {
@@ -50,6 +50,9 @@ function isFileExists($path)
 		return false;
 }
 
+/*
+ *  get image(s) with a given name
+*/
 function get_image($match,$dir)
 {
   $files = opendir($dir);
@@ -67,6 +70,28 @@ function get_image($match,$dir)
   }
   return $images;
 }
+
+/*
+ *  get all image(s) from a given directory
+*/
+function get_any_image($dir)
+{
+  $files = opendir($dir);
+  $i = 0;
+  $images = array();
+  $images = null;
+  while($file = readdir($files)) 
+  {
+	  
+	if(preg_match('/^([a-zA-Z0-9])+[(.png)|(.gif)|(.jpg)|(.jpeg)]/i',$file))
+	{
+		$images[$i] = $file;
+		$i++;
+	}
+  }
+  return $images;
+}
+
 
 /*
  *  Make URL safe by replacing special characters 
