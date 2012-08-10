@@ -52,6 +52,7 @@ $latitude = "";
 $longitude = "";
 
 $keywords= "";
+$meta_description= "";
 $package = "";
 global $gbizObj;
 
@@ -121,6 +122,7 @@ if($images != null)
 	
 }
 
+$meta_description = getStringChunk(100,$description);
 
 if($package == 'b')
 {

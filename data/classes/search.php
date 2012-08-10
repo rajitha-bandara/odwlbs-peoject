@@ -1,4 +1,5 @@
 <?php
+
 class Search 
 {
 	public $iNumOfResults;
@@ -12,7 +13,8 @@ class Search
 	private $strKeyword;
 	private $filter;  // search method ex. like,starts with,ends with
 	
-	
+	protected static $table_search="lbs_search";
+	protected static $table_search_temp="lbs_search";
 	/**
 	 * Search::construct()
 	 *
@@ -62,6 +64,17 @@ class Search
 		
 	}
 	
+	public static function track($what="",$where="",$user_latitude="",$user_longitude="")
+	{
+		global $gdbObj;
+		$what = mysql_real_escape_string($what);
+		$where = mysql_real_escape_string($where);
+		
+		$sql = "INSERT INTO ".self::$table_search. " (whats,wheres,date,latitude,longitude) VALUES ('$what','$where',NOW(),'$user_latitude','$user_longitude')";
+		$result = $gdbObj->query($sql);
+		
+	}
+		
 }
 
 ?>

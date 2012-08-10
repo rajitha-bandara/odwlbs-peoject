@@ -108,7 +108,7 @@ while($row = mysql_fetch_array($sql)){
                       
            <h1 id="profile_page_topic">Edit Listing</h1>
            <div id="edit_listings" class="grid_12">
-           <iframe name="edit_listing_view" scrolling="no" class="grid_12" height="600px" src="idefault.php?lid=<?php echo $lid;?>">
+           <iframe name="edit_listing_view" scrolling="no" class="grid_12" height="700px" src="idefault.php?lid=<?php echo $lid;?>">
            
            </iframe>
      </div>     

@@ -26,7 +26,8 @@ box-shadow: 0 0 5px 5px #888;
 
 #header{
 padding:5px;
-height:auto;
+height:125px;
+background-image:url(../img/header_bg.jpg);
 }
 
 #intro{
@@ -489,6 +490,8 @@ background:url(../img/footer_divider.gif) no-repeat center right;
 
 #popular_listings{
 	height:195px;
+	margin-left:10px;
+	margin-right:10px;
 }
 #new_biz{
 	margin-bottom:30px;

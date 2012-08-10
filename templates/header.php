@@ -138,6 +138,7 @@
 	
 	
 	</script>
+   
 <!-- Start Suggetion div -->
   
   <div id="suggestions_what" style="font-size:10px;font-weight:bold;"></div>
@@ -156,7 +157,7 @@
       <input type="text" class="input-large search-query" placeholder="Business Name or Category" name="q" id="q" value="<?php echo $what;?>">
       Where
       <input type="text" class="input-large search-query" placeholder="Location" name="city" id="city" value="<?php echo $where;?>">
-      <button type="submit" class="btn btn-primary" name="btnSearch" id="btnSearch">Search</button>
+      <button type="submit" class="btn btn-primary" name="btnSearch" id="btnSearch" onClick="">Search</button>
     </form>
     <div id="advanced_search" class="grid_6"> <a href="advanced_search.php">Advanced Search</a> </div>
   </div>

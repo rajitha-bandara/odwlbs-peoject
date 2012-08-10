@@ -1,10 +1,10 @@
 <?php 
 class Banner
 {
-	private $banerID;
+	private $bannerID;
 	private $userID;
-	private $businessID;
-	private $banerType;
+	private $listingID;
+	private $bannerType;
 	private $caption;
 	private $destination;
 	protected static $banner_table="lbs_biz_banners";
@@ -14,29 +14,35 @@ class Banner
 		
 	}
 	
-	public function setBannerInfo($banerType="",$caption="",$destination="",$businessID="",$userID="")
+	public function setListingId($lid="")
 	{
-		$this->banerType = $banerType;
+		$this->listingID = $lid;
+	}
+	public function getBannerId()
+	{
+		return $this->bannerID;
+	}
+	public function setBannerInfo($bannerType="",$caption="",$destination="")
+	{
+		$this->bannerType = $bannerType;
 		$this->caption = $caption;
 		$this->destination = $destination;
-		$this->businessID = $businessID;
-		$this->userID = $userID;
+		
 	}
 	
 	public function add()
 	{
 		global $gdbObj;
 		
-		$banerType   = $gdbObj-> escape_value($this->banerType);
+		$bannerType   = $gdbObj-> escape_value($this->bannerType);
 		$caption     = $gdbObj-> escape_value($this->caption);
 		$destination = $gdbObj-> escape_value($this->destination);
-		$businessID  = $gdbObj-> escape_value($this->businessID);
-		$userID  = $gdbObj-> escape_value($this->userID);
-		
-		$sql = "INSERT INTO ".self::$banner_table." (type,caption,url,biz_id,user_id) values('$banerType','$caption','$destination','$businessID','$userID')";
+		$listingID  = $gdbObj-> escape_value($this->listingID);
+				
+		$sql = "INSERT INTO ".self::$banner_table." (type,caption,url,biz_id) values('$bannerType','$caption','$destination','$listingID')";
 		if($gdbObj->query($sql))
 		{
-			$this->banerID = $gdbObj->insert_id();
+			$this->bannerID = $gdbObj->insert_id();
 			return true;
 		}
 		else

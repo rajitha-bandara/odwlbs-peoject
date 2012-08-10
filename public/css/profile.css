@@ -1,3 +1,7 @@
+body{
+	background-color:#FFF;
+	
+}
 #profile_left_col {
 	margin-left:10px;
 	margin-bottom:10px;
@@ -127,4 +131,58 @@
 #listing_overview li{
 	list-style:none;
 	color:#0F6;
+}
+
+<!--CSS for iedit pages-->
+#edit_profile_container{
+	margin:10px;
+	background-color:#FFF;
+	
+	height:auto;
+	
+}
+#edit_profile_container form{
+	overflow:auto;
+	margin-left:30px;
+}
+#edit_profile_container label{
+	
+	font-size:16px;
+}
+#edit_profile_item{
+	padding-left:5px;
+	margin-bottom:10px;
+	font-style:italic;
+	color:#CCC;
+}
+
+.red_star{
+	color:#F00;
+	font-weight:bold;
+	font-size:14px;
+	margin:2px;
+}
+
+#submit{
+	margin-top:15px;
+	margin-bottom:10px;
+}
+#submit button{
+	margin-right:40px;
+	
+}
+#response{
+	font-size:14px;
+}
+#social-form p{
+	color:#CCC;
+	font-size:10px;
+}
+#edit_profile_container #keyword_info ul li{
+	font-size:14px;
+	width:400px;
+}
+#list_keywords{
+	font-size:14px;
+	margin-left:5px;
 }

@@ -20,7 +20,7 @@
     <link href="public/css/presentationCycle.css" rel="stylesheet">
     <link href="public/css/ad.css" rel="stylesheet">
    	<link href="public/css/jquery.fancybox.css?v=2.0.6" rel="stylesheet">
-    
+    <link href="ratingfiles/ratings.css" rel="stylesheet">
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="public/js/html5.js"></script>
@@ -34,12 +34,20 @@
     
     
  	<script src="public/js/jquery.js"></script>
+    
     <script src="public/js/bpopup-0.6.0.min.js"></script>
-    <script src="public/js/functions.js"></script>
+    
     <script src="public/js/jquery.tabSlideOut.v1.3.js"></script>      
     <script src="public/js/jquery.cycle.all.min.js"></script>
 	<script src="public/js/presentationCycle.js"></script>  
-
+	<script src="ratingfiles/ratings.js"></script>
+    <script type="text/javascript">
+	$(document).ready(function(){
+ 	 setTimeout("getRtgsElm()", 88);  
+	});
+	</script>
+	<script src="public/js/functions.js"></script>
+	
      
      <script type="text/javascript">
         var emailEntered;
@@ -100,7 +108,7 @@
 	}
 
 	</style>
-  
+<?php require_once('includes/ga_property_id.php');?> 
 </head>
 
 <body>
@@ -122,7 +130,7 @@
   <div class="grid_6" id="right-col" style="background-color:#000;color:#FFF">
   <div id="find_near">Find near by</div>
   <form action="maps.php" method="post" target="_blank">
-  <select name="list_places_types" class="input-medium">
+  <select name="list_places_types" class="input-medium" id="list_places_types">
   <option value="airport">Airport</option>
   <option value="bank">Bank</option>
   <option value="casino">Casino</option>
@@ -134,7 +142,7 @@
   </select>
   <br>
   Distance(in miles)
-  <select name="list_raius" class="input-medium">
+  <select name="list_raius" class="input-medium" id="list_raius">
   <option value="5">5</option>
   <option value="10">10</option>
   <option value="15">15</option>
@@ -143,7 +151,7 @@
   <option value="30">30</option>
   </select>
   <br><br>
-  <button type="submit" class="btn btn-primary" name="btnPlaces" style="margin-bottom:35px;">Map It</button>
+  <button type="submit" class="btn btn-primary" name="btnPlaces" style="margin-bottom:35px;" onClick="track_find_near_places();">Map It</button>
   </form>
   <a id="map_places_more" href="maps.php" target="_blank">View more Places</a>
   </div>
@@ -153,7 +161,7 @@
   <div class="grid_17">
   <?php require_once('templates/featured_ads.php');?>
   <div class="clear"></div>
-  <?php require_once('templates/business_categories.php');?>
+  <?php require_once('templates/popular_biz.php');?>
   </div>
   
   <div class="grid_6" id="right-col">
@@ -222,6 +230,13 @@
    <script src="public/js/bootstrap/bootstrap-button.js"></script>
     <script type="text/javascript" src="public/js/jquery.mousewheel-3.0.6.pack.js"></script>
 	<script type="text/javascript" src="public/js/jquery.fancybox.js?v=2.0.6"></script>
-       
+<script type="text/javascript">
+  var uvOptions = {};
+  (function() {
+    var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+    uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/GFHX9zugpCB23PSqLy8Q.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+  })();
+</script>       
 </body>
 </html>

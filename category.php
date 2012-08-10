@@ -47,7 +47,7 @@ background:url(public/img/tick.png) no-repeat;
 background:url(public/img/cross.png) no-repeat;
 }
 </style>
-
+<?php require_once('includes/ga_property_id.php');?>
 </head>
 
 <body>

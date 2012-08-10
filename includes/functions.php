@@ -154,7 +154,7 @@ if($images != null)
   <div id='social_info' class='grid_17'>
   <div id='tags'>
   
-  <a class='email_popup' href='#' >
+  <a class='email_popup' href='mailto:' >
 <img src='public/img/social/email_small.png' title='Email this information' /></a>
 
   <a onClick=\"window.open('http://www.facebook.com/sharer.php?s=100&p[title]=$title on $domain_name &p[summary]=$summary&p[url]=$listing_url&&p[images][0]=$image','sharer','toolbar=0,status=0,width=548,height=325');\" href='javascript: void(0)'><img src='public/img/social/facebook_share_small.png' title='Share on Facebook' /></a>
@@ -173,6 +173,20 @@ if($images != null)
 	else
 		echo '<p class="posted">'.substr($description,0,100).'...</p>';*/
 	
+}
+
+/*
+ *  Format Popular listing in HTML
+ *  
+*/
+function formatPopularListing($bizId,$title)
+{
+	$safeTitle = makeURLSafe($title);
+	return 	"
+      <div class='grid_5' style='margin-right:20px;margin-bottom:20px;height=100px;'>
+		<div  style='height=40px;width=200px;'><a href='listing/$safeTitle-$bizId.html'>$title</a></div>
+		<div  style='height=60px;width=200px;'><div class='srtgs' id='rt_listing_$bizId'></div></div>
+		</div>";  	
 }
 
 /*
@@ -218,7 +232,7 @@ function formatCategory($catId,$name)
 	$category_url = "http://localhost/business_directory/$safeCat-$catId/";
 	//$category_url = SITE_URL."/$safeCat-$catId/";
 	return 	"
-	<li><a href='$category_url'>".$name."</a></li>";
+	<li><a href='$category_url' onclick=\"_gaq.push(['_trackEvent', 'Category', 'click', '$name']);\">".$name."</a></li>";
 
 }
 
@@ -233,7 +247,7 @@ function formatSubCategory($catId,$mainCat,$subCatId,$subCatName)
 	$category_url = "http://localhost/business_directory/$safeCat-$catId/$safeSubCat-$subCatId";
 	//$category_url = SITE_URL."/$safeCat-$catId/$safeSubCat-$subCatId";
 	return 	"
-	<li><a href='$category_url'>".$subCatName."</a></li>";
+	<li><a href='$category_url' onclick=\"_gaq.push(['_trackEvent', 'Listing Subcategory', 'click', '$subCatName']);\">".$subCatName."</a></li>";
 
 }
 
@@ -328,6 +342,15 @@ function getNearLatLong($lat,$lon,$radius)
 	$coords = array($lat_min,$lat_max,$lng_min,$lng_max);
 	return $coords;
 }
+
+function removeProtocol($url)
+{
+	$url=preg_replace("/(http:\/\/)/i",'',$url); 
+	$url=preg_replace("/(https:\/\/)/i",'',$url); 	
+	$url=preg_replace("/(ftp:\/\/)/i",'',$url);
+	return $url;
+}
+
 function resolvePlaceType($place_type)
 {
 	

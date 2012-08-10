@@ -15,7 +15,7 @@ if($isSetSession)
 	$logOptions_password = $_SESSION['auth_password'];
 	
 	$log_msg =  "Hi, ".$logOptions_username." ! 
-	<a href ='profile.php?pid=".$logOptions_id."'>My Profile</a>
+	<a href ='view_listings.php?id=".$logOptions_id."'>My Profile</a>
 	<a href ='includes/logout.php'>Log out</a> ";
 }
 else if($isSetCookie)
@@ -25,7 +25,7 @@ else if($isSetCookie)
 	$logOptions_password = $_COOKIE['auth_password'];
 	
 	$log_msg =  "Hi, ".$logOptions_username." ! 
-	<a href ='profile.php?pid=".$logOptions_id."'>My Profile</a>
+	<a href ='view_listings.php?id=".$logOptions_id."'>My Profile</a>
 	<a href ='includes/logout.php'>Log out</a> ";
 }
 else 

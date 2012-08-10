@@ -36,8 +36,13 @@ require_once(CLASS_PATH.DS.'ps_pagination.php');
 // load category classes
 require_once(CLASS_PATH.DS.'category.php');
 
+// load search classes
+require_once(CLASS_PATH.DS.'search.php');
+
 // check login status
 require_once(LIB_PATH.DS.'login_status.php');
 
 // process sign in form
-require_once(LIB_PATH.DS.'process_sign_in.php');?>
+require_once(LIB_PATH.DS.'process_sign_in.php');
+
+?>

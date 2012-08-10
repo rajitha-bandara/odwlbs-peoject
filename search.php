@@ -88,7 +88,8 @@ background:url(public/img/cross.png) no-repeat;
    <div id="main_wrapper" class="grid_17"><!--Begins main wrapper-->
   <div id="page_topic"><h1><?php echo $topic; ?></h1></div>
   
-  <div class="grid_17" style="min-height:500px;">  
+  <div class="grid_17" style="min-height:500px;"> 
+  
 	<?php 
 	
     //begins display search results

@@ -1,7 +1,7 @@
 <?php
 class Business
 {
-	private $businessID;
+	private $listingID;
 	private $userID;
 	private $title;
 	private $tagline;
@@ -11,6 +11,7 @@ class Business
 	private $web;
 	private $fb;
 	private $twitter;
+	private $linkedIn;
 	private $video;
 	private $email;
 	private $phone;
@@ -30,16 +31,18 @@ class Business
 	protected static $table_biz="lbs_biz";
 	protected static $table_contacts="lbs_biz_contacts";
 	protected static $table_location="lbs_biz_location";
+	protected static $table_social ="lbs_biz_social_links";
 	protected static $table_keywords="lbs_biz_keywords";
 	protected static $table_mainCategories="lbs_biz_main_categories";
 	protected static $table_subCategories="lbs_biz_sub_categories";
+	protected static $table_ratings="lbs_rtgitems";
 	
 	public function __construct()
 	{
 		
 	}
 	
-	public function setBizInfo($userID="",$title="",$tagline="",$category="",$subcategory="",$description="",$web="",$package="")
+	public function setBizInfo($userID="",$title="",$tagline="",$category="",$subcategory="",$description="",$web="")
 	{
 		$this->userID = $userID;
 		$this->title = $title;
@@ -48,10 +51,7 @@ class Business
 		$this->subCategory = $subcategory;
 		$this->description = $description;
 		$this->web = $web;
-		$this->package = $package;
-		/*$this->fb  = $fb;
-		$this->twitter = $twitter;
-		$this->video = $video;*/
+		
 	}
 	
 	public function setContactInfo($email="",$phone="",$fax="",$mobile="",$contactP="")
@@ -78,10 +78,11 @@ class Business
 		$this->keywords = $keywords;
 	}
 	
-	public function setSocialLinks($fb="",$twitter="",$videoChannel="")
+	public function setSocialLinks($fb="",$twitter="",$linkedIn="",$videoChannel="")
 	{
 		$this->fb = $fb;
 		$this->twitter = $twitter;
+		$this->linkedIn = $linkedIn;
 		$this->video = $videoChannel;
 	}
 	
@@ -95,9 +96,6 @@ class Business
 		$subCategory = $gdbObj-> escape_value($this->subCategory);
 		$description = $gdbObj-> escape_value($this->description);
 		$web         = $gdbObj-> escape_value($this->web);
-		/*$fb			 = $gdbObj-> escape_value($this->fb); 
-		$twitter 	 = $gdbObj-> escape_value($this->twitter);
-		$video		 = $gdbObj-> escape_value($this->video);*/   
 		$email		 = $gdbObj-> escape_value($this->email);
 		$phone 		 = $gdbObj-> escape_value($this->phone);
 		$fax		 = $gdbObj-> escape_value($this->fax);
@@ -140,14 +138,110 @@ class Business
 	
 	}
 	
-	public function update()
+	public function update($option="")
 	{
-	
+		global $gdbObj;
+		$listingID   = $gdbObj-> escape_value($this->listingID);
+		
+		   
+		
+		$keywords 	 = $gdbObj-> escape_value($this->keywords);
+		$package	 = $gdbObj-> escape_value($this->package);
+		
+		if($option == 1)
+		{
+			$title       = $gdbObj-> escape_value($this->title);
+			$tagline     = $gdbObj-> escape_value($this->tagline);
+			$category    = $gdbObj-> escape_value($this->category);
+			$subCategory = $gdbObj-> escape_value($this->subCategory);
+			$description = $gdbObj-> escape_value($this->description);
+			$web         = $gdbObj-> escape_value($this->web);
+		
+			$sql_biz = "UPDATE ".self::$table_biz." SET  title = '$title', tagline = '$tagline', main_category = '$category', sub_category = '$subCategory', description = '$description', url = '$web' WHERE biz_id = '$listingID'";
+			$gdbObj->query($sql_biz);
+			return true;
+		}
+		
+		else if($option == 2)
+		{
+			$email       = $gdbObj-> escape_value($this->email);
+			$phone       = $gdbObj-> escape_value($this->phone);
+			$fax    	 = $gdbObj-> escape_value($this->fax);
+			$mobile      = $gdbObj-> escape_value($this->mobile);
+			$contactP    = $gdbObj-> escape_value($this->contactP);
+					
+			$sql_biz = "UPDATE ".self::$table_contacts." SET  email = '$email', phone = '$phone', fax = '$fax', mobile = '$mobile', contact_person = '$contactP' WHERE biz_id = '$listingID'";
+			$gdbObj->query($sql_biz);
+			return true;
+		}
+		else if($option == 3)
+		{
+			$street 	 = $gdbObj-> escape_value($this->street);
+			$city 		 = $gdbObj-> escape_value($this->city);
+			$country 	 = $gdbObj-> escape_value($this->country);
+			$zip 		 = $gdbObj-> escape_value($this->zip);
+			$latitude 	 = $gdbObj-> escape_value($this->latitude);
+			$longitude 	 = $gdbObj-> escape_value($this->longitude);
+				
+			$sql_biz = "UPDATE ".self::$table_location." SET  street = '$street', city = '$city', country = '$country', zip_code = '$zip', latitude = '$latitude', longitude = '$longitude' WHERE biz_id = '$listingID'";
+			$gdbObj->query($sql_biz);
+			return true;
+		}
+		else if($option == 4)
+		{
+			$fb			 = $gdbObj-> escape_value($this->fb);
+			$twitter 	 = $gdbObj-> escape_value($this->twitter);
+			$linkedIn 	 = $gdbObj-> escape_value($this->linkedIn);
+			$video		 = $gdbObj-> escape_value($this->video);
+			
+			$sql_biz = "UPDATE ".self::$table_social." SET  facebook = '$fb', twitter = '$twitter', linkedin = '$linkedIn', video_channel = '$video' WHERE biz_id = '$listingID'";
+			$gdbObj->query($sql_biz);
+			return true;
+		}
+		else if($option == 5)
+		{
+			$keywords			 = $gdbObj-> escape_value($this->keywords);
+			
+				
+			$sql_biz = "UPDATE ".self::$table_keywords." SET  keyword = '$keywords' WHERE biz_id = '$listingID'";
+			$gdbObj->query($sql_biz);
+			return true;
+		}
 	}
 	
 	public function delete()
 	{
 	
+	}
+	
+	public function setListingId($lid="")
+	{
+		$this->listingID = $lid;
+	}
+	
+	public function fetchPopularListings()
+	{
+		global $gdbObj;
+		$sql = "SELECT b.biz_id,b.title FROM ".self::$table_biz." b, ".self::$table_ratings ." r WHERE b.biz_id= r.biz_id ORDER BY r.totalrate DESC LIMIT 6";
+		$resut = $gdbObj->query($sql);
+	
+		$existCount = $gdbObj->num_rows($resut);
+		if ($existCount < 1)
+		{
+			return false;
+		}
+		else
+		{
+			$counter = 1;
+			while($row = mysql_fetch_array($resut))
+			{
+				$bizId = $row[0];
+				$title = $row[1];
+				$results.= formatPopularListing($bizId,$title);
+				$counter++;
+			}
+			return $results;
+		}
 	}
 	
 	public function fetchListingsByUser($userId)
@@ -270,6 +364,10 @@ class Business
 	return $outPkg;
 	}
 	
+	public function setPkg($pkg="")
+	{
+		$this->package = $pkg;
+	}
 	public function getStatus($st="")
 	{
 		$status="";

@@ -363,3 +363,47 @@ function bookmark(url, sitename)
     alert(ns);
   }
 }
+
+///////////////////Track Search Near Places////////////////
+function track_find_near_places()
+{
+	
+	var place = document.getElementById('list_places_types').value;
+	var dist  = document.getElementById('list_raius').value;
+	var place_dist = place +'_'+ dist;
+	_gaq.push(['_trackEvent', 'near_place', 'select', place_dist]);
+	
+}
+
+
+///////////////////Track Search Near Places More////////////////
+function track_find_near_places_more()
+{
+	var place = document.getElementById('rbPlaceType').value;
+	var dist  = document.getElementById('list_raius').value;
+	var place_dist = place +'_'+ dist;
+	_gaq.push(['_trackEvent', 'near_place', 'select', place_dist]);
+	
+}
+
+///////////////////Track Search Terms////////////////
+function track_search()
+{
+	var what = document.getElementById('q').value;
+	var where  = document.getElementById('city').value;
+	var what_where = what +'_'+ where;
+	
+	///_gaq.push(['_trackEvent', 'search_terms', 'search', what_where]);
+	
+	 $.ajax({
+            url: 'includes/ajax.php',
+            type: 'POST',
+            data: 'action=search&what='+ what +'&where='+ where,
+            success: function(ret) {
+              
+            }
+        });
+	
+}
+
+//////////////////////////////////////////////////////

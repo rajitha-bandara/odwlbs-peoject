@@ -98,6 +98,23 @@ require_once('includes/init.php');
 		<a class="fancybox-thumbs" data-fancybox-group="thumb" href="2_b.jpg"><img src="2_s.jpg" alt="" /></a>
 
 		<a class="fancybox-thumbs" data-fancybox-group="thumb" href="1_b.jpg"><img src="1_s.jpg" alt="" /></a>
+        
+        <?php
+		$str="ftp://anything.com";
+ 	 $str=preg_replace("/(http:\/\/)/i",'',$str); 
+	 $str=preg_replace("/(https:\/\/)/i",'',$str); 	
+	 $str=preg_replace("/(ftp:\/\/)/i",'',$str);
+	 
+	 echo $str;
+	 
+	 $url = "http://www.google.lk";
+	  $parse = parse_url($url);
+  if($parse['scheme'] == 'https')
+   {
+  $url = str_replace('https','http',$url,1);
+}   
+echo $url;
+		?>
 	
 </body>
 </html>

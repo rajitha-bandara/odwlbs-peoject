@@ -9,7 +9,8 @@
 <title><?php echo $title ." - ". DOMAIN_NAME;?></title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
+<meta name="description" content="<?php echo $meta_description;?>">
+<meta name="keywords" content="<?php echo $keywords;?>">
 <meta name="author" content="">
 <meta itemprop="name" content="<?php echo $title ." - ". DOMAIN_NAME;?>">
 <meta itemprop="description" content="">
@@ -156,7 +157,7 @@ $(document).ready(function() {
     <div id="listing_wrapper" class="grid_17">
       <!--Begins listing wrapper-->
       <div class="grid_17" id="listing_share_bar">
-        <div id="share_out" class="grid_13"> <a class='email_popup' href='#' > <img src='public/img/social/email_small.png' title='Email this information' /></a> <a onClick=\"window.open('http://www.facebook.com/sharer.php?s=100&p[title]=$title on $domain_name &p[summary]=$summary&p[url]=$listing_url&&p[images][0]=$image','sharer','toolbar=0,status=0,width=548,height=325');\" href='javascript: void(0)'><img src='public/img/social/facebook_share_small.png' title='Share on Facebook' /></a> <a href='http://twitter.com/share?text=$summary&url=$listing_url' target='_blank'> <img src='public/img/social/twitter_share_small.png' title='Share on Twitter' /></a>  </div>
+        <div id="share_out" class="grid_13"> <a class='email_popup' href='mailto:' > <img src='public/img/social/email_small.png' title='Email this information' /></a> <a onClick=\"window.open('http://www.facebook.com/sharer.php?s=100&p[title]=$title on $domain_name &p[summary]=$summary&p[url]=$listing_url&&p[images][0]=$image','sharer','toolbar=0,status=0,width=548,height=325');\" href='javascript: void(0)'><img src='public/img/social/facebook_share_small.png' title='Share on Facebook' /></a> <a href='http://twitter.com/share?text=$summary&url=$listing_url' target='_blank'> <img src='public/img/social/twitter_share_small.png' title='Share on Twitter' /></a>  </div>
         
         <div id="share_in" class="grid_3"> 
         <a href="javascript:bookmark('window.location.href','<?php echo $title;?>, - <?php echo DOMAIN_NAME;?>');"><img src="public/img/social/bookmark.png" width="16" height="16" alt="Add to Bookmarks" title="Bookmark"></a>

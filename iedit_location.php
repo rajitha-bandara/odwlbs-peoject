@@ -1,268 +1,96 @@
 <?php @session_start();?>
-<?php require_once('includes/init.php');?>
-<?php require_once('includes/process_add_listings.php');?>
-<?php
-$flagAccountType = 0;
+<?php 
+if ($_GET['lid']) {
+	
+     $lid = $_GET['lid'];
+
+} 
+else {
+	
+   	 $page_topic = "Page Not Found";
+	 $msgToUser = "The requested page can not be found.";
+	 echo "<h3>".$page_topic."</h3>";
+	 echo "<h4>".$msgToUser."</h4>";
+   	 exit();
+}
 ?>
+<?php
+require_once('includes/init.php');
+require_once('includes/process_edit_listings.php');
+?>
+
+<?php
+$street	  	 = "";
+$city	  	 = "";
+$country	 = "";
+$zip	  	 = "";
+$latitude	 = "";
+$longitude	 = "";
+
+$lid = mysql_real_escape_string($lid);
+$lid = eregi_replace("`", "", $lid);
+$sql = mysql_query("SELECT * FROM lbs_biz WHERE biz_id = '$lid' ");
+// Make sure this listing actually exists
+$existCount = mysql_num_rows($sql);
+ if ($existCount < 1) 
+{
+	 $page_topic = "Unrecognized Listing!";
+	 $msgToUser = "The listing you are trying to access does not exist.";
+	 echo "<h3>".$page_topic."</h3>";
+	 echo "<h4>".$msgToUser."</h4>";
+	 exit();
+}
+
+$sql = "SELECT b.title AS title,l.street AS street, l.city AS city, l.country AS country, l.zip_code AS zip_code, l.latitude  AS latitude, l.longitude AS longitude  FROM lbs_biz b, lbs_biz_location l WHERE b.biz_id = '$lid' AND b.biz_id = l.biz_id";
+		
+$result = mysql_query($sql);
+while($row = mysql_fetch_array($result))
+{
+	$title  = $row['title'];
+	$street = $row['street'];
+	$city = $row['city'];
+	$country = $row['country'];
+	$zip = $row['zip_code'];
+	$latitude = $row['latitude'];
+	$longitude = $row['longitude'];
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Places.com :: Add your Listing</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-     <!-- Le styles -->
-    <link href="public/css/bootstrap.css" rel="stylesheet">
-    <link href="public/css/bootstrap.min.css" rel="stylesheet">
-    <link href="public/css/960_24_col.css" rel="stylesheet">
-    <link href="public/css/reset.css" rel="stylesheet">
-    <link href="public/css/style.css" rel="stylesheet">
-	<link href="public/css/ad.css" rel="stylesheet"> 
-    
-   
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="public/js/html5.js"></script>
-      <link rel="stylesheet" href="public/css/ie-csss3.htc" type="text/css" media="screen">
-    <![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-    <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="public/icons/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="">
-    <link rel="apple-touch-icon-precomposed" href="">
-    
-    <script src="public/js/jquery.js"></script>
-   <script src="public/js/bpopup-0.6.0.min.js"></script>
-	<script src="public/js/bootstrap/bootstrap-tab.js"></script>
-	<script src="public/js/functions.js"></script>
-	
-    <style type="text/css">
-   .response-waiting {
-	background:url(public/img/loading_small.gif) no-repeat;
-	}
+<link href="public/css/bootstrap.css" rel="stylesheet">
+<link href="public/css/bootstrap.min.css" rel="stylesheet">
+<link href="public/css/960_24_col.css" rel="stylesheet">
+<link href="public/css/profile.css" rel="stylesheet">
 
-	.response-success {
-	background:url(public/img/tick.png) no-repeat;
-	}
+<script src="public/js/jquery.js"></script>
+<script src="public/js/functions.js"></script>
 
-	.response-error {
-	background:url(public/img/cross.png) no-repeat;
-	}
+<style type="text/css">
+
 </style>
 
 <script type="text/javascript">
-function toggleAlert() {
-<?php
-/*global  $guserObj;//Add a reference to User class
-$userAccountType = $guserObj-> getUserAccountType($logOptions_id);
-if(!($userAccountType == 1 || $userAccountType == 2))
-{
-	echo "toggleDisabled(document.getElementById('packInfo'))";
-	$flagAccountType = 0;
-}
-else
-{
-	$flagAccountType = 1;
-}*/
-
-	if($requested_pkg == "silver" || $requested_pkg == "gold")
-	{
-		$flagAccountType = 1;
-	}
-	else
-	{
-		echo "toggleDisabled(document.getElementById('packInfo'))";
-		$flagAccountType = 0;
-	}
-
-
-?>
-
-}
-
-function toggleDisabled(el) {
-try {
-el.disabled = el.disabled ? false : true;
-}
-catch(E){
-}
-if (el.childNodes && el.childNodes.length > 0) {
-for (var x = 0; x < el.childNodes.length; x++) {
-toggleDisabled(el.childNodes[x]);
-}
-}
-}
-
 
 </script>
-
 </head>
 
-<body onLoad="toggleAlert()">
-<div class="container_24" id="container">
-  <?php require_once('templates/top-nav-bar.php');?>
-  
-  <?php require_once('templates/header.php');?>
-  
-  <?php require_once('templates/linkbar.html');?>
-  
- 
-   
- 
-  
-  <div class="grid_24">
-  <div id="page_body" class="grid_24" style="width:935px;padding-bottom:150px;">
+<body>
 
-  <div id="page_topic"><h1>Create Listing</h1></div>
-  <div  class="alert alert-success" id="biz_info">
-   <h3>Business listing:</h3>
-	<ul>
-    <li id="biz_info_list_item">To maintain the quality and value of our business listings, we review every listing request. Final determination on 	whether a listing is accepted is made at our sole discretion.</li>
-    <li id="biz_info_list_item">We do not accept businesses that are Warez, illegal, Gambling, Adult/Pornography, Drugs/Pharmacy, Retail tobacco, Alcoholic drinks related, Multi-Level Marketing sites or inappropriate. </li>
-     <li id="biz_info_list_item">None English sites are allowed, but the description of the submission should be in English. </li>
-     <li id="biz_info_list_item">The Publisher reserves the right to edit each listing according to established editorial guidelines.</li>
-    </ul>
+<div id="edit_profile_container">
+<h3 id="profile_page_topic"><?php echo $title;?></h3>
+<h4 id="edit_profile_item"> - Location Info</h4>
+<div  id="response">
+  <?php echo $msg;?>
+  
   </div>
   
-  <div  id="response">
-  <?php echo $msg;?>
-  </div>
-  <div id="add_biz_content" style="margin-top:50px;margin-bottom:100px;"> <!--Begins Add Listing section-->
-  <form action="" method="post" enctype="multipart/form-data" name="listing-form" class="form-horizontal" onSubmit="map_geocode( this.address.value ); return false;">
-<div id="content" class="grid_17">
-        <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-            <li class="active"><a href="#bizInfo" data-toggle="tab" id="tab_link">Listing Info</a></li>
-            <li><a href="#contactInfo" data-toggle="tab" style="" id="tab_link">Contacts</a></li>
-            <li><a href="#locInfo" data-toggle="tab" id="tab_link">Location</a></li>
-            <li><a href="#metaInfo" data-toggle="tab" id="tab_link">Meta Data</a></li>
-            <li><a href="#packInfo" data-toggle="tab" id="tab_link">Banner Options</a></li>
-            <li><a href="#confirm" data-toggle="tab" id="tab_link">Confirm</a></li>
-        </ul>
-        <div id="my-tab-content" class="tab-content">
-        
-            <div class="tab-pane active" id="bizInfo">
-                <div class="control-group">
-            <label class="control-label" for="input01"><span class="red_star">*</span>Listing Title</label>
-            <div class="controls">
-              <input type="text" class="input-xlarge" id="input01" name="txtTitle" value="<?php echo $title;?>">
-            </div>
-          </div>
-          
-          <div class="control-group">
-            <label class="control-label" for="input02"><span class="red_star">&nbsp;</span>Logo</label>
-            <div class="controls">
-              <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
-              <input type="file" name="file_upload" id="fileLogo" class="input-xlarge" />
-               <p class="help-block">Maximum file size: 500 KB. Allowed extensions: png gif jpg jpeg</p>
-            </div>
-            
-          </div>
-          
-          <div class="control-group">
-            <label class="control-label" for="input03"><span class="red_star">*</span>Tagline</label>
-            <div class="controls">
-              <input type="text" class="input-xlarge" id="input03" name="txtTagline" value="<?php echo $tagline;?>">
-             
-            </div>
-          </div>
-          
-          <div class="control-group">
-            <label class="control-label" for="input04"><span class="red_star">*</span>Category</label>
-            <div class="controls">
-              
-              <select name="listCategory"  id="search_category_id" class="input-xlarge">
-		<option value="" selected="selected"></option>
-		<?php
-		$query = "select * from lbs_biz_main_categories ";
-		$results = mysql_query($query);
-		
-		while ($rows = mysql_fetch_assoc(@$results))
-		{?>
-			<option value="<?php echo $rows['main_category_id'];?>"><?php echo $rows['name'];?></option>
-		<?php
-		}?>
-		</select>
-      </div><!--End of Main category control-->
-       </div>
-       
-         <div class="control-group">
-         <label class="control-label" for="input03" id="show_heading"><span class="red_star">*</span>Sub Category</label>
-         <div class="controls" >
-         	<div id="show_sub_categories">
-			<img src="public/img/loader.gif" style="margin-top:8px; float:left" id="loader" alt="" />
-            
-		</div>
-         </div>
-         </div>
-        
-           <div class="control-group">
-            <label class="control-label" for="input05"><span class="red_star">&nbsp;</span>Description</label>
-            <div class="controls">
-              <textarea name="txtDes" id="textarea" cols="45" rows="5" class="input-xlarge"></textarea>
-            </div>
-          </div>
-          
-                    
-           <div class="control-group">
-              <label class="control-label" for="input05"><span class="red_star">&nbsp;</span>Web Site</label>
-              <div class="controls">
-              
-              <select name="listUrlProtocol" style="width:80px;">
-              <option value="http://">http://</option>
-              <option value="https://">https://</option>
-              </select>
-              <input type="text" class="input-large" id="input06" name="txtWeb" value="<?php echo $web;?>">
-                 </div>
-            </div>
-            
-            
-          
-            </div><!--End bizInfo tab pane-->
-            
-            <div class="tab-pane" id="contactInfo">
-            
-            <div class="control-group">
-              <label class="control-label" for="input05"><span class="red_star">*</span>Email</label>
-              <div class="controls">
-                 <input type="text" class="input-xlarge" id="txtEmail" name="txtEmail" value="<?php echo $email;?>">
-              </div>
-            </div>
-            
-            <div class="control-group">
-              <label class="control-label" for="input05"><span class="red_star">*</span>Phone Number</label>
-              <div class="controls">
-                 <input type="text" class="input-xlarge" id="txtPhone" name="txtPhone" value="<?php echo $phone;?>" >
-              </div>
-            </div>
-            
-             <div class="control-group">
-              <label class="control-label" for="input05"><span class="red_star">&nbsp;</span>Fax Number</label>
-              <div class="controls">
-                 <input type="text" class="input-xlarge" id="txtFax" name="txtFax" value="<?php echo $fax;?>">
-              </div>
-            </div>
-            
-            <div class="control-group">
-              <label class="control-label" for="input05"><span class="red_star">&nbsp;</span>Mobile</label>
-              <div class="controls">
-                 <input type="text" class="input-xlarge" id="txtMobile" name="txtMobile" value="<?php echo $mobile;?>">
-              </div>
-            </div>
-            
-            <div class="control-group">
-              <label class="control-label" for="input05"><span class="red_star">*</span>Contact Person</label>
-              <div class="controls">
-                 <input type="text" class="input-xlarge" id="txtContactP" name="txtContactP" value="<?php echo $contactP;?>">
-              </div>
-            </div>
-            
-            </div><!--End of contactInfo tab pae-->
-            
-            <div class="tab-pane" id="locInfo">
-            
-                <div class="control-group">
+<form action="" method="post"  name="listing-form" class="form-inline" onSubmit="map_geocode( this.address.value ); return false;">
+			<div class="control-group">
               <label class="control-label" for="input05"><span class="red_star">*</span>Street</label>
               <div class="controls">
                  <input type="text" class="input-xlarge" id="txtStreet" name="txtStreet" value="<?php echo $street;?>">
@@ -280,8 +108,8 @@ toggleDisabled(el.childNodes[x]);
               <label class="control-label" for="input05"><span class="red_star">*</span>State/Country</label>
               <div class="controls">
                  <select name="listCountry" class="input-xlarge" id="">
-                 <option value="">Please select</option>
-                 <option value="Afghanistan">Afghanistan</option>
+                 <option value="<?php echo $country;?>"><?php echo $country;?></option>
+                <option value="Afghanistan">Afghanistan</option>
                 <option value="Åland Islands">Åland Islands</option>
                 <option value="Albania">Albania</option>
                 <option value="Algeria">Algeria</option>
@@ -525,7 +353,6 @@ toggleDisabled(el.childNodes[x]);
                 <option value="Yemen">Yemen</option>
                 <option value="Zambia">Zambia</option>
                 <option value="Zimbabwe">Zimbabwe</option>
-                 <option value="xx">Other</option>
                  </select>
               </div>
             </div>
@@ -554,122 +381,25 @@ toggleDisabled(el.childNodes[x]);
               </div>
             </div>
             
-            </div><!--End of locInfo tab pae-->
-            
-            <div class="tab-pane" id="metaInfo">
-                <div class="control-group">
-              <label class="control-label" for="input05">Enter Keywords separated by comma</label>
-              <div class="controls">
-                 <input type="text" class="input-xlarge" id="txtKeywords" name="txtKeywords" value="<?php echo $keywords;?>">
-              </div>
-            </div>
-            
-            </div><!--End of meta data tab pae-->
-            
-            <div class="tab-pane" id="packInfo">
+            <br><br>
+            <div class="control-group">
            
-            <div class="control-group">
-              <label class="control-label" for="input05">Display Location</label>
-              <div class="controls">
-                 <select name="listType" class="input-xlarge">
-                 <option value="">-- Select a Type --</option>
-					<option value="1" selected="selected">Top (468px x 60px)</option>
-					<option value="2" >Bottom (468px x 60px)</option>
-					<option value="3" >Featured (180px x 150px)</option>
-					<option value="50" >Sponsored Links (180px x 100px)</option>
-                 </select>
-              </div>
-            </div>
-            
-                  <div class="control-group">
-              <label class="control-label" for="input05">Caption</label>
-              <div class="controls">
-                 <input type="text" class="input-xlarge" id="txtCaption" name="txtCaption" value="<?php echo $caption;?>">
-              </div>
-            </div>
-            
-            <div class="control-group">
-            <label class="control-label" for="input02">Image</label>
             <div class="controls">
-              <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
-              <input type="file" name="banner_upload" id="banner_upload" class="input-xlarge" />
-               <p class="help-block">Maximum file size: 500 KB. Allowed extensions: png gif jpg jpeg</p>
-            </div>
-            </div>
-                       
-             <div class="control-group">
-              <label class="control-label" for="input05">Destination URL</label>
-              <div class="controls">
-             
-              <select name="listAdUrlProtocol" style="width:80px;">
-              <option value="http://">http://</option>
-              <option value="https://">https://</option>
-              </select>
-              <input type="text" class="input-large" id="input06" name="txtDestination" value="<?php echo $destination;?>">
-              </div>
+            <div id="submit">
+            
+            <button class="btn btn-primary" name="btnEditLocation">Update</button>
+                      
+            <button class="btn btn-primary" onClick="ClearListing(1)">Cancel</button>
+            
             </div>
             
-             <div class="control-group">
-             <h3><b><?php 
-			 if($flagAccountType==0)
-			 {
-				 echo "Free listing plan does not allow to display advertidements. Register for a premium plan and put an advertisement for your valuable product/business.";
-			 }
-			 ?></b></h3>
-             
-             </div>
-            
-            </div><!--End of packages tab pane-->
-            
-            <div class="tab-pane" id="confirm">
-            
-           <div id="accept" style="margin-top:100px;">
-            <input type="checkbox" name="cbAccept" value="<?php echo $isAccepted;?>"> I have read and accept  <?php echo DOMAIN_NAME;?> <a href="terms.php"> Terms and Conditions</a>
             </div>
-            <div id="submit" style="margin-left:200px;margin-top:50px;margin-bottom:50px;">
-            <button class="btn btn-primary" name="btnSave">Save</button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button class="btn btn-primary">Cancel</button>
-            </div>
+          </div>
             
-            
-            </div><!--End of confirm tab pane-->
-            
-           <div class="clear"></div>
-            
-        </div> <!--End of Business Content-->
-  </div> <!--End of Page Content-->
-    
- <script type="text/javascript">
-        jQuery(document).ready(function ($) {
-            $(".#tabs").tabs();
-        });
-    </script>
 </form>
-  </div>
-  </div><!--End of Add Listing section-->
- </div>
-  
-  
-  
-  <div class="clear"></div>
- 
-  <?php require_once('templates/footer.php');?>
-
 </div>
-<?php require_once('templates/popup_login.php');?>
 
-<!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    
-    <script src="public/js/livevalidation.js"></script>
-    <script src="public/js/bootstrap/bootstrap-button.js"></script>
-    <script src="public/js/bootstrap/bootstrap-alert.js"></script>
-    
-    
-
-
-    
+<script src="public/js/bootstrap/bootstrap-button.js"></script>
+<script src="public/js/bootstrap/bootstrap-alert.js"></script>
 </body>
 </html>

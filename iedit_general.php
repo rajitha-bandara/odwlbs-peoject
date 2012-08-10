@@ -16,32 +16,19 @@ else {
 ?>
 <?php
 require_once('includes/init.php');
+require_once('includes/process_edit_listings.php');
 ?>
 
 <?php
 $title = "";
 $tagline = "";
+$mainCatId = "";
 $mainCategory = "";
 $subCategory = "";
 $description= "";
 $web = "";
 $logo = "";
 
-$email = "";
-$phone = "";
-$fax = "";
-$mobile = "";
-$contactPerson = "";
-
-
-$street = "";
-$city = "";
-$country = "";
-$zipcode = "";
-$latitude = "";
-$longitude = "";
-
-$keywords= "";
 
 $lid = mysql_real_escape_string($lid);
 $lid = eregi_replace("`", "", $lid);
@@ -57,7 +44,7 @@ $existCount = mysql_num_rows($sql);
 	 exit();
 }
 
-$sql = "SELECT b.title AS title,b.tagline AS tagline, b.description AS des, b.url AS url, m.name AS mainCat, s.name AS subCat, c.email AS email, c.phone AS phone, c.fax AS fax, c.mobile AS mobile, c.contact_person AS contactP, l.street AS street, l.city AS city, l.country AS country, l.zip_code AS zip,l.latitude AS lat,l.longitude AS lon,k.keyword AS keywords FROM lbs_biz b, lbs_biz_contacts c, lbs_biz_location l, lbs_biz_main_categories m, lbs_biz_sub_categories s, lbs_biz_keywords k WHERE b.biz_id = '$lid' AND b.biz_id = c.biz_id AND b.biz_id = l.biz_id AND b.biz_id = k.biz_id AND b.main_category = m.main_category_id AND b.sub_category = s.sub_category_id";
+$sql = "SELECT b.title AS title,b.tagline AS tagline,b.main_category AS mainCatId, b.description AS des, b.url AS url, m.name AS mainCat, s.name AS subCat FROM lbs_biz b, lbs_biz_main_categories m, lbs_biz_sub_categories s WHERE b.biz_id = '$lid' AND b.main_category = m.main_category_id AND b.sub_category = s.sub_category_id";
 		
 $result = mysql_query($sql);
 while($row = mysql_fetch_array($result))
@@ -66,23 +53,12 @@ while($row = mysql_fetch_array($result))
 	$tagline = $row['tagline'];
 	$description= $row['des'];
 	$web = $row['url'];
+	$web = removeProtocol($web);
+	$mainCatId = $row['mainCatId'];
 	$mainCategory = $row['mainCat'];
 	$subCategory = $row['subCat'];
 		
-	$email = $row['email'];
-	$phone = $row['phone'];
-	$fax = $row['fax'];
-	$mobile = $row['mobile'];
-	$contactPerson = $row['contactP'];
 	
-	$street = $row['street'];
-	$city = $row['city'];
-	$country = $row['country'];
-	$zipcode = $row['zip'];
-	$latitude = $row['lat'];
-	$longitude = $row['lon'];
-	
-	$keywords= $row['keywords'];
 	
 }
 $images = array();
@@ -102,18 +78,50 @@ if($images != null)
 
 <link href="public/css/bootstrap.css" rel="stylesheet">
 <link href="public/css/bootstrap.min.css" rel="stylesheet">
+<link href="public/css/960_24_col.css" rel="stylesheet">
+<link href="public/css/profile.css" rel="stylesheet">
+
+<script src="public/js/jquery.js"></script>
+<script src="public/js/functions.js"></script>
 
 <style type="text/css">
-body{
-	background-color:#FFF;
+#hover_image {
+position:absolute;
+visibility:hidden;
+border:solid 3px #000;
+padding:7px;
+background-color:#000;
 }
 </style>
+
+<script type="text/javascript">
+function ShowPicture(id,Source) {
+if (Source=="1"){
+if (document.layers) document.layers[''+id+''].visibility = "show"
+else if (document.all) document.all[''+id+''].style.visibility = "visible"
+else if (document.getElementById) document.getElementById(''+id+'').style.visibility = "visible"
+}
+else
+if (Source=="0"){
+if (document.layers) document.layers[''+id+''].visibility = "hide"
+else if (document.all) document.all[''+id+''].style.visibility = "hidden"
+else if (document.getElementById) document.getElementById(''+id+'').style.visibility = "hidden"
+}
+}
+</script>
 </head>
 
 <body>
 
-<div>
-<form action="" method="post" enctype="multipart/form-data" name="listing-form" class="form-horizontal" onSubmit="map_geocode( this.address.value ); return false;">
+<div id="edit_profile_container">
+<h3 id="profile_page_topic"><?php echo $title;?></h3>
+<h4 id="edit_profile_item"> - Genral Info</h4>
+<div  id="response">
+  <?php echo $msg;?>
+  
+  </div>
+  
+<form action="" method="post" enctype="multipart/form-data" name="listing-form" class="form-inline">
 <div class="control-group">
             <label class="control-label" for="input01"><span class="red_star">*</span>Business Title</label>
             <div class="controls">
@@ -123,6 +131,8 @@ body{
           
           <div class="control-group">
             <label class="control-label" for="input02"><span class="red_star">&nbsp;</span>Logo</label>
+            <a href="#" onMouseOver="ShowPicture('hover_image',1)" onMouseOut="ShowPicture('hover_image',0)">View Logo</a>
+<div id="hover_image"><?php echo $logo;?></div>
             <div class="controls">
               <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
               <input type="file" name="file_upload" id="fileLogo" class="input-xlarge" />
@@ -144,14 +154,15 @@ body{
             <div class="controls">
               
               <select name="listCategory"  id="search_category_id" class="input-xlarge">
-		<option value="" selected="selected"></option>
+		<option value="<?php echo $mainCatId;?>" selected="selected"><?php echo $mainCategory;?></option>
 		<?php
 		$query = "select * from lbs_biz_main_categories ";
 		$results = mysql_query($query);
 		
 		while ($rows = mysql_fetch_assoc(@$results))
 		{?>
-			<option value="<?php echo $rows['main_category_id'];?>"><?php echo $rows['name'];?></option>
+        	
+			<option value="<?php echo $mainCatId;?>"><?php echo $rows['name'];?></option>
 		<?php
 		}?>
 		</select>
@@ -171,7 +182,7 @@ body{
            <div class="control-group">
             <label class="control-label" for="input05"><span class="red_star">&nbsp;</span>Business Description</label>
             <div class="controls">
-              <textarea name="txtDes" id="textarea" cols="45" rows="5" class="input-xlarge"></textarea>
+              <textarea name="txtDes" id="textarea" cols="45" rows="4" class="input-xlarge"><?php echo $description;?></textarea>
             </div>
           </div>
           
@@ -188,7 +199,24 @@ body{
                  </div>
             </div>
             
+            <div class="control-group">
+           
+            <div class="controls">
+            <div id="submit">
+            
+            <button class="btn btn-primary" name="btnEditGeneral">Update</button>
+                      
+            <button class="btn btn-primary" onClick="ClearListing(1)">Cancel</button>
+            
+            </div>
+            
+            </div>
+          </div>
+            
 </form>
 </div>
+
+<script src="public/js/bootstrap/bootstrap-button.js"></script>
+<script src="public/js/bootstrap/bootstrap-alert.js"></script>
 </body>
 </html>

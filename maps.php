@@ -144,6 +144,8 @@ background:url(public/img/cross.png) no-repeat;
 $("#txtPlaceType").autocomplete(data);
   });
   </script>
+  
+  <?php require_once('includes/ga_property_id.php');?> 
 </head>
 
 <body>
@@ -220,7 +222,7 @@ $("#txtPlaceType").autocomplete(data);
   <option value="30">30</option>
   </select>
   <br>
-  <button type="submit" class="btn btn-primary" name="btnPlacesMore" style="margin-bottom:23px;">Map It</button>
+  <button type="submit" class="btn btn-primary" name="btnPlacesMore" style="margin-bottom:23px;" onClick="track_find_near_places_more()">Map It</button>
   </form>
   </div>
    

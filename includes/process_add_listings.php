@@ -190,13 +190,15 @@ if(isset($_POST['btnSave']))
 	}
 	else
 	{
-		$package = getPkg($requested_pkg);
-				
 		$gbizObj = new Business();
-		$gbizObj->setBizInfo($id,$title,$tagline,$category,$subCategory,$description,$listingUrl,$package);
+		$package = $gbizObj->getPkg($requested_pkg);
+				
+		
+		$gbizObj->setBizInfo($id,$title,$tagline,$category,$subCategory,$description,$listingUrl);
 		$gbizObj->setContactInfo($email,$phone,$fax,$mobile,$contactP);
 		$gbizObj->setLocationInfo($street,$city,$country,$zip,$latitude,$longitude);
 		$gbizObj->setKeywordInfo($keywords);
+		$gbizObj->setPkg($package);
 		
 		$result = $gbizObj->add();// Cause insert a new business record in to the database
 		if($result)
@@ -226,6 +228,9 @@ if(isset($_POST['btnSave']))
 			$renamedFile = "ad_".$bannerId."".$extension;
 			$upload_dir = "biz/$bizId";
 			move_uploaded_file($tmp_file, $upload_dir."/".$renamedFile);
+			
+			//create directory for product samples,photos
+			mkdir(SITE_ROOT."/biz/$bizId/photo", 0755);
 			
 			/*//upload product sample 
 			$tmp_file = $_FILES['sample_upload']['tmp_name'];

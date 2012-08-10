@@ -134,7 +134,8 @@ class Rating {
 
   // insert /update rating item in #rtgitems, delete rows in $rtgusers which are not from today, insert $rater in $rtgusers
   protected function setRtgDb($items, $rate, $rtgstdy) {
-    $this->sqlExecute("INSERT INTO `$this->rtgitems` (`item`, `totalrate`) VALUES ('".$items[0]."', $rate) ON DUPLICATE KEY UPDATE `totalrate`=`totalrate`+$rate, `nrrates`=`nrrates`+1");
+	  $arr = split('rt_listing_',$items[0]);
+    $this->sqlExecute("INSERT INTO `$this->rtgitems` (`biz_id`,`item`, `totalrate`) VALUES ('".$arr[1]."','".$items[0]."', $rate) ON DUPLICATE KEY UPDATE `totalrate`=`totalrate`+$rate, `nrrates`=`nrrates`+1");
 
     $this->sqlExecute("DELETE FROM `$this->rtgusers` WHERE `day`!=$this->tdy");
 
