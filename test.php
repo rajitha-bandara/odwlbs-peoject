@@ -1,57 +1,57 @@
+<?php
+
+	//$opt = $_POST['opt'];
+	
+
+?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
-<link href="public/css/bootstrap.css" rel="stylesheet">
-    
+<link rel="stylesheet" href="public/css/jquery.fancybox.css?v=2.1.0">
 <script type="text/javascript" src="public/js/jquery.js"></script>
-
+<script type="text/javascript" src="public/js/jquery.fancybox.js?v=2.1.0"></script>
 
 <script type="text/javascript">
-    function track_search()
-{
+$(document).ready(function() {
+  $("#link1").fancybox();
+  $("#link2").fancybox();
+  
+  $("#btn").click(function(){
 	
-	 var what = document.getElementById('q').value;
-	 var where  = document.getElementById('city').value;
-	 what_where = what +'_'+ where;
-	_gaq.push(['_trackEvent', 'search_terms', 'search', what_where]);
 	
-	 $.ajax({
-            url: 'includes/ajax.php',
-            type: 'POST',
-            data: 'action=search&what='+ what +'&where='+ where,
-            success: function(ret) {
-                
-            }
-        });
-	 
-}
-    </script>
+    $("#link1").trigger('click');
+	
+  });
+});
 
-
-
-
+</script>
 </head>
 
-<body onLoad="">
- <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" style="padding: 0; margin: 0;">
-    <input type="hidden" name="cmd" value="_xclick/" />
-    <input type="hidden" name="business" value="your bussiness id" />
-    <input type="hidden" name="quantity" value="1" />
-    <input type="hidden" name="item_name" value="your item" />
-    <input type="hidden" name="item_number" value="1" />
-    <input type="hidden" name="amount" value="item price" />
-    <input type="hidden" name="shipping" value="0" />
-    <input type="hidden" name="no_note" value="1" />
-    <input type="hidden" name="notify_url" value="Your notify url">
-    <input type="hidden" name="currency_code" value="GBP" />
-    <input type="hidden" name="rm" value="2" >
-    <input type="hidden" name="return" value="your return url">
-    <input type="image" border="0" name="paypal" src="images/btn_paypal_nl.gif" onClick="" />
-    </form>
+<body>
+<form method="post" action="">
 
-    
-    
+<select name="opt">
+<option value="0">0</option>
+<option value="1">1</option>
+</select>
+<input type="button" id="btn" value="Button" name="btn" />
+</form>
+<div style="display:none;"> 
+ <a href="#test1" id="link1">Click</a>
+ <a href="#test2" id="link2">Click</a>
+</div>
+
+<div id="test1" style="display:none;">fancy box content
+fancy box contentfancy box contentfancy box contentfancy box contentfancy box contentfancy box contentfancy box content
+fancy box contentfancy box contentfancy box contentfancy box contentfancy box contentfancy box contentfancy box contentfancy box contentfancy box contentfancy box contentfancy box contentfancy box contentfancy box content
+fancy box contentfancy box contentfancy box contentfancy box contentfancy box contentfancy box contentfancy box contentfancy box contentfancy box contentfancy box contentfancy box contentfancy box content
+</div>
+
+<div id="test2" style="display:none;">fancy box content
+asassss
+</div>
+
 </body>
 </html>

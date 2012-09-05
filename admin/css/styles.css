@@ -1,0 +1,27 @@
+/* CSS for login */
+#sign_in_response{
+	color:#F00;
+	font-weight:bold;
+}
+
+input[type=button].alt_btn {
+background: #D0D1D4 url(../images/btn_submit_2.png) repeat-x;
+border: 1px solid#30B0C8;
+-webkit-box-shadow: 0 1px 0 #fff;
+-moz-box-shadow: 0 1px 0 #fff;
+box-shadow: 0 1px 0 #fff;
+font-weight: bold;
+height: 22px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+padding: 0 10px;
+color: #003E49;
+text-shadow: 0 1px 0 #6CDCF9;
+cursor: pointer;
+margin-left:10px;
+}
+
+#profile_data{
+	font-weight:bold;
+}

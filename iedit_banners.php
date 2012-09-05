@@ -100,7 +100,7 @@ require_once('includes/process_edit_listings.php');
             <div class="controls">
             <div id="submit">
             
-            <button class="btn btn-primary" name="btnEditBanners">Upload</button>
+            <button class="btn btn-primary" name="btnEditBanners">Update</button>
                       
             <button class="btn btn-primary" onClick="ClearListing(1)">Cancel</button>
             

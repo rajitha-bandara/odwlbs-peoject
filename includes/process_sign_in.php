@@ -1,6 +1,5 @@
 <?php @session_start();?>
 <?php
-
 global $gdbObj;
 if($_GET['action'] == 'sign_in')
 {
@@ -37,11 +36,16 @@ if($_GET['action'] == 'sign_in')
 		
 		if($isValid)// Valid member
 		{
-		//update user login data
+			//add user login details
+			$uid = $_SESSION['auth_id'];
+			$ip = $_SERVER['REMOTE_ADDR'];
+			$ua = getBrowser();
+			$browserName =  $ua['name'];
+			$platform = $ua['platform'];
 			global $guserObj;
-			$guserObj->setUserId($id);
-			$guserObj->updateUserGeoData();
-        	
+			$guserObj->addUserLoginData($uid,$ip,$browserName,$platform);
+			
+			
 			//handle user remember be option
 			if($remember == "yes")
 			{

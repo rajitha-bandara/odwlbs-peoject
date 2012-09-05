@@ -38,7 +38,7 @@ class User
 		$this->street = $street;
 		$this->phone = $phone;
 		$this->zip = $zip;
-		$description = $description;
+		$this->description = $description;
 	}
 	 	
 	public function setUserId($id="")
@@ -129,24 +129,109 @@ class User
 		}
 	}
 
-	public function addUserGeoData()
+	/* Fetch all users in table.
+	 * Returns MYSQL result set */
+	public function fetchAllUsers($where,$sort,$limit)
 	{
 		global $gdbObj;
-		$last_login = time();
-		$sql = "INSERT INTO ".self::$userloginDataTable." (user_id,last_logged_in_time,ip,country,city) VALUES ($this->user_id,$last_login,'','','')";
-	    if($gdbObj->query($sql))
+		$sql = "SELECT u.user_id,u.username,u.password,u.email,u.first_name,u.last_name,u.gender,u.email_activated FROM ".self::$usersTable ." u  $where $sort $limit";
+		return $gdbObj->query($sql);
+	}
+	
+	/* Fetch user object.*/
+	 
+	public function fetchUserObj($id)
+	{
+		global $gdbObj;
+		$sql = "SELECT * FROM ".self::$usersTable ." u  where u.user_id = ".$id;
+		$result = $gdbObj->query($sql);
+		if($gdbObj->num_rows($result) ==1)
 		{
-			
+			return mysql_fetch_object($result);
 		}
+		else
+		{
+			return false;
+		}
+		 
 	}
 	
 		
-	public function updateUserGeoData()
+	/* Counts no of user records
+	 * returns the count */
+	public function countUsers($where)
 	{
-	
+		global $gdbObj;
+		$sql = "SELECT COUNT(user_id) FROM ".self::$usersTable. " $where";
+		$result =  $gdbObj->query($sql);
+		while ($row = mysql_fetch_array($result)) 
+		{
+			return $row[0];
+		}
 	}
 	
-	public function deleteUserGeoData()
+	/* Activate user email address*/
+	public function activateEmail($uid)
+	{
+		global $gdbObj;
+		$sql = "UPDATE  ".self::$usersTable." SET email_activated = '1' where user_id = '$uid'";
+		$gdbObj->query($sql);
+	}
+	
+	/* Deactivate user email address*/
+	public function deactivateEmail($uid)
+	{
+		global $gdbObj;
+		$sql = "UPDATE  ".self::$usersTable." SET email_activated = '0' where user_id = '$uid'";
+		$gdbObj->query($sql);
+	}
+	
+	
+	/* Fetch user login details*/
+	public function fetchUserLoginData($uid)
+	{
+		global $gdbObj;
+		$sql = "SELECT * FROM ".self::$userloginDataTable." WHERE user_id = '$uid'";
+		$result =  $gdbObj->query($sql);
+		
+		while($row = mysql_fetch_array($result))
+		{
+			$login_time = $row[1];
+			$ip = $row[2];
+			$platform = $row[3];
+			$browser = $row[4];
+			$results.= formatLoginItem($login_time,$ip,$platform,$browser);
+		
+		}
+		return $results;
+	}
+	
+	/* Insert login details for each user*/
+	public function addUserLoginData($uid,$ip,$platform,$browser)
+	{
+		global $gdbObj;
+		$sql = "INSERT INTO ".self::$userloginDataTable." (user_id,last_logged_in_time,ip,platform,browser) VALUES ('$uid',NOW(),'$ip','$platform','$browser')";
+	    $gdbObj->query($sql);
+	}
+	
+		
+	/* public function updateUserLoginData($uid)
+	{
+		if($this->isUserExists($uid))
+		{
+			global $gdbObj;
+			$last_login = time();
+			$ip = $_SERVER['REMOTE_ADDR'];
+			$sql = "UPDATE  ".self::$userloginDataTable." SET email_activated = '0' where user_id = '$uid'";
+			$gdbObj->query($sql);
+		}
+		else
+		{
+			$this->addUserLoginData();
+		}
+	} */
+	
+	public function deleteUserLoginData()
 	{
 	
 	}
@@ -196,7 +281,17 @@ class User
 		}
 	}
 	
-	public function getAccountType($accountType)
+	
+	public function countBrowserUsage($browser="")
+	{
+		global $gdbObj;
+		$result = $gdbObj->query("SELECT * FROM ".self::$userloginDataTable." WHERE browser = '$browser' ");
+		$count = $gdbObj->num_rows($result);
+		return $count;
+		
+	}
+	
+	/* public function getAccountType($accountType)
 	{
 		
 		if($accountType == 1)
@@ -212,7 +307,7 @@ class User
 			return 'Bronze';
 		}
 		
-	}
+	} */
 	
 	
 }

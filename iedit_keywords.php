@@ -78,9 +78,9 @@ while($row = mysql_fetch_array($result))
 <div  class="alert alert-success" id="keyword_info">
    <h3>Why should I choose keywords carefully?</h3>
 	<ul>
-    <li id="biz_info_list_item">To maintain the quality and value of our business listings, we review every listing request. Final determination on 	whether a listing is accepted is made at our sole discretion.</li>
-    <li id="biz_info_list_item">We do not accept businesses that are Warez, illegal, Gambling, Adult/Pornography, Drugs/Pharmacy, Retail tobacco, Alcoholic drinks related, Multi-Level Marketing sites or inappropriate. </li>
-     <li id="biz_info_list_item">None English sites are allowed, but the description of the submission should be in English. </li>
+    <li id="biz_info_list_item">Selecting better keywords help increase traffic to your site</li>
+    <li id="biz_info_list_item">We advice you to select most appropriate keywords </li>
+     
     </ul>
   </div>
   

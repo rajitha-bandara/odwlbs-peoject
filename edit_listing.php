@@ -58,6 +58,19 @@ while($row = mysql_fetch_array($sql)){
 } 
 ?>
 
+<?php
+$sql = "SELECT package FROM lbs_biz WHERE biz_id = '$lid' ";
+$result = mysql_query($sql);
+$existCount = mysql_num_rows($result);
+ if ($existCount == 1)
+ {
+	while($row = mysql_fetch_array($result))
+	{ 
+	  $package = $row["package"];
+	 
+	}
+ }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

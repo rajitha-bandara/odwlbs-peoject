@@ -214,6 +214,42 @@ class Business
 	
 	}
 	
+	
+	
+	public function countListings($where)
+	{
+		global $gdbObj;
+		$sql = "SELECT COUNT(biz_id) FROM ".self::$table_biz. " $where";
+		$result =  $gdbObj->query($sql);
+		while ($row = mysql_fetch_array($result))
+		{
+			return $row[0];
+		}
+	}
+	
+	public function fetchListingObj($id)
+	{
+		global $gdbObj;
+		$sql = "SELECT * FROM ".self::$table_biz ." b  where b.biz_id = ".$id;
+		$result = $gdbObj->query($sql);
+		if($gdbObj->num_rows($result) ==1)
+		{
+			return mysql_fetch_object($result);
+		}
+		else
+		{
+			return false;
+		}
+			
+	}
+	
+	public function fetchAllListings($where,$sort,$limit)
+	{
+		global $gdbObj;
+		$sql = "SELECT * FROM ".self::$table_biz."$where $sort $limit";
+		return $gdbObj->query($sql);
+	}
+	
 	public function setListingId($lid="")
 	{
 		$this->listingID = $lid;
@@ -266,6 +302,31 @@ class Business
 			$counter++;
 		}
 		return $results;
+		}
+	}
+	
+	public function fetchListingTitle($userId)
+	{
+		global $gdbObj;
+		$sql = "SELECT biz_id,title FROM ".self::$table_biz." WHERE user_id= '$userId' ";
+		$resut = $gdbObj->query($sql);
+	
+		$existCount = $gdbObj->num_rows($resut);
+		if ($existCount < 1)
+		{
+			return false;
+		}
+		else
+		{
+			$counter = 1;
+			while($row = mysql_fetch_array($resut))
+			{
+				$bizId = $row[0];
+				$title = $row[1];
+				$results.= formatListingTitle($counter,$bizId,$title,$userId);
+				$counter++;
+			}
+			return $results;
 		}
 	}
 	
@@ -330,6 +391,30 @@ class Business
 			return $results;
 		}
 	}	
+	
+	/* Approve Content*/
+	public function approveContent($lid)
+	{
+		global $gdbObj;
+		$sql = "UPDATE  ".self::$table_biz." SET content_approved = '1' where biz_id = '$lid'";
+		$gdbObj->query($sql);
+	}
+	
+	/* Reject Content*/
+	public function rejectContent($lid)
+	{
+		global $gdbObj;
+		$sql = "UPDATE  ".self::$table_biz." SET content_approved = '0' where biz_id = '$lid'";
+		$gdbObj->query($sql);
+	}
+	
+	/* Update listing status*/
+	public function updateStatus($lid,$status)
+	{
+		global $gdbObj;
+		$sql = "UPDATE  ".self::$table_biz." SET status  = '$status' where biz_id = '$lid'";
+		$gdbObj->query($sql);
+	}
 	
 	public function getPkg($pkg="")
 	{

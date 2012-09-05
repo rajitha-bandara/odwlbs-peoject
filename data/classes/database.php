@@ -48,7 +48,7 @@ class MySqlDatabase
 		$this->last_query = $sql;
 	
 		$result = mysql_query($sql,$this->_connection);
-		$this->confirm_query($result);
+		//$this->confirm_query($result);
 		return $result;
 	}
 	

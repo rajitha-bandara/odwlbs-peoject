@@ -60,19 +60,8 @@ while($row = mysql_fetch_array($sql)){
 	$zipcode = $row["zip_code"];
 	$phone = $row["phone"];
 	$description = $row["description"];
-	$accountType = $row["account_type"];
-	$accountType = $guserObj->getAccountType($accountType);
 	
-	$check_pic = "members/$id/image01.jpg";
-	$default_pic = "members/default.png";
-	if (file_exists($check_pic))
-	{
-    	$profile_img = "<img src='$check_pic' width='100px' height= '100px' />"; 
-	} else 
-	{
-		$profile_img = "<img src='$default_pic' width='100px' height= '100px' />";
-	}
-
+	$profile_img = get_profile_image($id);
 }
 
 ?>
@@ -178,11 +167,7 @@ while($row = mysql_fetch_array($sql)){
     <td width="24"></td>
     <td><?php print $description; ?></td>
   </tr>
-  <tr>
-    <td height="49">Account Type</td>
-    <td width="24"></td>
-    <td><?php print $accountType; ?></td>
-  </tr>
+ 
      </table>
    </div>
      

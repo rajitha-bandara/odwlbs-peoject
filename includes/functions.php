@@ -71,6 +71,22 @@ function get_image($match,$dir)
   return $images;
 }
 
+
+function get_profile_image($id)
+{
+	$profile_img = "";
+	$check_pic = SITE_URL."/members/$id/image01.jpg";
+	$default_pic = SITE_URL."/members/default.png";
+	if (file_exists($check_pic))
+	{
+    	$profile_img = "<img src='$check_pic' width='100px' height= '100px' />"; 
+	} else 
+	{
+		$profile_img = "<img src='$default_pic' width='100px' height= '100px' />";
+	}
+	return $profile_img;
+}
+
 /*
  *  get all image(s) from a given directory
 */
@@ -206,6 +222,24 @@ function formatListing($counter,$bizId,$title,$userId)
   	  </div>
 	<hr style='margin-top:10px;margin-bottom:10px;'>
 	<div class='clear'></div>";  	
+}
+
+/*
+ *  Format listing title in HTML
+ *  
+*/
+function formatListingTitle($counter,$bizId,$title,$userId)
+{
+	$safeTitle = makeURLSafe($title);
+	return 	"<tr><td>".$counter."</td><td><a href='../listing/$safeTitle-$bizId.html' target='_blank'>".$title."</a></td><td></td></tr>";  	
+}
+/*
+ *  Format user login details
+ *  
+*/
+function formatLoginItem($login_time,$ip,$platform,$browser)
+{
+	return "<tr style='border-bottom:1px solid #3CF;'><td width = '200px' height='30px'>".$login_time."</td><td width = '150px' height='30px'>".$ip."</td><td width = '150px' height='30px'>".$platform."</td><td width = '150px' height='30px'>".$browser."</td></tr>";
 }
 
 /*
@@ -349,6 +383,96 @@ function removeProtocol($url)
 	$url=preg_replace("/(https:\/\/)/i",'',$url); 	
 	$url=preg_replace("/(ftp:\/\/)/i",'',$url);
 	return $url;
+}
+
+/*
+ *  Retrieve Browser and platform information for remote user
+ *   
+*/
+function getBrowser()
+{
+    $u_agent = $_SERVER['HTTP_USER_AGENT'];
+    $bname = 'Unknown';
+    $platform = 'Unknown';
+    $version= "";
+
+    //First get the platform?
+    if (preg_match('/linux/i', $u_agent)) {
+        $platform = 'linux';
+    }
+    elseif (preg_match('/macintosh|mac os x/i', $u_agent)) {
+        $platform = 'mac';
+    }
+    elseif (preg_match('/windows|win32/i', $u_agent)) {
+        $platform = 'windows';
+    }
+   
+    // Next get the name of the useragent yes seperately and for good reason
+    if(preg_match('/MSIE/i',$u_agent) && !preg_match('/Opera/i',$u_agent))
+    {
+        $bname = 'Internet Explorer';
+        $ub = "MSIE";
+    }
+    elseif(preg_match('/Firefox/i',$u_agent))
+    {
+        $bname = 'Mozilla Firefox';
+        $ub = "Firefox";
+    }
+    elseif(preg_match('/Chrome/i',$u_agent))
+    {
+        $bname = 'Google Chrome';
+        $ub = "Chrome";
+    }
+    elseif(preg_match('/Safari/i',$u_agent))
+    {
+        $bname = 'Apple Safari';
+        $ub = "Safari";
+    }
+    elseif(preg_match('/Opera/i',$u_agent))
+    {
+        $bname = 'Opera';
+        $ub = "Opera";
+    }
+    elseif(preg_match('/Netscape/i',$u_agent))
+    {
+        $bname = 'Netscape';
+        $ub = "Netscape";
+    }
+   
+    // finally get the correct version number
+    $known = array('Version', $ub, 'other');
+    $pattern = '#(?<browser>' . join('|', $known) .
+    ')[/ ]+(?<version>[0-9.|a-zA-Z.]*)#';
+    if (!preg_match_all($pattern, $u_agent, $matches)) {
+        // we have no matching number just continue
+    }
+   
+    // see how many we have
+    $i = count($matches['browser']);
+    if ($i != 1) {
+        //we will have two since we are not using 'other' argument yet
+        //see if version is before or after the name
+        if (strripos($u_agent,"Version") < strripos($u_agent,$ub)){
+            $version= $matches['version'][0];
+        }
+        else {
+            $version= $matches['version'][1];
+        }
+    }
+    else {
+        $version= $matches['version'][0];
+    }
+   
+    // check if we have a number
+    if ($version==null || $version=="") {$version="?";}
+   
+    return array(
+        'userAgent' => $u_agent,
+        'name'      => $bname,
+        'version'   => $version,
+        'platform'  => $platform,
+        'pattern'    => $pattern
+    );
 }
 
 function resolvePlaceType($place_type)

