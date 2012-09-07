@@ -26,6 +26,8 @@ global $gbizObj;
 	<script src="js/hideshow.js" type="text/javascript"></script>
 	<script src="js/jquery.tablesorter.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="js/jquery.equalHeight.js"></script>
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="js/jquery.gvChart-1.1.min.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function() 
     	{ 
@@ -59,6 +61,21 @@ global $gbizObj;
     });
 </script>
 
+
+		<script type="text/javascript">
+		gvChartInit();
+		jQuery(document).ready(function(){
+			jQuery('#userStats').gvChart({
+				chartType: 'AreaChart',
+				gvSettings: {
+					vAxis: {title: 'No of users'},
+					hAxis: {title: 'Month'},
+					width: 720,
+					height: 300
+					}
+			});
+			});
+			</script>
 </head>
 
 
@@ -123,7 +140,44 @@ global $gbizObj;
 			<header><h3>Stats</h3></header>
 			<div class="module_content">
 				<article class="stats_graph">
-					<img src="http://chart.apis.google.com/chart?chxr=0,0,3000&chxt=y&chs=520x140&cht=lc&chco=76A4FB,80C65A&chd=s:Tdjpsvyvttmiihgmnrst,OTbdcfhhggcTUTTUadfk&chls=2|2&chma=40,20,20,30" width="520" height="140" alt="" />
+					<table id='userStats'>
+					<caption>Registered Users</caption>
+					<thead>
+						<tr>
+							<th></th>
+							<th>Jan</th>
+							<th>Feb</th>
+							<th>Mar</th>
+							<th>Apr</th>
+							<th>May</th>
+							<th>Jun</th>
+							<th>Jul</th>
+							<th>Aug</th>
+							<th>Sep</th>
+							<th>Oct</th>
+							<th>Nov</th>
+							<th>Dec</th>
+						</tr>
+					</thead>
+						<tbody>
+						<tr>
+							<th><?php echo date('Y');?></th>
+							<td><?php echo $guserObj->countUsersByMonth(1);?></td>
+							<td><?php echo $guserObj->countUsersByMonth(2);?></td>
+							<td><?php echo $guserObj->countUsersByMonth(3);?></td>
+							<td><?php echo $guserObj->countUsersByMonth(4);?></td>
+							<td><?php echo $guserObj->countUsersByMonth(5);?></td>
+							<td><?php echo $guserObj->countUsersByMonth(6);?></td>
+							<td><?php echo $guserObj->countUsersByMonth(7);?></td>
+							<td><?php echo $guserObj->countUsersByMonth(8);?></td>
+							<td><?php echo $guserObj->countUsersByMonth(9);?></td>
+							<td><?php echo $guserObj->countUsersByMonth(10);?></td>
+							<td><?php echo $guserObj->countUsersByMonth(11);?></td>
+							<td><?php echo $guserObj->countUsersByMonth(12);?></td>
+						</tr>
+						
+					</tbody>
+				</table>
 				</article>
 				
 				<article class="stats_overview">

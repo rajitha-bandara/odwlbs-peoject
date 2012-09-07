@@ -150,7 +150,7 @@
   <div id="intro" class="grid_7"> <a href="index.php"><img src="public/img/logo.png" alt="Logo"/></a> </div>
   <div class="grid_17">
     <div style="background-color:#0C0;width:468px;height:60px;margin-left:90px;margin-top:10px;margin-bottom:10px;">
-      <?php require_once('templates/top_ad.php');?>
+      <?php require_once('top_ad.php');?>
     </div>
     <form class="horizontal" action="search.php" method="get" id="search_form">
       What

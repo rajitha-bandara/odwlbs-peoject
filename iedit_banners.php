@@ -59,9 +59,9 @@ require_once('includes/process_edit_listings.php');
                  <select name="listType" class="input-xlarge">
                  <option value="">-- Select a Type --</option>
 					<option value="top" selected="selected">Top (468px x 60px)</option>
-					<option value="bottom" >Bottom (468px x 60px)</option>
+					<option value="bottom" >Bottom (234px x 60px)</option>
 					<option value="featured" >Featured (180px x 150px)</option>
-					<option value="sponsored" >Sponsored Links (180px x 100px)</option>
+					<option value="vertical" >Vertical (240px x 400px)</option>
                  </select>
               </div>
             </div>

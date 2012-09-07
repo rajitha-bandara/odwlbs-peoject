@@ -71,7 +71,7 @@ class User
 		$password = $gdbObj->escape_value($this->password);
 		$email    = $gdbObj->escape_value($this->email);
 				 
-		$sql = "INSERT INTO ".self::$usersTable." (username,password,email) values('$username','$password','$email')";
+		$sql = "INSERT INTO ".self::$usersTable." (username,password,email,joined_date) values('$username','$password','$email',CURDATE())";
 		if($gdbObj->query($sql))
 		{
 			$this->user_id = $gdbObj->insert_id();
@@ -168,6 +168,16 @@ class User
 		{
 			return $row[0];
 		}
+	}
+	
+	/* Counts users by month
+	 * returns the count */
+	public function countUsersByMonth($month="")
+	{
+		global $gdbObj;
+		$result = $gdbObj->query("SELECT count(*) FROM ".self::$usersTable." WHERE MONTH(joined_date) = '$month' ");
+		return mysql_result($result, 0, 0);
+
 	}
 	
 	/* Activate user email address*/

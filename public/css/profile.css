@@ -186,3 +186,20 @@ body{
 	font-size:14px;
 	margin-left:5px;
 }
+
+
+/* CSS for listing account deletion page */
+#del_listing{
+	padding-left:15px;
+	padding-right:15px;
+}
+
+
+#del_listing #controls{
+	margin-top:25px;
+}
+
+#del_listing #lizDel{
+	visibility:hidden;
+	
+}

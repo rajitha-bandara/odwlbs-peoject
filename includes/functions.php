@@ -51,6 +51,27 @@ function isFileExists($path)
 }
 
 /*
+ *  delete all content in the directory
+ *  then remove the parent directory
+*/
+function recursiveRemoveDirectory($directory)
+{ 
+  if(file_exists($directory))
+  {
+	  foreach(glob("{$directory}/*") as $file)
+	  {
+		  if(is_dir($file)) { 
+			  recursiveRemoveDirectory($directory);
+		  } else {
+			  unlink($file);
+		  }
+	  }
+	  rmdir($directory);
+  }
+}
+
+
+/*
  *  get image(s) with a given name
 */
 function get_image($match,$dir)
@@ -217,8 +238,8 @@ function formatListing($counter,$bizId,$title,$userId)
   		<div id='counter' class='grid_1'>".$counter."</div>
   		<div id='title' class='grid_6'>".$title."</div>
   		<div id='view' class='grid_2'><a href='listing/$safeTitle-$bizId.html' target='_blank'><img src='public/img/lview.png'></a></div>
-    	<div id='edit' class='grid_2'><a href='edit_listing.php?id=$userId&lid=$bizId' target='_blank'><img src='public/img/ledit.png'></a></div>
-    	<div id='delete' class='grid_2'><a href='delete_listing.php?lid=$bizId' target='_blank'><img src='public/img/ldelete.png'></a></div>
+    	<div id='edit' class='grid_2'><a href='edit_listing.php?id=$userId&lid=$bizId'><img src='public/img/ledit.png'></a></div>
+    	<div id='delete' class='grid_2'><a href='delete_listing.php?lid=$bizId'><img src='public/img/ldelete.png'></a></div>
   	  </div>
 	<hr style='margin-top:10px;margin-bottom:10px;'>
 	<div class='clear'></div>";  	
@@ -473,6 +494,43 @@ function getBrowser()
         'platform'  => $platform,
         'pattern'    => $pattern
     );
+}
+
+/*
+ *  Return HTML for top banner
+ *   
+*/
+function formatTopBanner($path,$bizId,$title)
+{
+	$safeTitle = makeURLSafe($title);
+	$listing_url = "http://localhost/business_directory/listing/$safeTitle-$bizId.html";
+	//$listing_url = SITE_URL."/listing/$safeTitle-$bizId.html";
+	return "<a href='$listing_url'><img src='$path' width='468px' height='60px'/></a>";
+	
+}
+
+/*
+ *  Return HTML for bottom banner
+ *   
+*/
+function formatBottomBanner($path,$bizId,$title)
+{
+	$safeTitle = makeURLSafe($title);
+	$listing_url = "http://localhost/business_directory/listing/$safeTitle-$bizId.html";
+	//$listing_url = SITE_URL."/listing/$safeTitle-$bizId.html";
+	return  "<a href='$listing_url'><img src='$path' width='234px' height='60px'/></a>";
+}
+
+/*
+ *  Return HTML for vertical banner
+ *   
+*/
+function formatVerticalBanner($path,$bizId,$title)
+{
+	$safeTitle = makeURLSafe($title);
+	$listing_url = "http://localhost/business_directory/listing/$safeTitle-$bizId.html";
+	//$listing_url = SITE_URL."/listing/$safeTitle-$bizId.html";
+	return  "<a href='$listing_url'><img src='$path' width='240px' height='400px'/></a>";
 }
 
 function resolvePlaceType($place_type)

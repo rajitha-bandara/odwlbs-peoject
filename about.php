@@ -71,7 +71,7 @@ background:url(public/img/cross.png) no-repeat;
    </div>
    </div>
  
-   <div class="grid_6" id="sec_col">
+   <div class="grid_6" id="">
    <?php require_once('templates/right_column.php');?>
    </div>
    

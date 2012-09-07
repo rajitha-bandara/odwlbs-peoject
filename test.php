@@ -1,7 +1,7 @@
 <?php
-
-	//$opt = $_POST['opt'];
-	
+@session_start();
+require('includes/init.php');
+require('includes/geo_location_all.php');	
 
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -30,28 +30,9 @@ $(document).ready(function() {
 </head>
 
 <body>
-<form method="post" action="">
-
-<select name="opt">
-<option value="0">0</option>
-<option value="1">1</option>
-</select>
-<input type="button" id="btn" value="Button" name="btn" />
-</form>
-<div style="display:none;"> 
- <a href="#test1" id="link1">Click</a>
- <a href="#test2" id="link2">Click</a>
-</div>
-
-<div id="test1" style="display:none;">fancy box content
-fancy box contentfancy box contentfancy box contentfancy box contentfancy box contentfancy box contentfancy box content
-fancy box contentfancy box contentfancy box contentfancy box contentfancy box contentfancy box contentfancy box contentfancy box contentfancy box contentfancy box contentfancy box contentfancy box contentfancy box content
-fancy box contentfancy box contentfancy box contentfancy box contentfancy box contentfancy box contentfancy box contentfancy box contentfancy box contentfancy box contentfancy box contentfancy box content
-</div>
-
-<div id="test2" style="display:none;">fancy box content
-asassss
-</div>
-
+<?php
+global $gbizObj;
+echo $gbizObj->fetchNearListings($user_lat,$user_long,$user_country,'top','inner',3);
+?>
 </body>
 </html>

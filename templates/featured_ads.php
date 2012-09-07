@@ -1,29 +1,46 @@
-<div id="category_wrapper" class="grid_17">
-  <div id="home_page_content_topic">Featured Classifieds</div>
-  
-    <?php
-	$count = 0;
-	$i = 0;
-	echo "<div class='grid_5' style='margin:0px;'>";
-	while($count<=5)
-	{
-		
-		if($i >=2 )
-		{
-			$i = 0;
-			echo "</div>";
-			echo "<div class='grid_5' style='margin:0px;'>";
-			
-		}
-		echo "<div style='width:190px;height:200px;margin-left:10px;margin-right:10px;'>
-		<img src='ads/150_150/$count.gif'>
-		
-		</div>";
-		$count++;
-		$i++;
-	}
-	echo "</div>";
+ <style type="text/css">
+ .qitem{width:150px;height:150px;border:2px solid #222;margin:15px 15px 15px 15px;background:url('bg.gif') no-repeat;overflow:hidden;position:relative;float:left;cursor:hand;cursor:pointer;}.qitem img{border:0;position:absolute;z-index:200;}.qitem .caption{position:absolute;z-index:0;color:#ccc;display:block;}.qitem .caption h4{font-size:12px;padding:10px 5px 0 8px;margin:0;color:#369ead;}.qitem .caption p{font-size:10px;padding:3px 5px 0 8px;margin:0;}.topLeft,.topRight,.bottomLeft,.bottomRight{position:absolute;background-repeat:no-repeat;float:left;}.topLeft{background-position:top left;}.topRight{background-position:top right;}.bottomLeft{background-position:bottom left;}.bottomRight{background-position:bottom right;}.clear{clear:both;}
+ </style>
+ <?php
+	global $gbizObj;
+	$arr = $gbizObj->fetchNearListings($user_lat,$user_long,$user_country,'featured','home',6);
 	?>
-     <div class="clear"></div>
-   <div class="grid_17" id="view_all" style="padding-left:500px;">View All</div> 
+  <div id="category_wrapper" class="grid_17">
+  <div id="home_page_content_topic">Featured Classifieds</div>
+  <div class='grid_5' style='margin:0px;'>
+  <div  class="qitem"><a href="http://localhost/business_directory/listing/<?php echo $arr[0][1];?>-<?php echo $arr[0][0];?>.html"><img src='<?php echo $arr[0][2];?>'></a>
+  <span class="caption"><h4><?php echo $arr[0][1];?></h4><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p></span>
   </div>
+  
+  <div class="qitem"><a href="http://www.google.com"><img src='<?php echo $arr[1][2];?>'></a>
+  <span class="caption"><h4><?php echo $arr[1][1];?></h4><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p></span>
+  </div>
+  </div>
+  
+  
+  <div class='grid_5' style='margin:0px;'>
+   <div class="qitem"><a href="http://www.google.com"><img src='<?php echo $arr[1][2];?>'></a>
+  <span class="caption"><h4><?php echo $arr[0][1];?></h4><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p></span>
+  </div>
+   <div class="qitem"><a href="http://www.google.com"><img src='<?php echo $arr[1][2];?>'></a>
+  <span class="caption"><h4><?php echo $arr[0][1];?></h4><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p></span>
+  </div>
+  </div>
+  
+  <div class='grid_5' style='margin:0px;'>
+   <div class="qitem"><a href="http://www.google.com"><img src='<?php echo $arr[1][2];?>'></a>
+  <span class="caption"><h4><?php echo $arr[0][1];?></h4><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p></span>
+  </div>
+   <div class="qitem"><a href="http://www.google.com"><img src='<?php echo $arr[1][2];?>'></a>
+  <span class="caption"><h4><?php echo $arr[0][1];?></h4><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p></span>
+  </div>
+  </div>
+  
+  <div class="clear"></div>
+  <div class="grid_17" id="view_all" style="padding-left:500px;">View All</div> 
+  </div>  
+	
+	
+   <div class="clear"></div>
+   
+  
