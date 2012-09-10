@@ -6,12 +6,12 @@
             <li><a href="index.php">Home</a></li>
               <li><a href="about.php">About Places.com</a></li>
               <li><a href="add_listing.php">Advertise with us </a></li>
-              <li><a href="#">FAQ</a></li>
+              <li><a href="faq.php">FAQ</a></li>
               <li><a href="sitemap.xml">Sitemap</a></li>
               <li><a href="contacts.php">Contact us</a></li>
            
            </ul>   
-            <p><a title="HTML 5 Valid" href="#" onClick="Javascript:window.open('http://validator.w3.org/check?uri=http%3A%2F%2Fwww.energycell.co.uk%2Findex.html;verbose=1', '');" rel="nofollow">
+            <p><a title="HTML 5 Valid" href="#" onClick="Javascript:window.open('http://validator.w3.org/check?uri=http%3A%2F%2Fwww.places.webuda.com/index.php;verbose=1', '');" rel="nofollow">
             <img src="public/img/html5-logo.png" width="120" height="36" 
             alt="HTML5 Powered with CSS3 / Styling, Device Access, Performance &amp; Integration, and Semantics" 
             title="HTML5 Powered with CSS3 / Styling, Device Access, Performance &amp; Integration, and Semantics"></a></p>
@@ -21,10 +21,9 @@
             <ul>
              <li><a href="terms.php">Terms of use</a></li>
               <li><a href="privacy.php">Privacy Policy</a></li>
-              <li><a href="#">Forum</a></li>
               <li><a href="directory.php">Directory</a></li>
               <li><a href="maps.php">Maps</a></li>
-              <li><a href="#">Mobile Apps</a></li>
+              <li><a href="mobile.php">Mobile Apps</a></li>
              
               
           </ul>   

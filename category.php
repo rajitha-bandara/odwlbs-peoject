@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<base href="http://localhost/business_directory/" />
+<base href="<?php echo SITE_URL;?>/" />
 <title><?php echo $categoryName ." - ".DOMAIN_NAME;?></title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">

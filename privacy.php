@@ -64,7 +64,7 @@ background:url(public/img/cross.png) no-repeat;
   <div id="page_topic"><h1>Privacy Policy</h1></div>
   		
   <div id="privacy">
-  Places Directory (“places.com”) is committed to ensuring that your privacy is protected.
+  Places Directory (“<?php echo DOMAIN_NAME;?>”) is committed to ensuring that your privacy is protected.
 This Privacy Policy explains how we collect and use any Personal Information you provide to us, and how we safeguard the privacy of such information.
 
 

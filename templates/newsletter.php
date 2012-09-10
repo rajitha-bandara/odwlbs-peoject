@@ -7,7 +7,7 @@
         <meta property="og:title" content="*|MC:SUBJECT|*" />
         
         <title>*|MC:SUBJECT|*</title>
-		<link href="http://places.webuda.com/public/css/newsletter.css" rel="stylesheet">
+		<link href="<?php echo SITE_URL;?>/public/css/newsletter.css" rel="stylesheet">
 	</head>
     <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
     	<center>
@@ -51,7 +51,7 @@
                                             <td class="headerContent">
                                             
                                             	<!-- // Begin Module: Standard Header Image \\ -->
-                                            	<img src="http://places.webuda.com/public/img/logo.png" style="max-width:600px;" id="headerImage campaign-icon" mc:label="header_image" mc:edit="header_image" mc:allowdesigner mc:allowtext align="left" />
+                                            	<img src="<?php echo SITE_URL;?>/public/img/logo.png" style="max-width:600px;" id="headerImage campaign-icon" mc:label="header_image" mc:edit="header_image" mc:allowdesigner mc:allowtext align="left" />
                                             	<!-- // End Module: Standard Header Image \\ -->
                                             
                                             </td>
@@ -182,7 +182,7 @@
                                                     <tr>
                                                         <td colspan="2" valign="middle" id="utility">
                                                             <div mc:edit="std_utility">
-                                                                &nbsp;<a href='http://places.webuda.com/newsletter/optout.php?e=<?php echo $email; ?>'>unsubscribe from this list</a> | <a href="../*:UPDATE_PROFILE:*">update subscription preferences</a>&nbsp;
+                                                                &nbsp;<a href='<?php echo SITE_URL;?>/newsletter/optout.php?e=<?php echo $email; ?>'>unsubscribe from this list</a> | <a href="../*:UPDATE_PROFILE:*">update subscription preferences</a>&nbsp;
                                                             </div>
                                                         </td>
                                                     </tr>

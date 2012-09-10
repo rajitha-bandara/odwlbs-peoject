@@ -7,32 +7,34 @@
 	?>
   <div id="category_wrapper" class="grid_17">
   <div id="home_page_content_topic">Featured Classifieds</div>
-  <div class='grid_5' style='margin:0px;'>
-  <div  class="qitem"><a href="http://localhost/business_directory/listing/<?php echo $arr[0][1];?>-<?php echo $arr[0][0];?>.html"><img src='<?php echo $arr[0][2];?>'></a>
-  <span class="caption"><h4><?php echo $arr[0][1];?></h4><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p></span>
-  </div>
-  
-  <div class="qitem"><a href="http://www.google.com"><img src='<?php echo $arr[1][2];?>'></a>
-  <span class="caption"><h4><?php echo $arr[1][1];?></h4><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p></span>
-  </div>
-  </div>
-  
   
   <div class='grid_5' style='margin:0px;'>
-   <div class="qitem"><a href="http://www.google.com"><img src='<?php echo $arr[1][2];?>'></a>
-  <span class="caption"><h4><?php echo $arr[0][1];?></h4><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p></span>
+  <div  class="qitem"><a href="<?php echo SITE_URL;?>/listing/<?php echo $arr[0][1];?>-<?php echo $arr[0][0];?>.html" onclick="_gaq.push(['_trackEvent', 'Featured Ad', 'click', '<?php echo $arr[0][1];?>']);"><img src='<?php echo $arr[0][3];?>'></a>
+  <span class="caption"><h4><?php echo $arr[0][1];?></h4><p><?php echo $arr[0][2];?></p></span>
   </div>
-   <div class="qitem"><a href="http://www.google.com"><img src='<?php echo $arr[1][2];?>'></a>
-  <span class="caption"><h4><?php echo $arr[0][1];?></h4><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p></span>
+  
+  <div class="qitem"><a href="<?php echo SITE_URL;?>/listing/<?php echo $arr[0][1];?>-<?php echo $arr[0][0];?>.html" onclick="_gaq.push(['_trackEvent', 'Featured Ad', 'click', '<?php echo $arr[0][1];?>']);"><img src='<?php echo $arr[1][3];?>'></a>
+  <span class="caption"><h4><?php echo $arr[1][1];?></h4><p><?php echo $arr[0][2];?></p></span>
+  </div>
+  </div>
+  
+  
+  <div class='grid_5' style='margin:0px;'>
+   <div class="qitem"><a href="<?php echo SITE_URL;?>/listing/<?php echo $arr[0][1];?>-<?php echo $arr[0][0];?>.html"><img src='<?php echo $arr[1][3];?>' onclick="_gaq.push(['_trackEvent', 'Featured Ad', 'click', '<?php echo $arr[0][1];?>']);"></a>
+  <span class="caption"><h4><?php echo $arr[0][1];?></h4><p><?php echo $arr[0][2];?></p></span>
+  </div>
+  
+   <div class="qitem"><a href="<?php echo SITE_URL;?>/listing/<?php echo $arr[0][1];?>-<?php echo $arr[0][0];?>.html"><img src='<?php echo $arr[1][3];?>' onclick="_gaq.push(['_trackEvent', 'Featured Ad', 'click', '<?php echo $arr[0][1];?>']);"></a>
+  <span class="caption"><h4><?php echo $arr[0][1];?></h4><p><?php echo $arr[0][2];?></p></span>
   </div>
   </div>
   
   <div class='grid_5' style='margin:0px;'>
-   <div class="qitem"><a href="http://www.google.com"><img src='<?php echo $arr[1][2];?>'></a>
-  <span class="caption"><h4><?php echo $arr[0][1];?></h4><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p></span>
+   <div class="qitem"><a href="<?php echo SITE_URL;?>/listing/<?php echo $arr[0][1];?>-<?php echo $arr[0][0];?>.html"><img src='<?php echo $arr[1][3];?>' onclick="_gaq.push(['_trackEvent', 'Featured Ad', 'click', '<?php echo $arr[0][1];?>']);"></a>
+  <span class="caption"><h4><?php echo $arr[0][1];?></h4><p><?php echo $arr[0][2];?></p></span>
   </div>
-   <div class="qitem"><a href="http://www.google.com"><img src='<?php echo $arr[1][2];?>'></a>
-  <span class="caption"><h4><?php echo $arr[0][1];?></h4><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p></span>
+   <div class="qitem"><a href="<?php echo SITE_URL;?>/listing/<?php echo $arr[0][1];?>-<?php echo $arr[0][0];?>.html"><img src='<?php echo $arr[1][3];?>' onclick="_gaq.push(['_trackEvent', 'Featured Ad', 'click', '<?php echo $arr[0][1];?>']);"></a>
+  <span class="caption"><h4><?php echo $arr[0][1];?></h4><p><?php echo $arr[0][2];?></p></span>
   </div>
   </div>
   

@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en" itemscope itemtype="http://schema.org/LocalBusiness">
 <head>
-<base href="http://localhost/business_directory/" />
+<base href="<?php echo SITE_URL;?>/" />
 <title><?php echo $title ." - ". DOMAIN_NAME;?></title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -261,7 +261,7 @@ onclick="javascript:window.open('http://zms.zhiing.com/webclient/zhiingchat/zmsc
   
   <div class="grid_6" id="listing_sec_col">
   
-  <div id="get_dir" <?php if($package == 'b'){?> style="display:none" <?php }?>><a href="http://localhost/business_directory/listing/directions/<?php echo $safeTitle;?>-<?php echo $lid;?>.html">Maps & Directions >></a></div>
+  <div id="get_dir" <?php if($package == 'b'){?> style="display:none" <?php }?>><a href="<?php echo SITE_URL;?>/listing/directions/<?php echo $safeTitle;?>-<?php echo $lid;?>.html">Maps & Directions >></a></div>
   
   <div id="large_map_link" <?php if($package == 'b'){?> style="display:none" <?php }?>><a href="map_large.php?lat=<?php echo $latitude;?>&lon=<?php echo $longitude;?>"title=<?php echo $title;?>>View Large Map</a></div>
   <div id="map" <?php if($package == 'b'){?> style="display:none" <?php }?>></div>

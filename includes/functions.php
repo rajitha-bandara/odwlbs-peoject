@@ -159,8 +159,8 @@ function getResultHTML($where,$counter,$id,$title,$url,$phone,$street,$city)
 $safeTitle = 	makeURLSafe($title);
 $domain_name = DOMAIN_NAME;
 //$listing_url = SITE_URL."/listing.php?lid=$id";
-//$listing_url = SITE_URL."/listing/$safeTitle-$id.html";
-$listing_url = "http://localhost/business_directory/listing/$safeTitle-$id.html";
+$listing_url = SITE_URL."/listing/$safeTitle-$id.html";
+//$listing_url = "http://localhost/business_directory/listing/$safeTitle-$id.html";
 
 $summary 	 = "I just checked out ".$title." on ".DOMAIN_NAME." and thought you would like it too. Read reviews, post your own, get coupons, maps and more. Have a look!";
 
@@ -270,8 +270,8 @@ function formatLoginItem($login_time,$ip,$platform,$browser)
 function formatRelatedSearch($counter,$bizId,$title)
 {
 	$safeTitle = makeURLSafe($title);
-	$listing_url = "http://localhost/business_directory/listing/$safeTitle-$bizId.html";
-	//$listing_url = SITE_URL."/listing/$safeTitle-$bizId.html";
+	//$listing_url = "http://localhost/business_directory/listing/$safeTitle-$bizId.html";
+	$listing_url = SITE_URL."/listing/$safeTitle-$bizId.html";
 	return 	"
 	<li><a href='$listing_url'>".$title."</a></li>";
 	
@@ -284,8 +284,8 @@ function formatRelatedSearch($counter,$bizId,$title)
 function formatCategory($catId,$name)
 {
 	$safeCat = makeURLSafe($name);
-	$category_url = "http://localhost/business_directory/$safeCat-$catId/";
-	//$category_url = SITE_URL."/$safeCat-$catId/";
+	//$category_url = "http://localhost/business_directory/$safeCat-$catId/";
+	$category_url = SITE_URL."/$safeCat-$catId/";
 	return 	"
 	<li><a href='$category_url' onclick=\"_gaq.push(['_trackEvent', 'Category', 'click', '$name']);\">".$name."</a></li>";
 
@@ -299,8 +299,8 @@ function formatSubCategory($catId,$mainCat,$subCatId,$subCatName)
 {
 	$safeCat = makeURLSafe($mainCat);
 	$safeSubCat = makeURLSafe($subCatName);
-	$category_url = "http://localhost/business_directory/$safeCat-$catId/$safeSubCat-$subCatId";
-	//$category_url = SITE_URL."/$safeCat-$catId/$safeSubCat-$subCatId";
+	//$category_url = "http://localhost/business_directory/$safeCat-$catId/$safeSubCat-$subCatId";
+	$category_url = SITE_URL."/$safeCat-$catId/$safeSubCat-$subCatId";
 	return 	"
 	<li><a href='$category_url' onclick=\"_gaq.push(['_trackEvent', 'Listing Subcategory', 'click', '$subCatName']);\">".$subCatName."</a></li>";
 
@@ -316,13 +316,13 @@ function formatRecentListing($bizId,$title,$mainCatId,$subCatId,$mainCat,$subCat
 	$safeCat = makeURLSafe($mainCat);
 	$safeSubCat = makeURLSafe($subCat);
 	
-	 $listing_url = "http://localhost/business_directory/listing/$safeTitle-$bizId.html";
-     $mainCategory_url = "http://localhost/business_directory/$safeCat-$mainCatId/";
-	 $subCategory_url = "http://localhost/business_directory/$safeCat-$mainCatId/$safeSubCat-$subCatId";
+	 //$listing_url = "http://localhost/business_directory/listing/$safeTitle-$bizId.html";
+     //$mainCategory_url = "http://localhost/business_directory/$safeCat-$mainCatId/";
+	 //$subCategory_url = "http://localhost/business_directory/$safeCat-$mainCatId/$safeSubCat-$subCatId";
 	
-	//$listing_url = SITE_URL."/listing/$safeTitle-$bizId.html";
-	//	$mainCategory_url = SITE_URL."/$safeCat-$mainCatId/";
-	//	$subCategory_url = SITE_URL."/$safeCat-$mainCatId/$safeSubCat-$subCatId";
+	$listing_url = SITE_URL."/listing/$safeTitle-$bizId.html";
+		$mainCategory_url = SITE_URL."/$safeCat-$mainCatId/";
+		$subCategory_url = SITE_URL."/$safeCat-$mainCatId/$safeSubCat-$subCatId";
 
 	return 	"
 	<li style='border_bottom:1px sold #000'><div><div class='grid_6' id='title'><a href='$listing_url'>".$title."</a></div><div class='grid_6' id='info'><a href='$mainCategory_url'>".$mainCat."</a> ,<a href='$subCategory_url'>".$subCat."</a></div></div></li>";
@@ -503,8 +503,8 @@ function getBrowser()
 function formatTopBanner($path,$bizId,$title)
 {
 	$safeTitle = makeURLSafe($title);
-	$listing_url = "http://localhost/business_directory/listing/$safeTitle-$bizId.html";
-	//$listing_url = SITE_URL."/listing/$safeTitle-$bizId.html";
+	//$listing_url = "http://localhost/business_directory/listing/$safeTitle-$bizId.html";
+	$listing_url = SITE_URL."/listing/$safeTitle-$bizId.html";
 	return "<a href='$listing_url'><img src='$path' width='468px' height='60px'/></a>";
 	
 }
@@ -516,8 +516,8 @@ function formatTopBanner($path,$bizId,$title)
 function formatBottomBanner($path,$bizId,$title)
 {
 	$safeTitle = makeURLSafe($title);
-	$listing_url = "http://localhost/business_directory/listing/$safeTitle-$bizId.html";
-	//$listing_url = SITE_URL."/listing/$safeTitle-$bizId.html";
+	//$listing_url = "http://localhost/business_directory/listing/$safeTitle-$bizId.html";
+	$listing_url = SITE_URL."/listing/$safeTitle-$bizId.html";
 	return  "<a href='$listing_url'><img src='$path' width='234px' height='60px'/></a>";
 }
 
@@ -528,8 +528,8 @@ function formatBottomBanner($path,$bizId,$title)
 function formatVerticalBanner($path,$bizId,$title)
 {
 	$safeTitle = makeURLSafe($title);
-	$listing_url = "http://localhost/business_directory/listing/$safeTitle-$bizId.html";
-	//$listing_url = SITE_URL."/listing/$safeTitle-$bizId.html";
+	//$listing_url = "http://localhost/business_directory/listing/$safeTitle-$bizId.html";
+	$listing_url = SITE_URL."/listing/$safeTitle-$bizId.html";
 	return  "<a href='$listing_url'><img src='$path' width='240px' height='400px'/></a>";
 }
 

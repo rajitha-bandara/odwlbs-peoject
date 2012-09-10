@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<base href="http://localhost/business_directory/" />
+<base href="<?php echo SITE_URL;?>/" />
 <title><?php echo $title;?> : Maps & Directions - <?php echo DOMAIN_NAME;?></title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -136,7 +136,7 @@ background:url(public/img/cross.png) no-repeat;
   <div class="grid_17" id="page_content">
   	  <div id="dir_general">
       <ul>
-      <li id="title"><h1><a href="http://localhost/business_directory/listing/<?php echo $safeTitle;?>-<?php echo $lid;?>.html"><?php echo $title;?></a></h1></li>
+      <li id="title"><h1><a href="<?php echo SITE_URL;?>/listing/<?php echo $safeTitle;?>-<?php echo $lid;?>.html"><?php echo $title;?></a></h1></li>
       <li><i><?php echo $mainCategory;?>, <?php echo $subCategory;?></i></li>
       <li><?php echo $phone;?></li>
       <li><b><?php echo $street;?>,  <?php echo $city;?>,  <?php echo $country;?></b></li>

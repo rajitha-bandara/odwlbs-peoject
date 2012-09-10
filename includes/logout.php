@@ -1,7 +1,7 @@
 <?php 
 @session_start();
  $salt = "34asdf34";
- $domain = "places.com";
+ $domain = DOMAIN_NAME;
  
 $_SESSION = array();
 session_destroy();

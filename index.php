@@ -34,13 +34,9 @@
     
     
  	<script src="public/js/jquery.js"></script>
-    
-    <script src="public/js/bpopup-0.6.0.min.js"></script>
-    
-    <script src="public/js/jquery.tabSlideOut.v1.3.js"></script>      
+    <script src="public/js/bpopup-0.6.0.min.js"></script>       
     <script src="public/js/jquery.cycle.all.min.js"></script>
-	<script src="public/js/presentationCycle.js"></script> 
-    <script src="public/js/jquery.easing.1.3.js"></script> 
+	<script src="public/js/presentationCycle.js"></script>    
 	<script src="ratingfiles/ratings.js"></script>
     <script type="text/javascript">
 	$(document).ready(function(){
@@ -267,9 +263,6 @@ $(document).ready(function() {
            <?php require_once('templates/share_this.html'); ?>
     </div> <!--End of newsletter-->
     
-    <!--<div class="advertisement"><img src="public/img/2.jpg"></div>
-    <div class="advertisement"><img src="public/img/1.jpg"></div>-->
-    
   </div>
  
   
@@ -285,9 +278,10 @@ $(document).ready(function() {
     <!-- Placed at the end of the document so the pages load faster -->
     
    <script src="public/js/bootstrap/bootstrap-button.js"></script>
-    <script type="text/javascript" src="public/js/jquery.mousewheel-3.0.6.pack.js"></script>
-	<script type="text/javascript" src="public/js/jquery.fancybox.js?v=2.0.6"></script>
-<script type="text/javascript">
+   <script src="public/js/jquery.easing.1.3.js"></script> 
+   <script type="text/javascript" src="public/js/jquery.mousewheel-3.0.6.pack.js"></script>
+   <script type="text/javascript" src="public/js/jquery.fancybox.js?v=2.0.6"></script>
+   <script type="text/javascript">
   var uvOptions = {};
   (function() {
     var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;

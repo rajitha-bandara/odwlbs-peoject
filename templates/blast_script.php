@@ -22,7 +22,7 @@ while($row = mysql_fetch_array($sql)){
 		
 	$message = $var;
     $from = ADMIN_EMAIL;
-	$subject = "Email blast at places.com";
+	$subject = "Email blast at ". DOMAIN_NAME;
 	$to = "$email";
 
     $mail = new phpmailer();

@@ -126,7 +126,7 @@ class Banner
 			$pkgStr = "(b.package = 'g' OR b.package = 's')";
 		global $gdbObj;
 	
-		$sql = "SELECT b.biz_id, b.title, a.banner_id	FROM ".self::$table_biz . " b, ".self::$table_location. " l, ".self::$banner_table. " a
+		$sql = "SELECT b.biz_id, b.title,b.tagline, a.banner_id	FROM ".self::$table_biz . " b, ".self::$table_location. " l, ".self::$banner_table. " a
 		where a.type = '$bType' AND $pkgStr AND b.biz_id = a.biz_id AND b.biz_id = l.biz_id AND $locationStr ORDER BY RAND() LIMIT $limit";
 	
 		$result =  $gdbObj->query($sql);
@@ -168,14 +168,16 @@ class Banner
 			{
 				$lstId = $row[0];
 				$lstTitle = $row[1];
+				$lstTagline = $row[2];
 				$exts = array('bmp','png','jpg','gif','jpeg');
 				foreach($exts as $ext) {
-					$bPath = "ads/" . $bType . "/". $row[2] .".". $ext;
+					$bPath = "ads/" . $bType . "/". $row[3] .".". $ext;
 					if(file_exists($bPath)){
 						
 						$imgArr[$counter][0] = $lstId;
 						$imgArr[$counter][1] = makeURLSafe($lstTitle);
-						$imgArr[$counter][2] = $bPath;
+						$imgArr[$counter][2] = $lstTagline;
+						$imgArr[$counter][3] = $bPath;
 						$counter++;
 					}
 				}
@@ -185,11 +187,11 @@ class Banner
 		
 		while($row = mysql_fetch_array($result))
 		{
+			$lstId = $row[0];
+			$lstTitle = $row[1];
 			$exts = array('bmp','png','jpg','gif','jpeg');
 			foreach($exts as $ext) {
-				$bPath = "ads/" . $bType . "/". $row[2] .".". $ext;
-				$lstId = $row[0];
-				$lstTitle = $row[1];
+				$bPath = "ads/" . $bType . "/". $row[3] .".". $ext;
 				if(file_exists($bPath)){
 					if($bType == 'top')
 						return formatTopBanner($bPath,$lstId,$lstTitle);

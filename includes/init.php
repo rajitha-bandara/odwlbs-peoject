@@ -1,10 +1,7 @@
 <?php
-defined('DS')        ? null : define('DS', DIRECTORY_SEPARATOR);
-defined('SITE_ROOT') ? null : define('SITE_ROOT', 'C:'.DS.'xampp'.DS.'htdocs'.DS.'business_directory');
-defined('LIB_PATH')  ? null : define('LIB_PATH', SITE_ROOT.DS.'includes');
-defined('CLASS_PATH')? null : define('CLASS_PATH', SITE_ROOT.DS.'data'.DS.'classes');
+
 // load config file first
-require_once(LIB_PATH.DS.'config.php');
+require_once('config.php');
 
 // load basic functions next so that everything after can use them
 require_once(LIB_PATH.DS.'functions.php');

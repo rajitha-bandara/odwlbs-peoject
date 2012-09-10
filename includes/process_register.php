@@ -109,17 +109,17 @@ if(isset($_POST['btnReg']))
 		Thank you for registering at Directory.ac. To verify your Email, you will 
 		need to click on this link or copy and paste it in your browser:
 		
-		http://www.places.webuda.com/activation.php?id=$user_id&sequence=$md5_passowrd
+		".SITE_NAME."/activation.php?id=$user_id&sequence=$md5_passowrd
 		
 		This will verify your account and log you into the site. In the future you 
-		will be able to log in to http://***/user using the username and 
+		will be able to log in to ".SITE_NAME."  using the username and 
 		password that you created during registration.
 		
 		Meanwhile we suggest you to read how to really build links for your business 
 		and get your sites in top Google search results: 
-		http://***
+		".SITE_NAME."
 		
-		You may now log in to http://***/user using the following username 
+		You may now log in to".SITE_NAME." using the following username 
 		and password:
 		
 		username: $username
@@ -129,7 +129,7 @@ if(isset($_POST['btnReg']))
 		to this E-mail with your request.
 		
 		Sincerely,
-		--  *** team
+		--  ".DOMAIN_NAME." team
 		";
 		//end of message
 		$headers  = "From: $from\r\n";

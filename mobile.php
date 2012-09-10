@@ -5,7 +5,7 @@ require_once('includes/init.php');
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title><?php echo DOMAIN_NAME;?> Contacts</title>
+<title><?php echo DOMAIN_NAME;?> on your mobile</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
@@ -51,28 +51,28 @@ require_once('includes/init.php');
     <div id="main_wrapper" class="grid_17">
       <!--Begins main wrapper-->
       <div id="page_topic">
-        <h1>Contact us</h1>
+        <h1>Make it mobile. Find Local listings</h1>
+         <h3>Dowaload our latest mobile app!</h3>
       </div>
       <div class="grid_17" style="padding:10px;padding-right:10px;min-height:500px;">
-      <h2>Customer Service :</h2>   
-      <i>Office Hours are Monday to Friday from 9.00am to 5.00pm</i><br>
-      <p>Office : (094) 946-8139</p>
-	  <p>Email : <?php echo ADMIN_EMAIL;?></p>
+      <div class="grid_6"><img src="public/img/android-app.jpg"></div>
+      <div class="grid_10" style="margin-left:20px;text-align:justify;">
+      Plmobile® products turn your mobile device into a powerful local guide that brings you everyday saving. Search  businesses quickly by typing or browsing popular categories including gas prices, restaurants, bars, hotels, mechanics, dentists. <br><br>
+
+Find businesses faster with predictive text, and quick links to top categories. The auto-complete feature remembers your favorite search terms making it easier to access past or favorite (pick one) on-the-go. Get the scoop from other locals, access comprehensive business listings including ratings, reviews, business details, open hours, or click to the website.
+<br><br>
+
+Store your favorite businesses, deals and event to "My Stuff" for easy access. Share business details and deals with friends via text, email, Facebook or Twitter.<br><br>
+      </div>
+  <div class="clear"></div>
+ <div class="grid_6" style=""> 
+ <img src="public/img/android_market_logo.png" width="200" height="70">
+ </div>    
       
-       <h2>Sales and Advertising :</h2>
-      <i>Banner and Bullet Advertising, Membership Upgrades, etc.</i><br>
-      <p>Email : <?php echo ADMIN_EMAIL;?></p>
-      
-      <h2>Technical Support :</h2>
-      <i>Having problems with using our site?</i><br>
-      <p>Email : <?php echo ADMIN_EMAIL;?></p>
-      <br><br>
-      <h3>You can chat with our agents live</h3>
-      <h5>Use the chat widget at the bottom of this page</h5>
       </div>
     </div>
   </div>
-  <div class="grid_6" id="sec_col">
+  <div class="grid_6">
     <?php require_once('templates/right_column.php');?>
   </div>
   <div class="clear"></div>
