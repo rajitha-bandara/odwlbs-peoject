@@ -1,5 +1,5 @@
 body{
-	background-color:#FFF;
+	
 	
 }
 #profile_left_col {
@@ -192,6 +192,7 @@ body{
 #del_listing{
 	padding-left:15px;
 	padding-right:15px;
+	min-height:500px;
 }
 
 
@@ -202,4 +203,9 @@ body{
 #del_listing #lizDel{
 	visibility:hidden;
 	
+}
+
+/* CSS for view listing page */
+#user_listings{
+	min-height:500px;
 }

@@ -95,31 +95,32 @@ if(isset($_POST['btnReg']))
 		//Create directory(folder) to hold each user's files(pics,videos,etc.)
 		mkdir(SITE_ROOT."/members/$user_id", 0755);
 		
-		$success_msg =$success_msg. "You have successfully registered with Places.com!<br>";
+		$success_msg =$success_msg. "You have successfully registered with ".DOMAIN_NAME."!<br>";
 		
 		//Send Email to actvate the account
 		$to = "$email";
 			
 		$from = ADMIN_EMAIL;
-		$subject = "Complete your registration at directory.com";
+		$subject = "Complete your registration at ".DOMAIN_NAME."";
 		//Begin HTML Email Message
 				
 		$message = "Hi $username,
 		
-		Thank you for registering at Directory.ac. To verify your Email, you will 
+		Thank you for registering at ".DOMAIN_NAME.". To verify your Email, you will 
 		need to click on this link or copy and paste it in your browser:
 		
-		".SITE_NAME."/activation.php?id=$user_id&sequence=$md5_passowrd
+		<a href='".SITE_URL."/activation.php?id=$user_id&sequence=$md5_passowrd'>
+		".SITE_URL."/activation.php?id=$user_id&sequence=$md5_passowrd</a>
 		
 		This will verify your account and log you into the site. In the future you 
-		will be able to log in to ".SITE_NAME."  using the username and 
+		will be able to log in to ".DOMAIN_NAME."  using the username and 
 		password that you created during registration.
 		
 		Meanwhile we suggest you to read how to really build links for your business 
 		and get your sites in top Google search results: 
-		".SITE_NAME."
+		".DOMAIN_NAME."
 		
-		You may now log in to".SITE_NAME." using the following username 
+		You may now log in to".DOMAIN_NAME." using the following username 
 		and password:
 		
 		username: $username
@@ -129,7 +130,7 @@ if(isset($_POST['btnReg']))
 		to this E-mail with your request.
 		
 		Sincerely,
-		--  ".DOMAIN_NAME." team
+		--  ".DOMAIN_NAME." team 
 		";
 		//end of message
 		$headers  = "From: $from\r\n";
@@ -142,7 +143,7 @@ if(isset($_POST['btnReg']))
 		$mail->AddAddress($to);
 		$mail->Subject = $subject;
 		$mail->Body = $message;
-		//$result = $mail->Send();
+		$result = $mail->Send();
 
 		$page_topic = "Complete your registration at Places.com";
 		$msgToUser = "<h2>One Last Step - Activate through Email</h2><h4>OK $username, one last step to verify your email identity:</h4><br />
@@ -159,4 +160,3 @@ if(isset($_POST['btnReg']))
 	mysql_close();
 	}
 ?>
-

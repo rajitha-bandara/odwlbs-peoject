@@ -1,5 +1,4 @@
-<?php
-@session_start();
+<?php @session_start();
 require_once('../includes/init.php');
 require_once('includes/login_status.php');
 ?>
@@ -201,11 +200,7 @@ global $gbizObj;
 				<div class="clear"></div>
 			</div>
 		</article><!-- end of stats article -->
-		
-		
-		
-		
-		
+	
 		<div class="spacer"></div>
 	</section>
 

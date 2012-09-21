@@ -36,7 +36,6 @@ if(isset($_POST['btnSend']))
 	<link rel="stylesheet" href="css/layout.css" type="text/css" media="screen" />
     <link rel="stylesheet" type="text/css" href="css/flexigrid.css" />
     <link type="text/css" href="css/base/ui.all.css" rel="stylesheet" /> 
-    <link type="text/css" href="css/zebra_msgbox/zebra_dialog.css" rel="stylesheet" /> 
     <link type="text/css" href="css/zebra_msgbox/zebra_dialog.css" rel="stylesheet" />  
     <link type="text/css" href="css/styles.css" rel="stylesheet" />    
 	<!--[if lt IE 9]>
@@ -55,7 +54,6 @@ if(isset($_POST['btnSend']))
 <script type="text/javascript" src="js/ui/i18n/ui.datepicker-id.js"></script>
 <script type="text/javascript" src="js/flexigrid.js"></script>
 <script type="text/javascript" src="js/jquery.validate.js"></script>
-<script type="text/javascript" src="js/zebra_dialog.js"></script>
 <script type="text/javascript" src="js/functions.js"></script>
 
 	<script type="text/javascript">

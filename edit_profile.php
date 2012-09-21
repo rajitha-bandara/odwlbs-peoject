@@ -1,7 +1,6 @@
 <?php
 @session_start();
 ?>
-
 <?php 
 if ($_GET['id']) {
 	
@@ -20,7 +19,6 @@ if ($_GET['id']) {
 <?php
 require_once('includes/init.php');
 ?>
-
 <?php
 $username = "";
 $password = "";
@@ -74,84 +72,66 @@ while($row = mysql_fetch_array($sql)){
 
 } 
 ?>
-
 <?php
 require_once('includes/process_edit_profile.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Places.com Edit Profile:: <?php print "$logOptions_username"?></title>
+<title>Places.com Edit Profile::<?php print "$logOptions_username"?></title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-     <!-- Le styles -->
-    <link href="public/css/bootstrap.css" rel="stylesheet">
-    <link href="public/css/bootstrap.min.css" rel="stylesheet">
-    <link href="public/css/960_24_col.css" rel="stylesheet">
-    <link href="public/css/reset.css" rel="stylesheet">
-    <link href="public/css/style.css" rel="stylesheet">
-    <link href="public/css/profile.css" rel="stylesheet" type="text/css">
-    
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
+<!-- Le styles -->
+<link href="public/css/bootstrap.css" rel="stylesheet">
+<link href="public/css/bootstrap.min.css" rel="stylesheet">
+<link href="public/css/960_24_col.css" rel="stylesheet">
+<link href="public/css/reset.css" rel="stylesheet">
+<link href="public/css/style.css" rel="stylesheet">
+<link href="public/css/profile.css" rel="stylesheet" type="text/css">
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
       <script src="public/js/html5.js"></script>
     <![endif]-->
-
-    <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="public/icons/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="">
-    <link rel="apple-touch-icon-precomposed" href="">
-    
-    <script src="public/js/jquery.js"></script>
-    <script src="public/js/bpopup-0.6.0.min.js"></script>
-    <script src="public/js/functions.js"></script>
-
+<!-- Le fav and touch icons -->
+<link rel="shortcut icon" href="public/icons/favicon.ico">
+<script src="public/js/jquery.js"></script>
+<script src="public/js/bpopup-0.6.0.min.js"></script>
+<script src="public/js/functions.js"></script>
 </head>
-
 <body>
+<?php require_once('includes/geo_location_all.php');?>
 <div class="container_24" id="container">
   <?php require_once('templates/top-nav-bar.php');?>
-  
   <?php require_once('templates/header.php');?>
-  
   <?php require_once('templates/linkbar.html');?>
-  
   <?php require('templates/profile_left_column.php');?>
-   
-   <div id="profile_body" class="grid_12">
-                      
-           <h1 id="profile_page_topic">Edit Profile Info</h1>
-          
+  <div id="profile_body" class="grid_12">
+    <h1 id="profile_page_topic">Edit Profile Info</h1>
     <table width="500" border="0" cellspacing="0" cellpadding="0" id="profile_details_table">
-          <form action="" enctype="multipart/form-data" method="post" name="pic1_form" id="pic1_form">
-               
-      <tr>
-        <td width="173" style="padding-left:20px;">User Name</td>
-        <td width="327"><input type="text" class="span3" name="txtuname" id="username" value="<?php print "$username"; ?>" size="10" maxlength="32" /></td>
-      </tr>
-    
-      <tr>
-        <td width="173" style="padding-left:20px;">First Name<td width="327"><input type="text" class="span3" name="txtfname" id="" value="<?php print "$fname"; ?>" size="10" maxlength="32" /></td>
-      </tr>
-          <tr>
-        <td width="173" style="padding-left:20px;">Last Name</td>
-        <td width="327"><input type="text" class="span3" name="txtlname" id="lastname" value="<?php print "$lname"; ?>" size="10" maxlength="32" /></td>
-      </tr>
-         <tr>
+      <form action="" enctype="multipart/form-data" method="post" name="pic1_form" id="pic1_form">
+        <tr>
+          <td width="173" style="padding-left:20px;">User Name</td>
+          <td width="327"><input type="text" class="span3" name="txtuname" id="username" value="<?php print "$username"; ?>" size="10" maxlength="32" /></td>
+        </tr>
+        <tr>
+          <td width="173" style="padding-left:20px;">First Name 
+          <td width="327"><input type="text" class="span3" name="txtfname" id="" value="<?php print "$fname"; ?>" size="10" maxlength="32" /></td>
+        </tr>
+        <tr>
+          <td width="173" style="padding-left:20px;">Last Name</td>
+          <td width="327"><input type="text" class="span3" name="txtlname" id="lastname" value="<?php print "$lname"; ?>" size="10" maxlength="32" /></td>
+        </tr>
+        <tr>
+        <tr>
+          <td width="173" style="padding-left:20px;">Profile image</td>
+          <td width="328"><input name="fileField" type="file">
+            100kb max</td>
+        </tr>
+        </tr>
         
-         <tr>
-            <td width="173" style="padding-left:20px;">Profile image</td>
-            <td width="328"><input name="fileField" type="file">  100kb max</td>
-          </tr>
-          
-      </tr>
-           <tr>
-        <td width="173" style="padding-left:20px;">Country</td>
-    
-         <td width="327"><select name="listcountry" class="formFields">
+        <tr>
+          <td width="173" style="padding-left:20px;">Country</td>
+          <td width="327"><select name="listcountry" class="formFields">
               <option value="<?php print "$country"; ?>"><?php print "$country"; ?></option>
               <option value="United States of America">United States of America</option>
               <option value="Afghanistan">Afghanistan</option>
@@ -401,56 +381,48 @@ require_once('includes/process_edit_profile.php');
               <option value="Zimbabwe">Zimbabwe</option>
             </select>
             &nbsp;&nbsp;</td>
-   
-    </tr>
-          <tr>
-        <td width="173" style="padding-left:20px;">City</td>
-        <td width="327"><input type="text" class="span3" name="txtcity" id="city" value="<?php print "$city"; ?>" size="10" maxlength="32" /></td>
-      </tr>
+        </tr>
         <tr>
-        <td width="173" style="padding-left:20px;">Street</td>
-        <td width="327"><input type="text" class="span3" name="txtstreet" id="street" value="<?php print "$street"; ?>" size="10" maxlength="32" /></td>
-      </tr>
-    
-      <tr>
-        <td width="173" style="padding-left:20px;">Phone</td>
-        <td width="327"><input type="text" class="span3" name="txtphone" id="phone" value="<?php print "$phone"; ?>" size="10" maxlength="32" /></td>
-      </tr>
-     
-      <tr>
-        <td width="173" style="padding-left:20px;">Zip Code</td>
-        <td width="327"><input type="text" class="span3" name="txtzip" id="zip" value="<?php print "$zipcode"; ?>" size="10" maxlength="32" /></td>
-      </tr>
-    
-      <tr>
-        <td width="173" style="padding-left:20px;">Description</td>
-        <td width="327"><textarea name="txtdescription" cols="1" rows="5"></textarea></td>
-      </tr>
-      <tr>
-        <td width="173" style="padding-left:20px;"></td>
-        <td width="327"></td>
-      </tr>
-       <tr>
-        <td width="173" style="padding-left:20px;"></td>
-        <td width="327"><button type="submit" name="btnupdate" class="btn btn-primary">Update</button></td>
-      </tr>
+          <td width="173" style="padding-left:20px;">City</td>
+          <td width="327"><input type="text" class="span3" name="txtcity" id="city" value="<?php print "$city"; ?>" size="10" maxlength="32" /></td>
+        </tr>
+        <tr>
+          <td width="173" style="padding-left:20px;">Street</td>
+          <td width="327"><input type="text" class="span3" name="txtstreet" id="street" value="<?php print "$street"; ?>" size="10" maxlength="32" /></td>
+        </tr>
+        <tr>
+          <td width="173" style="padding-left:20px;">Phone</td>
+          <td width="327"><input type="text" class="span3" name="txtphone" id="phone" value="<?php print "$phone"; ?>" size="10" maxlength="32" /></td>
+        </tr>
+        <tr>
+          <td width="173" style="padding-left:20px;">Zip Code</td>
+          <td width="327"><input type="text" class="span3" name="txtzip" id="zip" value="<?php print "$zipcode"; ?>" size="10" maxlength="32" /></td>
+        </tr>
+        <tr>
+          <td width="173" style="padding-left:20px;">Description</td>
+          <td width="327"><textarea name="txtdescription" cols="1" rows="5"></textarea></td>
+        </tr>
+        <tr>
+          <td width="173" style="padding-left:20px;"></td>
+          <td width="327"></td>
+        </tr>
+        <tr>
+          <td width="173" style="padding-left:20px;"></td>
+          <td width="327"><button type="submit" name="btnupdate" class="btn btn-primary">Update</button></td>
+        </tr>
       </form>
     </table>
-    
     <div id="resultBox"><?php echo $msg;?></div>
-  	</div>
-    
-    <div class="grid_6" id="profile_right_col">
+  </div>
+  <div class="grid_6">
     <?php require_once('templates/right_column.php');?>
-   </div> 
-   
-   <div class="clear"></div>
- 
+  </div>
+  <div class="clear"></div>
   <?php require_once('templates/footer.php');?>
 </div>
 <!-- Le javascript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-  
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="public/js/uservoice_feedback.js"></script>
 </body>
 </html>

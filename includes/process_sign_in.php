@@ -29,7 +29,7 @@ if($_GET['action'] == 'sign_in')
 	{
 		$uname    = $gdbObj->escape_value($uname); 
 	    $password = $gdbObj->escape_value($password); 
-		//$password = md5($password); // Add MD5 Hash to the password variable
+		$password = md5($password); // Add MD5 Hash to the password variable
 		
        global $gauthObj;
 		$isValid =  $gauthObj->login($uname, $password);

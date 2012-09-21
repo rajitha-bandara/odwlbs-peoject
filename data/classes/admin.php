@@ -9,30 +9,30 @@ class Admin
 	var $salt = "34asdf34";
 	var $domain = DOMAIN_NAME;
 	protected static $adminTable ="lbs_admin";
-	
+
 	function __construct()
 	{
-		
+
 	}
-	
+
 	public function setAdminId($id="")
 	{
 		$this->admin_id = $id;
 	}
-	
+
 	public function getAdminId()
 	{
 		return  $this->admin_id;
 	}
-	
+
 	public function setVars($username="",$password="",$email="")
 	{
 		$this->username = $username;
 		$this->password = $password;
 		$this->email    = $email;
 	}
-	
-	/* Create a new administrator */
+
+	// Create a new administrator
 	public function create($username="",$password="",$email="")
 	{
 		global $gdbObj;
@@ -51,14 +51,14 @@ class Admin
 		{
 			return false;
 		}
-	
+
 	}
-	
-	
-	
-public function login($username, $password)
+
+
+	// Handle admin login
+	public function login($username, $password)
 	{
-		
+
 		global $gdbObj;
 		$username = $gdbObj->escape_value($username);
 		$password = $gdbObj->escape_value($password);
@@ -69,22 +69,22 @@ public function login($username, $password)
 			$this->username = $username;
 			$this->password = $password;
 			$this->ok = true;
- 
+
 			session_register('admin_sess_id');
 			$_SESSION['admin_sess_id'] = $this->admin_id;
-			
+				
 			session_register('admin_username');
 			$_SESSION['admin_username'] = $this->username;
-			
+				
 			session_register('admin_password');
 			$_SESSION['admin_password'] = md5($this->password . $this->salt);
-			
- 			return true;
+				
+			return true;
 		}
 		return false;
 	}
 
-	//Function to check the session
+	//Check  session
 	public function check_session()
 	{
 		if(isset($_SESSION['admin_username']) && isset($_SESSION['admin_password']))
@@ -93,8 +93,8 @@ public function login($username, $password)
 		}
 		return  false;
 	}
-	
-	//Function to check the cookie
+
+	//Check  cookie
 	public function check_cookie()
 	{
 		if(isset($_COOKIE['admin_username']) && isset($_COOKIE['admin_password']))
@@ -103,8 +103,11 @@ public function login($username, $password)
 		}
 		return  false;
 	}
-	
-	//Function on check
+
+	/*
+	 * Find whether an admin really exists
+	* with the given username and password
+	*/
 	public function check($username, $password)
 	{
 		global $gdbObj;
@@ -121,22 +124,22 @@ public function login($username, $password)
 		}
 		return false;
 	}
-	
-	//Function to logout
+
+	//Handle admin logout
 	public function logout()
 	{
 		$this->admin_id = 0;
 		$this->username = "Guest";
 		$this->ok = false;
-	
+
 		$_SESSION['admin_sess_id'] = "";
 		$_SESSION['admin_username'] = "";
 		$_SESSION['admin_password'] = "";
-	
+
 		setcookie("admin_username", "", time() - 3600, $this->domain);
 		setcookie("admin_password", "", time() - 3600, $this->domain);
 	}
-	
+
 	//Remember me function
 	public function rememberMe()
 	{

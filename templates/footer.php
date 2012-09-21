@@ -4,8 +4,8 @@
           <h2>About</h2>
             <ul>
             <li><a href="index.php">Home</a></li>
-              <li><a href="about.php">About Places.com</a></li>
-              <li><a href="add_listing.php">Advertise with us </a></li>
+              <li><a href="about.php">About <?php echo DOMAIN_NAME;?></a></li>
+              <li><a href="listing_plans.php">Advertise with us </a></li>
               <li><a href="faq.php">FAQ</a></li>
               <li><a href="sitemap.xml">Sitemap</a></li>
               <li><a href="contacts.php">Contact us</a></li>

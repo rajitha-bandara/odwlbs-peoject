@@ -44,6 +44,9 @@ class Business
 
 	}
 
+	/**
+	 * Initialize general listing details
+	 */
 	public function setBizInfo($userID="",$title="",$tagline="",$category="",$subcategory="",$description="",$web="")
 	{
 		$this->userID = $userID;
@@ -56,6 +59,9 @@ class Business
 
 	}
 
+	/**
+	 * Initialize contact details for a listing
+	 */
 	public function setContactInfo($email="",$phone="",$fax="",$mobile="",$contactP="")
 	{
 		$this->email = $email;
@@ -65,6 +71,9 @@ class Business
 		$this->contactP = $contactP;
 	}
 
+	/**
+	 * Initialize location details for a listing
+	 */
 	public function setLocationInfo($street="",$city="",$country="",$zip="",$latitude="",$longitude="")
 	{
 		$this->street = $street;
@@ -75,11 +84,17 @@ class Business
 		$this->longitude = $longitude;
 	}
 
+	/**
+	 * Initialize keyword details for a listing
+	 */
 	public function setKeywordInfo($keywords ="")
 	{
 		$this->keywords = $keywords;
 	}
 
+	/**
+	 * Initialize social network links for a listing
+	 */
 	public function setSocialLinks($fb="",$twitter="",$linkedIn="",$videoChannel="")
 	{
 		$this->fb = $fb;
@@ -88,6 +103,11 @@ class Business
 		$this->video = $videoChannel;
 	}
 
+	/**
+	 * Create a new listing
+	 *
+	 * @return boolean
+	 */
 	public function add()
 	{
 		global $gdbObj;
@@ -140,6 +160,12 @@ class Business
 
 	}
 
+	/**
+	 * Update listing
+	 *
+	 * @param $option integer  indicator to find which listing section to update
+	 * @return boolean
+	 */
 	public function update($option="")
 	{
 		global $gdbObj;
@@ -211,6 +237,12 @@ class Business
 		}
 	}
 
+	/**
+	 * Delete listing
+	 *
+	 * @param $option integer  indicator to find which listing section to delete
+	 * @return boolean
+	 */
 	public function delete($option="")
 	{
 		global $gdbObj;
@@ -257,7 +289,12 @@ class Business
 	}
 
 
-
+	/**
+	 * Count listing
+	 *
+	 * @param $where string  condition to count listing records
+	 * @return string
+	 */
 	public function countListings($where)
 	{
 		global $gdbObj;
@@ -269,6 +306,12 @@ class Business
 		}
 	}
 
+	/**
+	 * Fetch listing object
+	 *
+	 * @param $id integer  retrieve a specific listing record
+	 * @return mysql result
+	 */
 	public function fetchListingObj($id)
 	{
 		global $gdbObj;
@@ -403,14 +446,14 @@ class Business
 			return $results;
 		}
 	}
-	
+
 	/* Find nearby listings for displaying banners */
 	public function fetchNearListings($ulat,$ulon,$cnt,$bType,$level,$limit)
 	{
 		global $gbannerObj;
 		$found = false;
 		$hasLst = "";
-		
+
 		//Check listings based on user lat long
 		for($i = 20;$i<=180;$i+=40)
 		{
@@ -422,14 +465,14 @@ class Business
 				$found = true;
 				break;
 			}
-			
+				
 		}
 
 		if($found)
 		{
 			return $gbannerObj->displayBanners($hasLst,$bType);
 			return;
-				
+
 		}
 		if(!$found)
 		{
@@ -439,14 +482,14 @@ class Business
 			if($hasLst !== false)
 			{
 				$found = true;
-				
+
 			}
 		}
 		if($found)
 		{
 			return $gbannerObj->displayBanners($hasLst,$bType);
 			return;
-		
+
 		}
 		if(!$found)
 		{
@@ -456,14 +499,14 @@ class Business
 			if($hasLst !== false)
 			{
 				$found = true;
-				
+
 			}
 		}
 		if($found)
 		{
 			return $gbannerObj->displayBanners($hasLst,$bType);
 			return;
-		
+
 		}
 
 

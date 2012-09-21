@@ -291,6 +291,24 @@ class User
 		}
 	}
 	
+	public function isAlreadyTaken($field,$value)
+	{
+		global $gdbObj;
+		$field = mysql_real_escape_string($field);
+		$value = mysql_real_escape_string($value);
+		$field = eregi_replace("`", "", $field);
+		$value = eregi_replace("`", "", $value);
+		$result = $gdbObj->query("SELECT * FROM ".self::$usersTable." WHERE ".$field." = '$value' ");
+		$count = $gdbObj->num_rows($result);
+		if ($count > 0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 	
 	public function countBrowserUsage($browser="")
 	{

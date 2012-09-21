@@ -32,10 +32,7 @@ if ($_GET['id'] != "")
 	elseif($doublecheck > 0) 
 	{ 
 		//Add user login data record to lbs_user_login_data as default
-		global $guserObj;
-		$guserObj->setUserId($id);
-		$guserObj->addUserGeoData();
-		
+				
 		$page_topic = "Activation Complete!";
         $msgToUser = "
 		<h2>Activation Complete!</h2><br /><br /><h3><font color=\"#0066CC\"><strong>Your account has been successfully activated. You can now login using the username and password you chose during the registration. 
@@ -43,7 +40,6 @@ if ($_GET['id'] != "")
 	
 	$redirect_to = 2;
     require_once('msg_to_user.php');
-	//header('Location: listing_plans.php');
 	exit();
 	}
  } 

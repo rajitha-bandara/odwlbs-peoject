@@ -13,7 +13,7 @@
 		  ?>
           <script type="text/javascript">
           alert('Username already exists');
-		  window.location.href='../test.php';
+		  window.location.href='../users.php';
           </script>
           <?php 
 	  }
@@ -22,13 +22,13 @@
 		  ?>
           <script type="text/javascript">
           alert('Email already exists');
-		  window.location.href='../test.php';
+		  window.location.href='../users.php';
           </script>
           <?php 
 	  }
 	  else
 	  {
-		$guserObj->set_basic_vars($uname,$pw,$email);
+		$guserObj->set_basic_vars($uname,md5($pw),$email);
 		$res = $guserObj->create();
 		if($res)
 		{
@@ -38,7 +38,7 @@
 			?>
 			<script type="text/javascript">
 			alert('Successfully added a new user');
-			window.location.href='../test.php';
+			window.location.href='../users.php';
 			</script>
 			<?php 
 		}
@@ -47,7 +47,7 @@
 			?>
 			<script type="text/javascript">
 			alert('Unable to add this user');
-			window.location.href='../test.php';
+			window.location.href='../users.php';
 			</script>
 			<?php
 		}
@@ -82,7 +82,7 @@
 			<script type="text/javascript">
 			alert('<?php echo $uid." ".$uname. " " .$first_name. " ".$description  ;?>');
 			alert('Successfully updated user data');
-			window.location.href='../test.php';
+			window.location.href='../users.php';
 			</script>
 			<?php 
 		}
@@ -91,7 +91,7 @@
 			?>
 			<script type="text/javascript">
 			alert('Unable to update user data');
-			window.location.href='../test.php';
+			window.location.href='../users.php';
 			</script>
 			<?php
 		}

@@ -14,6 +14,11 @@ class Browser
 		$this->platform = 'Unknown';
 		$this->version= "";
 	}
+	
+	/**
+	 * Get web browser information
+	 *
+	 */
 	public function getBrowser()
 	{
 

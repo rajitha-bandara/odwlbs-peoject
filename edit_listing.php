@@ -1,5 +1,4 @@
 <?php @session_start();?>
-
 <?php 
 if (isset($_GET['id']) && isset($_GET['lid'])) {
 	
@@ -19,7 +18,6 @@ if (isset($_GET['id']) && isset($_GET['lid'])) {
 <?php
 require_once('includes/init.php');
 ?>
-
 <?php
 $email = "";
 $fname = "";
@@ -57,7 +55,6 @@ while($row = mysql_fetch_array($sql)){
 
 } 
 ?>
-
 <?php
 $sql = "SELECT package FROM lbs_biz WHERE biz_id = '$lid' ";
 $result = mysql_query($sql);
@@ -77,67 +74,47 @@ $existCount = mysql_num_rows($result);
 <title>Edit Listing-<?php print DOMAIN_NAME;?></title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-     <!-- Le styles -->
-    <link href="public/css/bootstrap.css" rel="stylesheet">
-    <link href="public/css/bootstrap.min.css" rel="stylesheet">
-    <link href="public/css/960_24_col.css" rel="stylesheet">
-    <link href="public/css/reset.css" rel="stylesheet">
-    <link href="public/css/style.css" rel="stylesheet">
-    <link href="public/css/profile.css" rel="stylesheet">
-	<link rel=stylesheet type="text/css" href="public/css/collapsible_menu.css">
-
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
+<!-- Le styles -->
+<link href="public/css/bootstrap.css" rel="stylesheet">
+<link href="public/css/bootstrap.min.css" rel="stylesheet">
+<link href="public/css/960_24_col.css" rel="stylesheet">
+<link href="public/css/reset.css" rel="stylesheet">
+<link href="public/css/style.css" rel="stylesheet">
+<link href="public/css/profile.css" rel="stylesheet">
+<link rel=stylesheet type="text/css" href="public/css/collapsible_menu.css">
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
       <script src="public/js/html5.js"></script>
     <![endif]-->
-
-    <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="public/icons/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="">
-    <link rel="apple-touch-icon-precomposed" href="">
-    
-    <script src="public/js/jquery.js"></script>
-    <script src="public/js/bpopup-0.6.0.min.js"></script>
-    <script src="public/js/functions.js"></script>
-	<script type="text/javascript" src="public/js/jquery.js"></script>
-	<script type="text/javascript" src="public/js/collapsible_menu.js"></script>
-
+<!-- Le fav and touch icons -->
+<link rel="shortcut icon" href="public/icons/favicon.ico">
+<script src="public/js/jquery.js"></script>
+<script src="public/js/bpopup-0.6.0.min.js"></script>
+<script src="public/js/functions.js"></script>
+<script type="text/javascript" src="public/js/jquery.js"></script>
+<script type="text/javascript" src="public/js/collapsible_menu.js"></script>
 </head>
-
 <body>
 <div class="container_24" id="container">
   <?php require_once('templates/top-nav-bar.php');?>
-  
   <?php require_once('templates/header.php');?>
-  
   <?php require_once('templates/linkbar.html');?>
-  
   <?php require('templates/profile_left_column.php');?>
-   
-   <div id="profile_body" class="grid_12">
-                      
-           <h1 id="profile_page_topic">Edit Listing</h1>
-           <div id="edit_listings" class="grid_12">
-           <iframe name="edit_listing_view" scrolling="no" class="grid_12" height="700px" src="idefault.php?lid=<?php echo $lid;?>">
-           
-           </iframe>
-     </div>     
-   </div>
-    
-    <div class="grid_6" id="profile_right_col">
+  <div id="profile_body" class="grid_12">
+    <h1 id="profile_page_topic">Edit Listing</h1>
+    <div id="edit_listings" class="grid_12">
+      <iframe name="edit_listing_view" scrolling="no" class="grid_12" height="700px" src="idefault.php?lid=<?php echo $lid;?>"> </iframe>
+    </div>
+  </div>
+  <div class="grid_6" id="profile_right_col">
     <?php require('templates/edit_listing_menu.php');?>
-   </div>
-   
-   <div class="clear"></div>
- 
+  </div>
+  <div class="clear"></div>
   <?php require_once('templates/footer.php');?>
 </div>
 <!-- Le javascript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-  
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="public/js/uservoice_feedback.js"></script>
 </body>
 </html>

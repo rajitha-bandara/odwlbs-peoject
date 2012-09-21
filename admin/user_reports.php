@@ -17,7 +17,6 @@ global $guserObj;
     <link rel="stylesheet" type="text/css" href="css/flexigrid.css" />
     <link type="text/css" href="css/base/ui.all.css" rel="stylesheet" /> 
     <link type="text/css" href="css/zebra_msgbox/zebra_dialog.css" rel="stylesheet" /> 
-    <link type="text/css" href="css/zebra_msgbox/zebra_dialog.css" rel="stylesheet" />  
     <link type="text/css" href="css/styles.css" rel="stylesheet" />    
 	<!--[if lt IE 9]>
 	<link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" />

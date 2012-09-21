@@ -1,12 +1,11 @@
 <?php @session_start();?>
-<?php 
-require_once('includes/init.php');
-?>
+<?php require_once('includes/init.php'); ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title><?php echo DOMAIN_NAME;?> </title>
+<title><?php echo DOMAIN_NAME;?> Payments</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -17,8 +16,8 @@ require_once('includes/init.php');
     <link href="public/css/960_24_col.css" rel="stylesheet">
     <link href="public/css/reset.css" rel="stylesheet">
     <link href="public/css/style.css" rel="stylesheet">
-	<link href="public/css/ad.css" rel="stylesheet">
-    <link href="ratingfiles/ratings.css" rel="stylesheet">    
+	<link href="public/css/ad.css" rel="stylesheet">  
+	    
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="public/js/html5.js"></script>
@@ -33,10 +32,9 @@ require_once('includes/init.php');
     
  	<script src="public/js/jquery.js"></script>
     <script src="public/js/bpopup-0.6.0.min.js"></script>
+    
     <script src="public/js/functions.js"></script>
-    <script src="ratingfiles/ratings.js"></script>
-     
-     
+         
 <style type="text/css">
 .response-waiting {
 background:url(public/img/loading_small.gif) no-repeat;
@@ -64,19 +62,18 @@ background:url(public/img/cross.png) no-repeat;
 
    <div class="grid_17">
    <div class="grid_17" id="main_wrapper"><!--Begins main wrapper-->
-  <div id="page_topic"><h1>Privacy Policy</h1></div>
+  <div id="page_topic"><h1>Payment Cancelled!</h1></div>
   
   <div class="grid_17" id="page_content">
+  <h1>Payment cancelled by the user</h1>
   
   </div>
-  <div id="rating">
-      <div class="srtgs" id="rt_listing_1"></div>
-      </div>
+  
 	
    </div>
    </div>
  
-   <div class="grid_6" id="sec_col"></div>
+   <div class="grid_6"></div>
    
    
    

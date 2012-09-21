@@ -1,15 +1,13 @@
 <?php @session_start();?>
-<?php 
-require_once('includes/init.php');
-?>
+<?php require_once('includes/init.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <title><?php echo DOMAIN_NAME;?> on your mobile</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="">
+<meta name="description" content="Plmobile App from  <?php echo DOMAIN_NAME;?>. Plmobile is an Android App with  rich location based services" />
+<meta name="keywords" content="Plmobile, <?php echo DOMAIN_NAME;?> mobile app, lbs apps, lbs android">
 <!-- Le styles -->
 <link href="public/css/bootstrap.css" rel="stylesheet">
 <link href="public/css/bootstrap.min.css" rel="stylesheet">
@@ -23,9 +21,7 @@ require_once('includes/init.php');
     <![endif]-->
 <!-- Le fav and touch icons -->
 <link rel="shortcut icon" href="public/icons/favicon.ico">
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="">
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="">
-<link rel="apple-touch-icon-precomposed" href="">
+
 <script src="public/js/jquery.js"></script>
 <script src="public/js/bpopup-0.6.0.min.js"></script>
 <script src="public/js/functions.js"></script>
@@ -42,6 +38,7 @@ require_once('includes/init.php');
 }
 </style>
 </head>
+<?php require_once('includes/ga_property_id.php');?>
 <body>
 <div class="container_24" id="container">
   <?php require_once('templates/top-nav-bar.php');?>
@@ -82,20 +79,6 @@ Store your favorite businesses, deals and event to "My Stuff" for easy access. S
 <!-- Le javascript
     ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<!-- ClickDesk - <a href='http://www.clickdesk.com'> Live Chat Service </a> for websites -->
-<script type='text/javascript'>
-	var _glc =_glc || []; _glc.push('ag9jb250YWN0dXN3aWRnZXRyEAsSB3dpZGdldHMY0IWqBAw');
-	var glcpath = (('https:' == document.location.protocol) ? 'https://my.clickdesk.com/livily/browser/' : 
-	'http://gae.clickdesk.com/livily/browser/');
-	var glcp = (('https:' == document.location.protocol) ? 'https://' : 'http://');
-	var glcspt = document.createElement('script'); glcspt.type = 'text/javascript'; 
-	glcspt.async = true; glcspt.src = glcpath + 'livechat.js';
-	var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(glcspt, s);
-</script>
-<noscript>
-<p><a href='http://gae.clickdesk.com/clickdeskchat.jsp?widget_id=ag9jb250YWN0dXN3aWRnZXRyEAsSB3dpZGdldHMY0IWqBAw'>HelpDesk Software</a></p>
-</noscript>
-<!-- End of ClickDesk -->
-
+<script src="public/js/uservoice_feedback.js"></script>
 </body>
 </html>

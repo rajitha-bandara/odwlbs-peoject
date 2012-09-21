@@ -24,6 +24,10 @@ class Banner
 	{
 		return $this->bannerID;
 	}
+	
+	/* Initialize variables
+	 * 
+	 */
 	public function setBannerInfo($bannerType="",$caption="",$destination="")
 	{
 		$this->bannerType = $bannerType;
@@ -31,7 +35,13 @@ class Banner
 		$this->destination = $destination;
 
 	}
-
+	
+	/**
+	 * Create a banner
+	 *
+	 * @return boolean
+	 *
+	 */
 	public function add()
 	{
 		global $gdbObj;
@@ -53,7 +63,12 @@ class Banner
 		}
 
 	}
-
+ /** 
+  * Delete a banner
+  * 
+  * @param $lid integer  listing ID to delete a banner
+  * 
+  */
 	public function deleteBanner($lid)
 	{
 		global $gdbObj;
@@ -78,7 +93,7 @@ class Banner
 
 	}
 	
-	/* Query banner information based on lat long distance from the user */
+	
 	/* public function getAdsByDist($coords,$bType,$level,$limit)
 	{
 		if($level == 'home')
@@ -100,6 +115,17 @@ class Banner
 			return false;
 	} */
 	
+	/**
+	 * Find banner details based on user location 
+	 * User some fallback options
+	 * 
+	 * @param $logic string  location criteria to proceed
+	 * @param $loc string  location in lat lon or country
+	 * @param $bType string  banner type
+	 * @param $level string  display area on page
+	 * @param $limit integer  number of records to fetch in database
+	 *
+	 */
 	public function getAdsByDist($logic,$loc,$bType,$level,$limit)
 	{
 		$locationStr = "";
@@ -157,6 +183,13 @@ class Banner
 			return false;
 	} */
 	
+	/**
+	 * Format and display banner
+	 * 
+	 * @param $result mysql result set  result set to retrieve  banner details
+	 * @param $bType string  banner type
+	 *
+	 */
 	public function displayBanners($result,$bType)
 	{
 		$imgArr = array();

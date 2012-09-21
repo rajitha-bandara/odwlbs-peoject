@@ -8,8 +8,8 @@ require_once('includes/init.php');
 <title><?php echo DOMAIN_NAME;?> Contacts</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="">
+<meta name="description" content="Contacts <?php echo DOMAIN_NAME;?>" />
+<meta name="keywords" content="<?php echo DOMAIN_NAME;?> contacts">
 <!-- Le styles -->
 <link href="public/css/bootstrap.css" rel="stylesheet">
 <link href="public/css/bootstrap.min.css" rel="stylesheet">
@@ -23,9 +23,6 @@ require_once('includes/init.php');
     <![endif]-->
 <!-- Le fav and touch icons -->
 <link rel="shortcut icon" href="public/icons/favicon.ico">
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="">
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="">
-<link rel="apple-touch-icon-precomposed" href="">
 <script src="public/js/jquery.js"></script>
 <script src="public/js/bpopup-0.6.0.min.js"></script>
 <script src="public/js/functions.js"></script>
@@ -41,8 +38,10 @@ require_once('includes/init.php');
 	background:url(public/img/cross.png) no-repeat;
 }
 </style>
+<?php require_once('includes/ga_property_id.php');?>
 </head>
 <body>
+<?php require_once('includes/geo_location_all.php');?>
 <div class="container_24" id="container">
   <?php require_once('templates/top-nav-bar.php');?>
   <?php require_once('templates/header.php');?>
@@ -54,25 +53,24 @@ require_once('includes/init.php');
         <h1>Contact us</h1>
       </div>
       <div class="grid_17" style="padding:10px;padding-right:10px;min-height:500px;">
-      <h2>Customer Service :</h2>   
-      <i>Office Hours are Monday to Friday from 9.00am to 5.00pm</i><br>
-      <p>Office : (094) 946-8139</p>
-	  <p>Email : <?php echo ADMIN_EMAIL;?></p>
-      
-       <h2>Sales and Advertising :</h2>
-      <i>Banner and Bullet Advertising, Membership Upgrades, etc.</i><br>
-      <p>Email : <?php echo ADMIN_EMAIL;?></p>
-      
-      <h2>Technical Support :</h2>
-      <i>Having problems with using our site?</i><br>
-      <p>Email : <?php echo ADMIN_EMAIL;?></p>
-      <br><br>
-      <h3>You can chat with our agents live</h3>
-      <h5>Use the chat widget at the bottom of this page</h5>
+        <h2>Customer Service :</h2>
+        <i>Office Hours are Monday to Friday from 9.00am to 5.00pm</i><br>
+        <p>Office : (094) 946-8139</p>
+        <p>Email : <?php echo ADMIN_EMAIL;?></p>
+        <h2>Sales and Advertising :</h2>
+        <i>Banner and Bullet Advertising, Membership Upgrades, etc.</i><br>
+        <p>Email : <?php echo ADMIN_EMAIL;?></p>
+        <h2>Technical Support :</h2>
+        <i>Having problems with using our site?</i><br>
+        <p>Email : <?php echo ADMIN_EMAIL;?></p>
+        <br>
+        <br>
+        <h3>You can chat with our agents live</h3>
+        <h5>Use the chat widget at the bottom of this page</h5>
       </div>
     </div>
   </div>
-  <div class="grid_6" id="sec_col">
+  <div class="grid_6">
     <?php require_once('templates/right_column.php');?>
   </div>
   <div class="clear"></div>
@@ -82,6 +80,7 @@ require_once('includes/init.php');
 <!-- Le javascript
     ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
+<script src="public/js/uservoice_feedback.js"></script>
 <!-- ClickDesk - <a href='http://www.clickdesk.com'> Live Chat Service </a> for websites -->
 <script type='text/javascript'>
 	var _glc =_glc || []; _glc.push('ag9jb250YWN0dXN3aWRnZXRyEAsSB3dpZGdldHMY0IWqBAw');
@@ -96,6 +95,5 @@ require_once('includes/init.php');
 <p><a href='http://gae.clickdesk.com/clickdeskchat.jsp?widget_id=ag9jb250YWN0dXN3aWRnZXRyEAsSB3dpZGdldHMY0IWqBAw'>HelpDesk Software</a></p>
 </noscript>
 <!-- End of ClickDesk -->
-
 </body>
 </html>

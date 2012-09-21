@@ -1,6 +1,6 @@
 <?php
 
- global $gadminObj;
+global $gadminObj;
 $isSetSession = false;
 $isSetCookie  = false;
 

@@ -4,8 +4,10 @@ require_once('phpmailer/phpmailer.inc.php');
 ?>
 <?php
 $outputForUser = "";
-if ($_POST['txtforgotpass'] != "") {
-
+if (isset($_POST['btnReset'])) 
+{
+if($_POST['txtforgotpass'] != "")
+{
        $email = $_POST['txtforgotpass'];
        $email   = strip_tags($email);
 	   $email= eregi_replace("`", "", $email);
@@ -27,7 +29,7 @@ if ($_POST['txtforgotpass'] != "") {
 
                 @mysql_query("UPDATE lbs_user SET password='$hashTempPass' where email='$email'") or die("cannot set your new password");
 
-                $from = "admin@rajitha.freeiz.com";
+                $from = ADMIN_EMAIL;
 				$to = "$email";
                 $subject ="Login Password Generated";
 				
@@ -49,12 +51,14 @@ if ($_POST['txtforgotpass'] != "") {
 				
      }
 
-} else {
+}
+ else {
  
    $outputForUser = 'Please enter your email address.';
    $status = "NOTOK";
 
 }
+
 
 if($status == "OK")
 {
@@ -63,5 +67,6 @@ if($status == "OK")
 else
 {
 	$outputForUser = "<div class='alert alert-error' id='error_box'>".$outputForUser."</div>";
+}
 }
 ?>

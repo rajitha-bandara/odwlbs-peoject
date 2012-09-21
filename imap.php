@@ -5,15 +5,11 @@
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
 <link href="public/css/bootstrap.css" rel="stylesheet">
 <link href="public/css/960_24_col.css" rel="stylesheet">
 <link href="public/css/reset.css" rel="stylesheet">
-
 <script src="https://maps.google.com/maps?file=api&v=3&sensor=false&key=<?php echo GOOGLE_MAP_API_KEY;?>" type="text/javascript"></script>
 <script src="public/js/jquery.js"></script>
-
-
 <script type="text/javascript">
 		var map = null;
 		var geocoder = null; 
@@ -190,75 +186,66 @@
 		}
 		 
    </script>
-		
 <style type="text/css">
-body{
+body {
 	height:480px;
 	margin:0px;
 	padding:0px;
 }
-#latLonPicker{
+#latLonPicker {
 	margin:10px;
 }
-#map #geoMap{
+#map #geoMap {
 	width: 500px;
 }
-#map #geoMap #map_canvas{
+#map #geoMap #map_canvas {
 	width: 500px;
 	height: 300px;
 }
-#map #geoMap #msg{
+#map #geoMap #msg {
 	margin-left:10px;
 }
-#map #geoMap #manual{
+#map #geoMap #manual {
 	font-size:12px;
 	margin-left:10px;
-	
 }
-#map #geoMap #manual #latitude,#map #geoMap #manual #longitude{
+#map #geoMap #manual #latitude, #map #geoMap #manual #longitude {
 	margin-right:20px;
-	
 }
-#map #geoMap #manual #address{
+#map #geoMap #manual #address {
 	margin-left:10px
-	
 }
-#map #geoMap #manual #btn_panel{
+#map #geoMap #manual #btn_panel {
 	margin-bottom:10px;
-	
 }
-</style>	
-
+</style>
 </head>
-
 <body onLoad="initialize();">
-
- 
-                                                                                
 <form name="latLonPicker" id="latLonPicker">
-<input type="hidden" name="confirmedLatitude">
-<input type="hidden" name="confirmedLongitude">
-<div id="map">
- 
- <div id="geoMap"><div id="map_canvas"></div><br>
- <div id="msg"></div>
- <br>
- <div id="manual">
-Latitude <input id="latitude" name="latitude" type="text" class="input-medium">
-Longitude<input id="longitude" name="longitude" type="text" class="input-medium">
-<br> 
-Location <div id="address"></div>
-<br>
-<div id="btn_panel">
-<button name="confirm" id="confirm" onclick="doSubmit();" class="btn btn-primary" style="margin-left:10px;">Confirm</button>
-
-<button name="relocate" onclick="doRelocate();" class="btn btn-primary" style="margin-left:10px;">Relocate</button>
-</div>
-</div>
-</div>
- </div>
+  <input type="hidden" name="confirmedLatitude">
+  <input type="hidden" name="confirmedLongitude">
+  <div id="map">
+    <div id="geoMap">
+      <div id="map_canvas"></div>
+      <br>
+      <div id="msg"></div>
+      <br>
+      <div id="manual"> Latitude
+        <input id="latitude" name="latitude" type="text" class="input-medium">
+        Longitude
+        <input id="longitude" name="longitude" type="text" class="input-medium">
+        <br>
+        Location
+        <div id="address"></div>
+        <br>
+        <div id="btn_panel">
+          <button name="confirm" id="confirm" onclick="doSubmit();" class="btn btn-primary" style="margin-left:10px;">Confirm</button>
+          <button name="relocate" onclick="doRelocate();" class="btn btn-primary" style="margin-left:10px;">Relocate</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </form>
- 
-<script src="public/js/bootstrap/bootstrap-button.js"></script>                     
+<script src="public/js/bootstrap/bootstrap-button.js"></script>
 </body>
 </html>
