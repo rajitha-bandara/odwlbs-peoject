@@ -31,7 +31,7 @@ require_once('includes/process_login.php');?>
             <header>
                 <h1 align="center"><?php echo DOMAIN_NAME;?> Admin Panel</h1>
 				
-            </header>
+          </header>
             <section>				
                 <div id="container_demo" >
                     <!-- hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4  -->

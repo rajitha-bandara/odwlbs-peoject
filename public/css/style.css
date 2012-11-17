@@ -11,16 +11,20 @@
 html{
 
 }
-
+body{
+	background-image:url(../img/bg.png);
+}
 #container{
 	background-color: #EEE;
+
 	
 
 filter: progid:DXImageTransform.Microsoft.Shadow(color='#777777', Direction= 135, Strength=8);
-zoom: 1!important; /* IE6-9 */
-box-shadow: 0 0 5px 5px #888;
--moz-box-shadow: 0 0 5px 5px #666;
--webkit-box-shadow: 0 0 5px 5px #888;
+	zoom: 1!important; /* IE6-9 */
+	box-shadow: 0 0 5px 5px #888;
+	-moz-box-shadow: 0 0 5px 5px #666;
+	-webkit-box-shadow: 0 0 5px 5px #888;
+	background-image: none;
  
 }
 
@@ -121,7 +125,10 @@ background-image:url(../img/header_bg.jpg);
 #page_topic{
 	margin-left:100px;
 	margin-top:30px;
-	font-size:20px;
+	
+}
+#page_topic h1{
+	font-size:2em;
 }
 #page_body{
 	font-family:serif;
@@ -333,7 +340,7 @@ background-image:url(../img/header_bg.jpg);
 	background-image:url(../img/footer_back.jpg);
 	color: #ad7405;
 	padding-top:20px;
-	
+	padding-bottom:20px;
 	font-weight: lighter;
 	
 	width:100%;
@@ -546,7 +553,7 @@ background:url(../img/footer_divider.gif) no-repeat center right;
 	display:inline;
 	
 }
-<!--styles for Newsletter sign up form-->
+styles for Newsletter sign up form
 
 #email_signup_des{
 	font-size:11px;
@@ -589,7 +596,7 @@ background:url(../img/footer_divider.gif) no-repeat center right;
 #nav li a:hover
 {
    background-color:#9B1C26;
-   padding-bottom:12px;
+   /*padding-bottom:12px;*/
    border-bottom:2px;
    border-bottom-color:#000000;
    border-bottom-style:solid;

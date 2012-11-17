@@ -6,15 +6,14 @@
             <li><a href="index.php">Home</a></li>
               <li><a href="about.php">About <?php echo DOMAIN_NAME;?></a></li>
               <li><a href="listing_plans.php">Advertise with us </a></li>
-              <li><a href="faq.php">FAQ</a></li>
               <li><a href="sitemap.xml">Sitemap</a></li>
               <li><a href="contacts.php">Contact us</a></li>
            
            </ul>   
-            <p><a title="HTML 5 Valid" href="#" onClick="Javascript:window.open('http://validator.w3.org/check?uri=http%3A%2F%2Fwww.places.webuda.com/index.php;verbose=1', '');" rel="nofollow">
+            <!--<p><a title="HTML 5 Valid" href="#" onClick="Javascript:window.open('http://validator.w3.org/check?uri=http%3A%2F%2Fwww.places.webuda.com/index.php;verbose=1', '');" rel="nofollow">
             <img src="public/img/html5-logo.png" width="120" height="36" 
             alt="HTML5 Powered with CSS3 / Styling, Device Access, Performance &amp; Integration, and Semantics" 
-            title="HTML5 Powered with CSS3 / Styling, Device Access, Performance &amp; Integration, and Semantics"></a></p>
+            title="HTML5 Powered with CSS3 / Styling, Device Access, Performance &amp; Integration, and Semantics"></a></p>-->
         </div>
         <div id="foot_nav" class="grid_6" >
             <h2>Links</h2>

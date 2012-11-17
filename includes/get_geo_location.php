@@ -22,18 +22,25 @@ function setGeoCookie(visitor_lat,visitor_lon,visitor_city,visitor_region,visito
 	document.cookie = 'address' + "=" + escape(visitor_address) + ";expires=" + expire.toGMTString();
 }
 
-function onSuccess(position)
+//HTML5 GEO LOCATION onSuccess function
+/*function onSuccess(position)
 {
 	visitor_lat = position.coords.latitude;
 	visitor_lon = position.coords.longitude;
 	DoReverseGeo(visitor_lat,visitor_lon);
 				
-}
-function onError(err)
+}*/
+
+//HTML5 GEO LOCATION onError function
+/*function onError(err)
 {
 	DoFallback();
-}
-function DoReverseGeo(visitor_lat,visitor_lon)
+}*/
+
+//HTML5 GEO LOCATION function 
+//Called within onSuccess function
+
+/*function DoReverseGeo(visitor_lat,visitor_lon)
 {
 var lat = parseFloat(visitor_lat);
 var lng = parseFloat(visitor_lon);
@@ -91,7 +98,7 @@ geocoder.geocode({'latLng': latlng}, function(results, status) {
     } 
   } 
 });
-}
+}*/
 
 function DoFallback()
 {
@@ -166,7 +173,8 @@ function DoFallback()
 ?>
 <script type="text/javascript">
 	
-		if (navigator.geolocation) {
+	//HTML5 GEO LOCATION
+		/*if (navigator.geolocation) {
 					
 			navigator.geolocation.getCurrentPosition(
 						onSuccess,
@@ -175,8 +183,9 @@ function DoFallback()
 							timeout: 10000,
 							maximumAge: 120000
 						});
-		}		
+		}		*/
 		
+		DoFallback();//Call Google and Maxmind to handle geo location
 	</script>
 <?php
 ?>
