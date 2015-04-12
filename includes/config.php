@@ -18,8 +18,8 @@ defined('LIB_PATH')  ? null : define('LIB_PATH', SITE_ROOT.DS.'includes');
 defined('CLASS_PATH')? null : define('CLASS_PATH', SITE_ROOT.DS.'data'.DS.'classes');
 
 
-defined('GOOGLE_MAP_API_KEY')   ? null : define("GOOGLE_MAP_API_KEY", "AIzaSyCSumZHwLlND9AfRnfzSwjwEVm61v0iTRM");
-defined('FACEBOOK_APP_ID')   ? null : define("FACEBOOK_APP_ID", "274382862638804");
-defined('MAILCHIMP_API_KEY')   ? null : define("MAILCHIMP_API_KEY", "da60dd78f105801623440cc273cec2f5-us5");
-defined('GA_Property_ID')   ? null : define("GA_Property_ID", "UA-33771504-1");
+defined('GOOGLE_MAP_API_KEY')   ? null : define("GOOGLE_MAP_API_KEY", "");
+defined('FACEBOOK_APP_ID')   ? null : define("FACEBOOK_APP_ID", "");
+defined('MAILCHIMP_API_KEY')   ? null : define("MAILCHIMP_API_KEY", "");
+defined('GA_Property_ID')   ? null : define("GA_Property_ID", "");
 ?>
